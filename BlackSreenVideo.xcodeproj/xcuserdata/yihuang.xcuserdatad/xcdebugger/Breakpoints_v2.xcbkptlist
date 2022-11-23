@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "22739064-972E-403A-9FD7-F726B96701EC"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AD87F1F8-2E05-4C07-BAE8-4502389CEBC6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BlackSreenVideo/BaseViewController/BaseViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "showSingleAlert(title:message:confirmTitle:confirmAction:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CF216A5F-AE68-47CC-8ECC-1E46619A2483"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BlackSreenVideo/Pages/Setting/Cells/SettingCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "setupCellView(rowModel:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "40274C8E-883B-44CF-BB72-7BECDED05CE2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BlackSreenVideo/Pages/Setting/Cells/SettingCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "setupCellView(rowModel:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9F866C60-08EF-4F8B-9460-23EC629149B5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BlackSreenVideo/Pages/Setting/Cells/SettingCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "setupCellView(rowModel:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9F866C60-08EF-4F8B-9460-23EC629149B5 - 1bd07ec91d6ba79e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BlackSreenVideo.SettingCell.setupCellView(rowModel: BlackSreenVideo.CellRowModel) -&gt; ()"
+                  moduleName = "BlackSreenVideo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yihuang/Desktop/BlackScreenVideo/BlackSreenVideo/Pages/Setting/Cells/SettingCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "1248">
+               </Location>
+               <Location
+                  uuid = "9F866C60-08EF-4F8B-9460-23EC629149B5 - 1bd07ec91d6ba79e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BlackSreenVideo.SettingCell.setupCellView(rowModel: BlackSreenVideo.CellRowModel) -&gt; ()"
+                  moduleName = "BlackSreenVideo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yihuang/Desktop/BlackScreenVideo/BlackSreenVideo/Pages/Setting/Cells/SettingCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "1296">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

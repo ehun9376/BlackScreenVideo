@@ -12,8 +12,7 @@ class LibraryViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.regisCell(cellIDs: [
-            "CellID"
+        self.regisCellID(cellIDs: [
         ])
     }
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CameraViewController: UIViewController {
+class CameraViewController: BaseViewController {
     
     @IBOutlet weak var recodingButton: UIButton!
     
@@ -55,6 +55,8 @@ class CameraViewController: UIViewController {
         self.defaultSetupRecordButton()
         self.defaultSetupTimeLabel()
     }
+    //MARK: - UserDefault
+
     
     //MARK: - Label
     func defaultSetupTimeLabel() {

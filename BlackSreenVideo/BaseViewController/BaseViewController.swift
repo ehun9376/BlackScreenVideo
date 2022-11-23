@@ -10,8 +10,13 @@ import UIKit
 
 class BaseViewController: UIViewController {
     
+    var navigationTitle: String? = ""
+    
+    var defaultBottomBarHeight: CGFloat = 80
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.defaultNavigationSet()
         KeyboardHelper.shared.registFor(viewController: self)
     }
     
@@ -37,7 +42,7 @@ class BaseViewController: UIViewController {
         }
         controller.addAction(cancelAction)
         
-        self.present(controller, animated: true, completion: nil)
+        self.getTopMostViewController()?.present(controller, animated: true, completion: nil)
     }
     
     func showSingleAlert(title:String = "",message: String = "",confirmTitle: String = "",confirmAction: (()->())? = nil){
@@ -50,6 +55,94 @@ class BaseViewController: UIViewController {
         }
         controller.addAction(okAction)
         
-        self.present(controller, animated: true, completion: nil)
+        self.getTopMostViewController()?.present(controller, animated: true, completion: nil)
+    }
+    
+    func showInputDialog(title:String? = nil,
+                         subtitle:String? = nil,
+                         actionTitle:String? = "Add",
+                         cancelTitle:String? = "Cancel",
+                         inputPlaceholder:String? = nil,
+                         inputKeyboardType:UIKeyboardType = UIKeyboardType.default,
+                         cancelHandler: ((UIAlertAction) -> Swift.Void)? = nil,
+                         actionHandler: ((_ text: String?) -> Void)? = nil) {
+        
+        let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
+        alert.addTextField { (textField:UITextField) in
+            textField.placeholder = inputPlaceholder
+            textField.keyboardType = inputKeyboardType
+        }
+        alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: { (action:UIAlertAction) in
+            guard let textField =  alert.textFields?.first else {
+                actionHandler?(nil)
+                return
+            }
+            actionHandler?(textField.text)
+        }))
+        alert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: cancelHandler))
+        
+        self.getTopMostViewController()?.present(alert, animated: true, completion: nil)
+    }
+    
+    func getTopMostViewController() -> UIViewController? {
+        let topMostViewController = UIApplication.shared.windows.first?.rootViewController
+        return topMostViewController
+    }
+
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.setupNavigationtitle()
+    }
+    
+    
+    private func setupNavigationtitle() {
+        if let naviTitle = self.navigationTitle {
+            self.title = naviTitle
+        }
+    }
+
+    ///if need bottoBar override this func
+    func setBottomButtons() -> [BottomBarButton] {
+        return []
+    }
+    
+    func setBottomBarStyle() -> StackBottomBarView.BottomBarStyle {
+        return .white
+    }
+    
+    func setBottomBarView(buttons: [BottomBarButton]) { }
+    
+    func showToast(message:String) {
+        DispatchQueue.main.async {
+            guard self.presentedViewController?.classForCoder != UIAlertController.self else { return }
+            let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+            self.present(alert, animated: true, completion: nil)
+            DispatchQueue.global().async {
+                sleep(2)
+                DispatchQueue.main.async {
+                    alert.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
+    }
+    
+    private func defaultNavigationSet() {
+        
+        if #available(iOS 14.0, *) {
+            self.navigationItem.backButtonDisplayMode = .minimal
+        }
+        
+        if #available(iOS 13.0, *) {
+            let barAppearance = UINavigationBarAppearance()
+            barAppearance.backgroundColor = .white
+            barAppearance.shadowColor = .clear
+            navigationItem.standardAppearance = barAppearance
+            navigationItem.scrollEdgeAppearance = barAppearance
+        }
+
+        if #available(iOS 15.0, *){
+            UITableView.appearance().sectionHeaderTopPadding = 0
+        }
     }
 }
