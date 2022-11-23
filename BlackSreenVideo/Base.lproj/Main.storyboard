@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lrD-bG-VVf">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--影片-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="CameraViewController" customModule="BlackSreenVideo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fe-1q-HGG">
+                                <rect key="frame" x="157.66666666666666" y="656" width="75" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="52c-n2-g7W"/>
+                                    <constraint firstAttribute="height" constant="75" id="pfZ-aN-Vuj"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdP-fr-O63">
+                                <rect key="frame" x="174" y="411.66666666666669" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9fe-1q-HGG" secondAttribute="bottom" constant="30" id="2cj-6U-ni3"/>
+                            <constraint firstItem="pdP-fr-O63" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="V2D-oy-8h1"/>
+                            <constraint firstItem="9fe-1q-HGG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kz5-nF-01l"/>
+                            <constraint firstItem="pdP-fr-O63" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="oNr-rc-SpB"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="影片" image="camera" catalog="system" id="3ZD-d5-hqM"/>
+                    <connections>
+                        <outlet property="recodingButton" destination="9fe-1q-HGG" id="QBN-lk-K3X"/>
+                        <outlet property="timeLabel" destination="pdP-fr-O63" id="anj-sn-JLB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="708" y="-1258"/>
+        </scene>
+        <!--工具箱-->
+        <scene sceneID="SdY-c5-ukD">
+            <objects>
+                <viewController id="SM2-J1-sAF" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jd4-5W-5AA">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Cut-bR-8Ye"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="工具箱" image="folder.badge.gearshape" catalog="system" id="J7R-3K-Qlb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ojc-Qa-8Ey" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="708" y="-3"/>
+        </scene>
+        <!--媒體庫-->
+        <scene sceneID="Eby-Al-S2S">
+            <objects>
+                <viewController id="qY1-yP-2Hj" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h1U-aj-pYH">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="8P9-vo-N6B"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="媒體庫" image="book" catalog="system" id="4jH-e7-g4x"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s9x-6c-JMe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="708" y="-610"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="az6-9Q-xe6">
+            <objects>
+                <tabBarController id="lrD-bG-VVf" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="E5f-A1-fSb">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="JZn-gK-Ma8"/>
+                        <segue destination="qY1-yP-2Hj" kind="relationship" relationship="viewControllers" id="T5D-gf-hyN"/>
+                        <segue destination="SM2-J1-sAF" kind="relationship" relationship="viewControllers" id="0vS-3M-0Nz"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qch-9z-rgy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-200" y="-307"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="book" catalog="system" width="128" height="99"/>
+        <image name="camera" catalog="system" width="128" height="93"/>
+        <image name="folder.badge.gearshape" catalog="system" width="128" height="91"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
