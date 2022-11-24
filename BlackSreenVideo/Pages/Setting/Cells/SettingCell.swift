@@ -20,6 +20,8 @@ class SettingCellRowModel: CellRowModel {
     
     var imageName: String?
     
+    var imageTintColor: UIColor?
+    
     var showSwitch: Bool = false
     
     var switchON: Bool = true
@@ -30,6 +32,7 @@ class SettingCellRowModel: CellRowModel {
         title: String? = nil,
         detail: String? = nil,
         imageName: String? = nil,
+        imageTintColor: UIColor? = nil,
         showSwitch: Bool = false,
         switchON: Bool = true,
         switchAction: ((Bool) -> ())? = nil,
@@ -38,6 +41,7 @@ class SettingCellRowModel: CellRowModel {
             self.title = title
             self.detail = detail
             self.imageName = imageName
+            self.imageTintColor = imageTintColor
             self.showSwitch = showSwitch
             self.switchAction = switchAction
             self.switchON = switchON
@@ -105,7 +109,11 @@ extension SettingCell: CellViewBase {
         self.functionSwitch.isHidden = !rowModel.showSwitch
         self.functionSwitch.isOn = rowModel.switchON
         
-        self.iconImageView.image = UIImage(named: rowModel.imageName ?? "")
+        self.iconImageView.image = UIImage(named: rowModel.imageName ?? "")?.withRenderingMode(.alwaysTemplate)
+        
+        if let tintColor = rowModel.imageTintColor {
+            self.iconImageView.tintColor = tintColor
+        }
         
     }
     

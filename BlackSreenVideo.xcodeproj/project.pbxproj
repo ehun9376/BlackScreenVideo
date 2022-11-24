@@ -16,7 +16,6 @@
 		36120D652927074200B0A5E2 /* BlackSreenVideoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36120D642927074200B0A5E2 /* BlackSreenVideoTests.swift */; };
 		36120D6F2927074200B0A5E2 /* BlackSreenVideoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36120D6E2927074200B0A5E2 /* BlackSreenVideoUITests.swift */; };
 		36120D712927074200B0A5E2 /* BlackSreenVideoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36120D702927074200B0A5E2 /* BlackSreenVideoUITestsLaunchTests.swift */; };
-		36F6173C292E14D800CA3C7F /* CaremaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F6173B292E14D800CA3C7F /* CaremaViewModel.swift */; };
 		36F6173F292E20BE00CA3C7F /* FakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F6173E292E20BE00CA3C7F /* FakeView.swift */; };
 		36F61745292E240300CA3C7F /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F61743292E240300CA3C7F /* BaseTableViewController.swift */; };
 		36F61746292E240300CA3C7F /* TableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F61744292E240300CA3C7F /* TableViewAdapter.swift */; };
@@ -24,6 +23,11 @@
 		36F6174B292E246100CA3C7F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F6174A292E246100CA3C7F /* BaseViewController.swift */; };
 		36F61750292E251F00CA3C7F /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F6174F292E251F00CA3C7F /* LibraryViewController.swift */; };
 		36F61752292E259400CA3C7F /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F61751292E259400CA3C7F /* SettingCell.swift */; };
+		36F61755292EF18900CA3C7F /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F61754292EF18900CA3C7F /* TagCell.swift */; };
+		36F61757292EF1E100CA3C7F /* TagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F61756292EF1E100CA3C7F /* TagCell.xib */; };
+		36F6175E292F564200CA3C7F /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F6175D292F564200CA3C7F /* VideoView.swift */; };
+		36F61760292F584700CA3C7F /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F6175F292F584700CA3C7F /* PlayViewController.swift */; };
+		36F61762292F5B1A00CA3C7F /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F61761292F5B1A00CA3C7F /* PreviewView.swift */; };
 		94801DBA292E645B00B018E6 /* StackBottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94801DB9292E645B00B018E6 /* StackBottomBarView.swift */; };
 		94801DBC292E649000B018E6 /* SwiftButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94801DBB292E649000B018E6 /* SwiftButton.swift */; };
 		9492AFCE292E3DC500C4AA13 /* SettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9492AFCD292E3DC500C4AA13 /* SettingCell.xib */; };
@@ -66,7 +70,6 @@
 		36120D6A2927074200B0A5E2 /* BlackSreenVideoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlackSreenVideoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		36120D6E2927074200B0A5E2 /* BlackSreenVideoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackSreenVideoUITests.swift; sourceTree = "<group>"; };
 		36120D702927074200B0A5E2 /* BlackSreenVideoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackSreenVideoUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		36F6173B292E14D800CA3C7F /* CaremaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaremaViewModel.swift; sourceTree = "<group>"; };
 		36F6173E292E20BE00CA3C7F /* FakeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeView.swift; sourceTree = "<group>"; };
 		36F61743292E240300CA3C7F /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		36F61744292E240300CA3C7F /* TableViewAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewAdapter.swift; sourceTree = "<group>"; };
@@ -74,6 +77,11 @@
 		36F6174A292E246100CA3C7F /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		36F6174F292E251F00CA3C7F /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		36F61751292E259400CA3C7F /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		36F61754292EF18900CA3C7F /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
+		36F61756292EF1E100CA3C7F /* TagCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagCell.xib; sourceTree = "<group>"; };
+		36F6175D292F564200CA3C7F /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
+		36F6175F292F584700CA3C7F /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
+		36F61761292F5B1A00CA3C7F /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		94801DB9292E645B00B018E6 /* StackBottomBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackBottomBarView.swift; sourceTree = "<group>"; };
 		94801DBB292E649000B018E6 /* SwiftButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftButton.swift; sourceTree = "<group>"; };
 		9492AFCD292E3DC500C4AA13 /* SettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCell.xib; sourceTree = "<group>"; };
@@ -135,8 +143,6 @@
 			children = (
 				36120D4D2927074000B0A5E2 /* AppDelegate.swift */,
 				36120D4F2927074000B0A5E2 /* SceneDelegate.swift */,
-				9492AFD4292E46BC00C4AA13 /* UserInfoCenter.swift */,
-				9492AFD6292E494100C4AA13 /* CodeModel.swift */,
 				36F6174C292E24D200CA3C7F /* Helper */,
 				36F6174D292E24D900CA3C7F /* BaseViewController */,
 				36F61747292E240600CA3C7F /* TableviewBase + Adapter */,
@@ -171,7 +177,6 @@
 			isa = PBXGroup;
 			children = (
 				36120D512927074000B0A5E2 /* CameraViewController.swift */,
-				36F6173B292E14D800CA3C7F /* CaremaViewModel.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -182,6 +187,8 @@
 				94801DBB292E649000B018E6 /* SwiftButton.swift */,
 				94801DB9292E645B00B018E6 /* StackBottomBarView.swift */,
 				36F6173E292E20BE00CA3C7F /* FakeView.swift */,
+				36F61761292F5B1A00CA3C7F /* PreviewView.swift */,
+				36F6175D292F564200CA3C7F /* VideoView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -190,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				36F6174F292E251F00CA3C7F /* LibraryViewController.swift */,
+				36F6175F292F584700CA3C7F /* PlayViewController.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -206,8 +214,10 @@
 		36F6174C292E24D200CA3C7F /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				9492AFD4292E46BC00C4AA13 /* UserInfoCenter.swift */,
 				36F61748292E243000CA3C7F /* KeyboardHelper.swift */,
 				9492AFCF292E421B00C4AA13 /* Extension.swift */,
+				36F61758292EF6E700CA3C7F /* CodeModel */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -223,11 +233,11 @@
 		36F6174E292E24F000CA3C7F /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				9492AFDD292E61A500C4AA13 /* SelectViewController.swift */,
 				9492AFD1292E445700C4AA13 /* Setting */,
 				36F6173D292E14E400CA3C7F /* Camera */,
 				36F61742292E23A100CA3C7F /* Library */,
 				9492AFDB292E506800C4AA13 /* LaunchviewController.swift */,
-				9492AFDD292E61A500C4AA13 /* SelectViewController.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -235,10 +245,20 @@
 		36F61753292E260100CA3C7F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				36F61754292EF18900CA3C7F /* TagCell.swift */,
+				36F61756292EF1E100CA3C7F /* TagCell.xib */,
 				36F61751292E259400CA3C7F /* SettingCell.swift */,
 				9492AFCD292E3DC500C4AA13 /* SettingCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		36F61758292EF6E700CA3C7F /* CodeModel */ = {
+			isa = PBXGroup;
+			children = (
+				9492AFD6292E494100C4AA13 /* CodeModel.swift */,
+			);
+			path = CodeModel;
 			sourceTree = "<group>";
 		};
 		9492AFD1292E445700C4AA13 /* Setting */ = {
@@ -355,6 +375,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36120D5A2927074200B0A5E2 /* LaunchScreen.storyboard in Resources */,
+				36F61757292EF1E100CA3C7F /* TagCell.xib in Resources */,
 				36120D572927074200B0A5E2 /* Assets.xcassets in Resources */,
 				9492AFCE292E3DC500C4AA13 /* SettingCell.xib in Resources */,
 				36120D552927074000B0A5E2 /* Main.storyboard in Resources */,
@@ -383,19 +404,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				9492AFDE292E61A500C4AA13 /* SelectViewController.swift in Sources */,
+				36F61762292F5B1A00CA3C7F /* PreviewView.swift in Sources */,
 				36F61749292E243000CA3C7F /* KeyboardHelper.swift in Sources */,
 				94801DBA292E645B00B018E6 /* StackBottomBarView.swift in Sources */,
 				9492AFD7292E494100C4AA13 /* CodeModel.swift in Sources */,
+				36F61760292F584700CA3C7F /* PlayViewController.swift in Sources */,
 				36F61745292E240300CA3C7F /* BaseTableViewController.swift in Sources */,
 				9492AFDC292E506800C4AA13 /* LaunchviewController.swift in Sources */,
 				36120D522927074000B0A5E2 /* CameraViewController.swift in Sources */,
 				9492AFD3292E44DF00C4AA13 /* SettingViewController.swift in Sources */,
 				9492AFD0292E421B00C4AA13 /* Extension.swift in Sources */,
-				36F6173C292E14D800CA3C7F /* CaremaViewModel.swift in Sources */,
 				36F61752292E259400CA3C7F /* SettingCell.swift in Sources */,
 				36F61746292E240300CA3C7F /* TableViewAdapter.swift in Sources */,
+				36F61755292EF18900CA3C7F /* TagCell.swift in Sources */,
 				36F6174B292E246100CA3C7F /* BaseViewController.swift in Sources */,
 				36F61750292E251F00CA3C7F /* LibraryViewController.swift in Sources */,
+				36F6175E292F564200CA3C7F /* VideoView.swift in Sources */,
 				94801DBC292E649000B018E6 /* SwiftButton.swift in Sources */,
 				36F6173F292E20BE00CA3C7F /* FakeView.swift in Sources */,
 				36120D4E2927074000B0A5E2 /* AppDelegate.swift in Sources */,
@@ -581,13 +605,12 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BlackSreenVideo/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "uses the camera to take photos and video.";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "uses the microphone to record sound during Live Photos and movies";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "uses the microphone to record sound during Live Photos and movies.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "saves captured photos and videos to your photo library.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -613,13 +636,12 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BlackSreenVideo/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "uses the camera to take photos and video.";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "uses the microphone to record sound during Live Photos and movies";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "uses the microphone to record sound during Live Photos and movies.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "saves captured photos and videos to your photo library.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

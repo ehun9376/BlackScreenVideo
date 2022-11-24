@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class SettingViewController: BaseTableViewController {
     
@@ -15,15 +16,24 @@ class SettingViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.regisCellID(cellIDs: [
-            "SettingCell"
+            "SettingCell",
+            "TagCell"
         ])
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.setupRowModel()
+        
     }
     
     func setupRowModel() {
         
         self.rowModels.removeAll()
+        
+        //影片設定
+        let videoTagRowModel = TagCellRowModel(title: "影片設定")
+        self.rowModels.append(videoTagRowModel)
         
         //相機
         let caremaCodeModel = CodeModel.cameraLocation.first(where: {$0.number == UserInfoCenter.shared.loadValue(.cameraLocation) as? Int}) ?? .init()
@@ -47,6 +57,32 @@ class SettingViewController: BaseTableViewController {
         
         self.rowModels.append(caremaRowModel)
         
+        //影片方向
+        let videoCodeModel = CodeModel.videoDirection.first(where: {$0.number == UserInfoCenter.shared.loadValue(.videoDirection) as? Int}) ?? .init()
+        let videoRowModel = SettingCellRowModel(title: "影片方向",
+                                                 detail: videoCodeModel.text,
+                                                 imageName: "",
+                                                 showSwitch: false,
+                                                 switchON: true,
+                                                 switchAction: nil,
+                                                 cellDidSelect: { [weak self] _ in
+            self?.pushToSelectVC(dataSource: CodeModel.videoDirection,
+                                 seletedModel: CodeModel.videoDirection.filter({$0 == videoCodeModel}),
+                                 confirmAction: { codeModels in
+                if let codeModel = codeModels.first {
+                    UserInfoCenter.shared.storeValue(.videoDirection, data: codeModel.number)
+                    self?.setupRowModel()
+                    
+                }
+            })
+        })
+        
+//        self.rowModels.append(videoRowModel)
+        
+        //循環錄影
+        let cycleTagRowModel = TagCellRowModel(title: "循環錄影")
+        self.rowModels.append(cycleTagRowModel)
+        
         //時間限制
         let time = UserInfoCenter.shared.loadValue(.videoMaxTime) as? Int ?? 0
         let videoMaxTimeRowModel = SettingCellRowModel(title: String(format: "時間限制(%d分鐘%d秒)",time / 60 ,time % 60),
@@ -68,34 +104,126 @@ class SettingViewController: BaseTableViewController {
         
         //循環錄影
         let cycleRecodingRowModel = SettingCellRowModel(title: "循環錄影",
-                                                       detail: "影片達到限制時間後，繼續錄製影片",
-                                                       imageName: "",
-                                                       showSwitch: true,
-                                                       switchON: UserInfoCenter.shared.loadValue(.cycleRecoding) as? Bool ?? false,
-                                                       switchAction: { isON in
+                                                        detail: "影片達到限制時間後，繼續錄製影片",
+                                                        imageName: "",
+                                                        showSwitch: true,
+                                                        switchON: UserInfoCenter.shared.loadValue(.cycleRecoding) as? Bool ?? false,
+                                                        switchAction: { isON in
             UserInfoCenter.shared.storeValue(.cycleRecoding, data: isON)
         },
-                                                       cellDidSelect: nil)
+                                                        cellDidSelect: nil)
         self.rowModels.append(cycleRecodingRowModel)
         
+        //一般設定
+        let normalTagRowModel = TagCellRowModel(title: "一般設定")
+        self.rowModels.append(normalTagRowModel)
         
+        //錄影完成時通知
+        let recordingCompleteModel = SettingCellRowModel(title: "錄影完成",
+                                                         detail: "停止錄影時顯示通知",
+                                                         imageName: "",
+                                                         showSwitch: true,
+                                                         switchON: UserInfoCenter.shared.loadValue(.notifiyWhenComplete) as? Bool ?? false,
+                                                         switchAction: { isON in
+            UserInfoCenter.shared.storeValue(.notifiyWhenComplete, data: isON)
+        },
+                                                         cellDidSelect: nil)
+        self.rowModels.append(recordingCompleteModel)
         
-        //密碼
-        let passWordRowModel = SettingCellRowModel(title: "是否需要開啟密碼",
-                                                   detail: UserInfoCenter.shared.loadValue(.password) as? String ?? "",
+        //開始錄影時振動
+        let shakeWhenStartRowModel = SettingCellRowModel(title: "開始錄影時振動",
+                                                         detail: nil,
+                                                         imageName: "",
+                                                         showSwitch: true,
+                                                         switchON: UserInfoCenter.shared.loadValue(.shakeWhenStart) as? Bool ?? false,
+                                                         switchAction: { isON in
+            UserInfoCenter.shared.storeValue(.shakeWhenStart, data: isON)
+        },
+                                                         cellDidSelect: nil)
+        
+        self.rowModels.append(shakeWhenStartRowModel)
+        
+        //結束錄影時振動
+        let shakeWhenEndRowModel = SettingCellRowModel(title: "結束錄影時振動",
+                                                       detail: nil,
+                                                       imageName: "",
+                                                       showSwitch: true,
+                                                       switchON: UserInfoCenter.shared.loadValue(.shakeWhenEnd) as? Bool ?? false,
+                                                       switchAction: { isON in
+            UserInfoCenter.shared.storeValue(.shakeWhenEnd, data: isON)
+        },
+                                                       cellDidSelect: nil)
+        self.rowModels.append(shakeWhenEndRowModel)
+        
+        //DarkMode
+        let darkModeRowModel = SettingCellRowModel(title: "深色模式",
                                                    imageName: "",
                                                    showSwitch: true,
-                                                   switchON: UserInfoCenter.shared.loadValue(.needPassword) as? Bool ?? false,
-                                                   switchAction: { [weak self] isON in
+                                                   switchON: (UserInfoCenter.shared.loadValue(.darkMode) as? Bool ?? false),
+                                                   switchAction: { isON in
+            UserInfoCenter.shared.storeValue(.darkMode, data: isON)
+            let scene = UIApplication.shared.connectedScenes.first
+            
+            if let delegate : SceneDelegate = (scene?.delegate as? SceneDelegate){
+                delegate.window?.overrideUserInterfaceStyle = isON ? .dark : .light
+                delegate.window?.makeKeyAndVisible()
+            }
+        })
+        
+        self.rowModels.append(darkModeRowModel)
+        
+        
+        //安全設定
+        let safetyTagRowModel = TagCellRowModel(title: "安全設定")
+        self.rowModels.append(safetyTagRowModel)
+        
+        //使用者驗證
+        let needPassWordRowModel = SettingCellRowModel(title: "使用者驗證",
+                                                       detail: "開啟前輸入密碼",
+                                                       imageName: "",
+                                                       showSwitch: true,
+                                                       switchON: UserInfoCenter.shared.loadValue(.needPassword) as? Bool ?? false,
+                                                       switchAction: { [weak self] isON in
             UserInfoCenter.shared.storeValue(.needPassword, data: isON)
-            if isON, UserInfoCenter.shared.loadValue(.password) == nil {
+            if UserInfoCenter.shared.loadValue(.password) == nil {
                 self?.showPasswordAlert()
             }
         },
-                                                   cellDidSelect: { [weak self] rowModel in
+                                                       cellDidSelect: nil)
+        self.rowModels.append(needPassWordRowModel)
+        
+        var passWordDetail = ""
+        
+        if let password = UserInfoCenter.shared.loadValue(.password) as? String {
+            passWordDetail = "目前密碼為" + password
+        }
+        
+        //變更密碼
+        let passWordRowModel = SettingCellRowModel(title: "變更密碼",
+                                                   detail: passWordDetail,
+                                                   imageName: "",
+                                                   showSwitch: false,
+                                                   switchAction: nil,
+                                                   cellDidSelect: { [weak self] _ in
             self?.showPasswordAlert()
         })
+        
         self.rowModels.append(passWordRowModel)
+        
+        //購買紀錄
+        let shopingTagRowModel = TagCellRowModel(title: "購買紀錄")
+        self.rowModels.append(shopingTagRowModel)
+        
+        //恢復購買紀錄
+        let reBuyRowModel = SettingCellRowModel(title: "恢復購買紀錄",
+                                                imageName: "",
+                                                showSwitch: false,
+                                                cellDidSelect: { [weak self] _ in
+            self?.showToast(message: "購買紀錄已恢復")
+        })
+        
+        self.rowModels.append(reBuyRowModel)
+        
         
         self.adapter?.updateTableViewData(rowModels: rowModels)
     }

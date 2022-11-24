@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z42-zs-RPK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z42-zs-RPK">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--影片-->
+        <!--Camera View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="CameraViewController" customModule="BlackSreenVideo" customModuleProvider="target" sceneMemberID="viewController">
@@ -32,18 +32,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jZD-YV-1Eh" customClass="PreviewView" customModule="BlackSreenVideo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="91" width="390" height="320.66666666666669"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9fe-1q-HGG" secondAttribute="bottom" constant="30" id="2cj-6U-ni3"/>
+                            <constraint firstItem="pdP-fr-O63" firstAttribute="top" secondItem="jZD-YV-1Eh" secondAttribute="bottom" id="EVL-gm-fqj"/>
                             <constraint firstItem="pdP-fr-O63" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="V2D-oy-8h1"/>
+                            <constraint firstItem="jZD-YV-1Eh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ayy-o6-FkQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jZD-YV-1Eh" secondAttribute="trailing" id="kgt-W6-LRL"/>
                             <constraint firstItem="9fe-1q-HGG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kz5-nF-01l"/>
                             <constraint firstItem="pdP-fr-O63" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="oNr-rc-SpB"/>
+                            <constraint firstItem="jZD-YV-1Eh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pQR-8h-sTQ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="影片" image="camera" catalog="system" id="3ZD-d5-hqM"/>
+                    <tabBarItem key="tabBarItem" title="" image="camera" catalog="system" id="3ZD-d5-hqM"/>
                     <connections>
+                        <outlet property="previewView" destination="jZD-YV-1Eh" id="R3d-EA-8gN"/>
                         <outlet property="recodingButton" destination="9fe-1q-HGG" id="QBN-lk-K3X"/>
                         <outlet property="timeLabel" destination="pdP-fr-O63" id="anj-sn-JLB"/>
                     </connections>
@@ -52,7 +61,7 @@
             </objects>
             <point key="canvasLocation" x="708" y="-1258"/>
         </scene>
-        <!--工具箱-->
+        <!--Setting View Controller-->
         <scene sceneID="SdY-c5-ukD">
             <objects>
                 <viewController id="SM2-J1-sAF" customClass="SettingViewController" customModule="BlackSreenVideo" customModuleProvider="target" sceneMemberID="viewController">
@@ -62,24 +71,24 @@
                         <viewLayoutGuide key="safeArea" id="Cut-bR-8Ye"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="工具箱" image="folder.badge.gearshape" catalog="system" id="J7R-3K-Qlb"/>
+                    <tabBarItem key="tabBarItem" title="" image="folder.badge.gearshape" catalog="system" id="J7R-3K-Qlb"/>
                     <navigationItem key="navigationItem" id="R3u-JG-S7w"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ojc-Qa-8Ey" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="708" y="38"/>
         </scene>
-        <!--媒體庫-->
+        <!--Library View Controller-->
         <scene sceneID="Eby-Al-S2S">
             <objects>
-                <viewController id="qY1-yP-2Hj" sceneMemberID="viewController">
+                <viewController id="qY1-yP-2Hj" customClass="LibraryViewController" customModule="BlackSreenVideo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h1U-aj-pYH">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="8P9-vo-N6B"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="媒體庫" image="book" catalog="system" id="4jH-e7-g4x"/>
+                    <tabBarItem key="tabBarItem" title="" image="book" catalog="system" id="4jH-e7-g4x"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s9x-6c-JMe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

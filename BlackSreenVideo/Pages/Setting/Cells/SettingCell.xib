@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,17 +23,17 @@
                             <constraint firstAttribute="height" constant="30" id="GGx-kB-l73"/>
                         </constraints>
                     </imageView>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="7sV-0o-Tmv">
-                        <rect key="frame" x="60" y="10" width="41.333333333333343" height="118"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7sV-0o-Tmv">
+                        <rect key="frame" x="60" y="10" width="504" height="118"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="253" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="753" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FdI-kl-4iE">
-                                <rect key="frame" x="0.0" y="0.0" width="41.333333333333336" height="20.333333333333332"/>
+                                <rect key="frame" x="0.0" y="0.0" width="504" height="20.333333333333332"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVP-Mk-6yA">
-                                <rect key="frame" x="0.0" y="34.333333333333336" width="41.333333333333336" height="83.666666666666657"/>
+                                <rect key="frame" x="0.0" y="30.333333333333336" width="504" height="87.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -54,6 +54,7 @@
                     <constraint firstItem="gzA-Ia-sIR" firstAttribute="centerY" secondItem="AGO-rr-fMo" secondAttribute="centerY" id="aiL-TU-OkV"/>
                     <constraint firstItem="gzA-Ia-sIR" firstAttribute="centerY" secondItem="AGO-rr-fMo" secondAttribute="centerY" id="dRJ-0f-AUm"/>
                     <constraint firstItem="gzA-Ia-sIR" firstAttribute="leading" secondItem="AGO-rr-fMo" secondAttribute="leading" constant="10" id="eYX-lJ-pT2"/>
+                    <constraint firstItem="1ej-PB-oLz" firstAttribute="leading" secondItem="7sV-0o-Tmv" secondAttribute="trailing" constant="20" id="hP7-CS-fdf"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

@@ -35,6 +35,7 @@ class SelectViewController: BaseTableViewController {
                                                  detail: nil,
                                                  //TODO: - 換圖
                                                  imageName: isSelected ? "check" : "",
+                                                 imageTintColor: (UserInfoCenter.shared.loadValue(.darkMode) as? Bool ?? false) ? .red : .black,
                                                  showSwitch: false,
                                                  switchON: false,
                                                  switchAction: nil,

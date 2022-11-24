@@ -42,7 +42,7 @@ class BaseViewController: UIViewController {
         }
         controller.addAction(cancelAction)
         
-        self.getTopMostViewController()?.present(controller, animated: true, completion: nil)
+        self.present(controller, animated: true, completion: nil)
     }
     
     func showSingleAlert(title:String = "",message: String = "",confirmTitle: String = "",confirmAction: (()->())? = nil){
@@ -55,7 +55,7 @@ class BaseViewController: UIViewController {
         }
         controller.addAction(okAction)
         
-        self.getTopMostViewController()?.present(controller, animated: true, completion: nil)
+        self.present(controller, animated: true, completion: nil)
     }
     
     func showInputDialog(title:String? = nil,
@@ -81,13 +81,9 @@ class BaseViewController: UIViewController {
         }))
         alert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: cancelHandler))
         
-        self.getTopMostViewController()?.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
-    
-    func getTopMostViewController() -> UIViewController? {
-        let topMostViewController = UIApplication.shared.windows.first?.rootViewController
-        return topMostViewController
-    }
+
 
     
     override func viewDidLoad() {
@@ -145,4 +141,5 @@ class BaseViewController: UIViewController {
             UITableView.appearance().sectionHeaderTopPadding = 0
         }
     }
+ 
 }

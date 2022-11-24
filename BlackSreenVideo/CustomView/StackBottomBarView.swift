@@ -68,7 +68,7 @@ class BottomBarButton: SwiftButton {
         case .red:
             button.backgroundColor = .red
         case .white:
-            button.backgroundColor = .white
+            button.backgroundColor =  (UserInfoCenter.shared.loadValue(.darkMode) as? Bool ?? false) ? .black : .white
         case .none:
             button.backgroundColor = .clear
         }
@@ -144,7 +144,7 @@ class StackBottomBarView: UIView {
         case .red:
             self.backgroundColor = .red
         case .white:
-            self.backgroundColor = .white
+            self.backgroundColor = (UserInfoCenter.shared.loadValue(.darkMode) as? Bool ?? false) ? .black : .white
             self.layer.shadowColor = UIColor.black.cgColor
             self.layer.shadowRadius = 3
             self.layer.shadowOpacity = 0.1

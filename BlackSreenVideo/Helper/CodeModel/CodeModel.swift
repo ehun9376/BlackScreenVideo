@@ -30,4 +30,12 @@ class CodeModel: Equatable {
         .backCamera
     ]
     
+    //影片方向
+    static let horizontal: CodeModel = .init(text: "橫向", number: 0)
+    static let vertically: CodeModel = .init(text: "直向", number: 1)
+    static let videoDirection: [CodeModel] = [
+        .horizontal,
+        .vertically
+    ]
+    
 }

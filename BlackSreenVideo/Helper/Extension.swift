@@ -7,6 +7,14 @@
 
 import Foundation
 import UIKit
+import AudioToolbox
+
+enum SessionSetupResult {
+    case success
+    case notAuthorized
+    case configurationFailed
+}
+
 extension UIImage {
     func resize(targetSize: CGSize, isAspect: Bool = true) -> UIImage {
         var newSize: CGSize = targetSize
@@ -32,5 +40,28 @@ extension UIImage {
         UIGraphicsEndImageContext()
         
         return newImage!
+    }
+}
+extension NSObject {
+    
+    func systemVibration() {
+        //建立的SystemSoundID对象
+        let soundID = SystemSoundID(kSystemSoundID_Vibrate)
+        //振动
+        AudioServicesPlaySystemSound(soundID)
+    }
+    
+    func sendLocalNotication(title: String? = nil, subTitle: String? = nil, body: String? = nil, lateTime: Int) {
+        
+        let content = UNMutableNotificationContent()
+        content.title = title ?? ""
+        content.subtitle = subTitle ?? ""
+        content.body = body ?? ""
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: "notification", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
 }
