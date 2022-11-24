@@ -24,7 +24,8 @@ class SettingViewController: BaseTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setupRowModel()
-        
+        self.systemVibration(sender: self, complete: {})
+
     }
     
     func setupRowModel() {
@@ -59,13 +60,14 @@ class SettingViewController: BaseTableViewController {
         
         //影片方向
         let videoCodeModel = CodeModel.videoDirection.first(where: {$0.number == UserInfoCenter.shared.loadValue(.videoDirection) as? Int}) ?? .init()
+        
         let videoRowModel = SettingCellRowModel(title: "影片方向",
-                                                 detail: videoCodeModel.text,
-                                                 imageName: "",
-                                                 showSwitch: false,
-                                                 switchON: true,
-                                                 switchAction: nil,
-                                                 cellDidSelect: { [weak self] _ in
+                                                detail: videoCodeModel.text,
+                                                imageName: "",
+                                                showSwitch: false,
+                                                switchON: true,
+                                                switchAction: nil,
+                                                cellDidSelect: { [weak self] _ in
             self?.pushToSelectVC(dataSource: CodeModel.videoDirection,
                                  seletedModel: CodeModel.videoDirection.filter({$0 == videoCodeModel}),
                                  confirmAction: { codeModels in
@@ -77,7 +79,7 @@ class SettingViewController: BaseTableViewController {
             })
         })
         
-//        self.rowModels.append(videoRowModel)
+        //        self.rowModels.append(videoRowModel)
         
         //循環錄影
         let cycleTagRowModel = TagCellRowModel(title: "循環錄影")
@@ -141,7 +143,7 @@ class SettingViewController: BaseTableViewController {
         },
                                                          cellDidSelect: nil)
         
-        self.rowModels.append(shakeWhenStartRowModel)
+//        self.rowModels.append(shakeWhenStartRowModel)
         
         //結束錄影時振動
         let shakeWhenEndRowModel = SettingCellRowModel(title: "結束錄影時振動",
@@ -153,7 +155,7 @@ class SettingViewController: BaseTableViewController {
             UserInfoCenter.shared.storeValue(.shakeWhenEnd, data: isON)
         },
                                                        cellDidSelect: nil)
-        self.rowModels.append(shakeWhenEndRowModel)
+//        self.rowModels.append(shakeWhenEndRowModel)
         
         //DarkMode
         let darkModeRowModel = SettingCellRowModel(title: "深色模式",

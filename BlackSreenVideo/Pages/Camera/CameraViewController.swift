@@ -83,55 +83,44 @@ class CameraViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.checkAuthorizationStatus()
         self.prepareInput()
         self.prepareOutput()
+        self.showAuthorizationAlert()
+    }
+    
+    func showAuthorizationAlert() {
         sessionQueue.async {
             switch self.setupResult {
             case .success:
-                // Only setup observers and start the session if setup succeeded.
-                //                self.addObservers()
                 self.session.startRunning()
-                //                self.isSessionRunning = self.session.isRunning
-                
+                break
             case .notAuthorized:
-                DispatchQueue.main.async {
-                    let changePrivacySetting = "AVCam doesn't have permission to use the camera, please change privacy settings"
-                    let message = NSLocalizedString(changePrivacySetting, comment: "Alert message when the user has denied access to the camera")
-                    let alertController = UIAlertController(title: "AVCam", message: message, preferredStyle: .alert)
+                    self.showAlert(title: "提示",
+                                   message: "你尚未開啟相機權限，\n快去設定開啟相機權限吧",
+                                   confirmTitle: "前往設定",
+                                   cancelTitle: "取消",
+                                   confirmAction: {
+                        if let url = URL(string: UIApplication.openSettingsURLString) {
+                            UIApplication.shared.open(url,
+                                                      options: [:],
+                                                      completionHandler: nil)
+                        }
+                        
+                    },
+                                   cancelAction: nil)
                     
-                    alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Alert OK button"),
-                                                            style: .cancel,
-                                                            handler: nil))
-                    
-                    alertController.addAction(UIAlertAction(title: NSLocalizedString("Settings", comment: "Alert button to open Settings"),
-                                                            style: .`default`,
-                                                            handler: { _ in
-                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!,
-                                                  options: [:],
-                                                  completionHandler: nil)
-                    }))
-                    
-                    self.present(alertController, animated: true, completion: nil)
-                }
-                
             case .configurationFailed:
-                DispatchQueue.main.async {
-                    let alertMsg = "Alert message when something goes wrong during capture session configuration"
-                    let message = NSLocalizedString("Unable to capture media", comment: alertMsg)
-                    let alertController = UIAlertController(title: "AVCam", message: message, preferredStyle: .alert)
-                    
-                    alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Alert OK button"),
-                                                            style: .cancel,
-                                                            handler: nil))
-                    
-                    self.present(alertController, animated: true, completion: nil)
-                }
+                    self.showSingleAlert(title: "偵測到錯誤",
+                                         message: "請重新安裝或諮詢客服",
+                                         confirmTitle: "確定",
+                                         confirmAction: nil)
             }
         }
+        
     }
     
-    private func prepareInput() {
-        
+    func checkAuthorizationStatus() {
         //檢查權限
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized:
@@ -140,7 +129,8 @@ class CameraViewController: BaseViewController {
         case .notDetermined:
             //沒有權限的時候
             sessionQueue.suspend()
-            AVCaptureDevice.requestAccess(for: .video, completionHandler: { granted in
+            AVCaptureDevice.requestAccess(for: .video, completionHandler: { [weak self] granted in
+                guard let self = self else { return }
                 if !granted {
                     self.setupResult = .notAuthorized
                 }
@@ -150,6 +140,10 @@ class CameraViewController: BaseViewController {
         default:
             setupResult = .notAuthorized
         }
+        
+    }
+    
+    private func prepareInput() {
         
         if setupResult != .success {
             return
@@ -230,6 +224,9 @@ class CameraViewController: BaseViewController {
     }
     
     func prepareOutput() {
+        if setupResult != .success {
+            return
+        }
         previewView.session = session
         sessionQueue.async {
             let movieFileOutput = AVCaptureMovieFileOutput()
@@ -274,12 +271,11 @@ class CameraViewController: BaseViewController {
     }
     
     func startRecoding() {
-        previewView.videoPreviewLayer.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
+                
         guard let movieFileOutput = self.movieFileOutput else {
             return
         }
         guard let videoPreviewLayerOrientation = previewView.videoPreviewLayer.connection?.videoOrientation else {return}
-        
         sessionQueue.async {
             if !movieFileOutput.isRecording {
                 if UIDevice.current.isMultitaskingSupported {
@@ -299,7 +295,10 @@ class CameraViewController: BaseViewController {
                 // Start recording video to a temporary file.
                 let outputFileName = NSUUID().uuidString
                 let outputFilePath = (NSTemporaryDirectory() as NSString).appendingPathComponent((outputFileName as NSString).appendingPathExtension("mov")!)
-                movieFileOutput.startRecording(to: URL(fileURLWithPath: outputFilePath), recordingDelegate: self)
+                let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                let url = documents.appendingPathComponent((outputFileName as NSString).appendingPathExtension("mov")!)
+                print("存取路徑\(url)")
+                movieFileOutput.startRecording(to: url, recordingDelegate: self)
             } else {
                 movieFileOutput.stopRecording()
             }
@@ -366,11 +365,9 @@ class CameraViewController: BaseViewController {
     @objc func recordButtonAction(_ sender: UIButton) {
         
         let totalTime = UserInfoCenter.shared.loadValue(.totalRecordTime) as? Int ?? 0
+        let shakeStart = UserInfoCenter.shared.loadValue(.shakeWhenStart) as? Bool ?? false
         //TODO: - 或是有購買
         if totalTime < 60 {
-            if !self.isRecoding {
-                self.systemVibration()
-            }
             self.isRecoding.toggle()
         } else {
             self.showToast(message: "需要購買")
@@ -431,57 +428,19 @@ class CameraViewController: BaseViewController {
 
 extension CameraViewController:  AVCaptureFileOutputRecordingDelegate {
     func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
-        func cleanup() {
-            let path = outputFileURL.path
-            if FileManager.default.fileExists(atPath: path) {
-                do {
-                    try FileManager.default.removeItem(atPath: path)
-                } catch {
-                    print("Could not remove file at url: \(outputFileURL)")
-                }
-            }
-            
-            if let currentBackgroundRecordingID = backgroundRecordingID {
-                backgroundRecordingID = UIBackgroundTaskIdentifier.invalid
-                
-                if currentBackgroundRecordingID != UIBackgroundTaskIdentifier.invalid {
-                    UIApplication.shared.endBackgroundTask(currentBackgroundRecordingID)
-                }
-            }
+        print("fileOutput")
+        let path = outputFileURL.path
+        
+        if FileManager.default.fileExists(atPath: path) {
+            print("已儲存")
+            print(path)
         }
         
-        var success = true
-        
-        if error != nil {
-            print("Movie file finishing error: \(String(describing: error))")
-            success = (((error! as NSError).userInfo[AVErrorRecordingSuccessfullyFinishedKey] as AnyObject).boolValue)!
+        if let shakeWhenEnd = UserInfoCenter.shared.loadValue(.shakeWhenEnd) as? Bool, shakeWhenEnd {
+            self.systemVibration(sender: self, complete: {})
         }
-        
-        if success {
-            // Check the authorization status.
-            PHPhotoLibrary.requestAuthorization { status in
-                if status == .authorized {
-                    // Save the movie file to the photo library and cleanup.
-                    PHPhotoLibrary.shared().performChanges({
-                        let options = PHAssetResourceCreationOptions()
-                        options.shouldMoveFile = true
-                        let creationRequest = PHAssetCreationRequest.forAsset()
-                        creationRequest.addResource(with: .video, fileURL: outputFileURL, options: options)
-                        
-                    }, completionHandler: { success, error in
-                        if !success {
-                            print("AVCam couldn't save the movie to your photo library: \(String(describing: error))")
-                        }
-                        cleanup()
-                    }
-                    )
-                } else {
-                    cleanup()
-                }
-            }
-        } else {
-            cleanup()
-        }
+ 
+
         
     }
 }

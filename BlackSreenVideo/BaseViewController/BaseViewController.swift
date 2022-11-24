@@ -26,36 +26,42 @@ class BaseViewController: UIViewController {
     }
     
     func showAlert(title:String = "",message: String = "",confirmTitle: String = "",cancelTitle: String,confirmAction: (()->())? = nil,cancelAction:(()->())? = nil){
-        let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: confirmTitle, style: .default) { _ in
-            if let confirmAction = confirmAction {
-                confirmAction()
+        DispatchQueue.main.async {
+            let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            
+            let okAction = UIAlertAction(title: confirmTitle, style: .default) { _ in
+                if let confirmAction = confirmAction {
+                    confirmAction()
+                }
             }
-        }
-        controller.addAction(okAction)
-        
-        let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel) { _ in
-            if let cancelAction = cancelAction {
-                cancelAction()
+            controller.addAction(okAction)
+            
+            let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel) { _ in
+                if let cancelAction = cancelAction {
+                    cancelAction()
+                }
             }
+            controller.addAction(cancelAction)
+            
+            self.present(controller, animated: true, completion: nil)
         }
-        controller.addAction(cancelAction)
-        
-        self.present(controller, animated: true, completion: nil)
+
     }
     
     func showSingleAlert(title:String = "",message: String = "",confirmTitle: String = "",confirmAction: (()->())? = nil){
-        let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: confirmTitle, style: .default) { _ in
-            if let confirmAction = confirmAction {
-                confirmAction()
+        DispatchQueue.main.async {
+            let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            
+            let okAction = UIAlertAction(title: confirmTitle, style: .default) { _ in
+                if let confirmAction = confirmAction {
+                    confirmAction()
+                }
             }
+            controller.addAction(okAction)
+            
+            self.present(controller, animated: true, completion: nil)
         }
-        controller.addAction(okAction)
-        
-        self.present(controller, animated: true, completion: nil)
+
     }
     
     func showInputDialog(title:String? = nil,
@@ -66,22 +72,24 @@ class BaseViewController: UIViewController {
                          inputKeyboardType:UIKeyboardType = UIKeyboardType.default,
                          cancelHandler: ((UIAlertAction) -> Swift.Void)? = nil,
                          actionHandler: ((_ text: String?) -> Void)? = nil) {
-        
-        let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
-        alert.addTextField { (textField:UITextField) in
-            textField.placeholder = inputPlaceholder
-            textField.keyboardType = inputKeyboardType
-        }
-        alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: { (action:UIAlertAction) in
-            guard let textField =  alert.textFields?.first else {
-                actionHandler?(nil)
-                return
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
+            alert.addTextField { (textField:UITextField) in
+                textField.placeholder = inputPlaceholder
+                textField.keyboardType = inputKeyboardType
             }
-            actionHandler?(textField.text)
-        }))
-        alert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: cancelHandler))
-        
-        self.present(alert, animated: true, completion: nil)
+            alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: { (action:UIAlertAction) in
+                guard let textField =  alert.textFields?.first else {
+                    actionHandler?(nil)
+                    return
+                }
+                actionHandler?(textField.text)
+            }))
+            alert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: cancelHandler))
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+
     }
 
 

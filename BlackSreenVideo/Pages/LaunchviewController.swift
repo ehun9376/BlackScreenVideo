@@ -12,6 +12,7 @@ class LaunchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UserInfoCenter.shared.startCheck()
+        UIApplication.shared.applicationIconBadgeNumber = 0
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

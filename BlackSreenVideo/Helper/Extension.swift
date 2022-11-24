@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import AudioToolbox
+import AVFoundation
 
 enum SessionSetupResult {
     case success
@@ -44,14 +45,11 @@ extension UIImage {
 }
 extension NSObject {
     
-    func systemVibration() {
-        //建立的SystemSoundID对象
-        let soundID = SystemSoundID(kSystemSoundID_Vibrate)
-        //振动
-        AudioServicesPlaySystemSound(soundID)
+    func systemVibration(sender: AnyObject, complete: (()->())?) {
+        AudioServicesPlaySystemSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate), complete)
     }
     
-    func sendLocalNotication(title: String? = nil, subTitle: String? = nil, body: String? = nil, lateTime: Int) {
+    func sendLocalNotication(title: String? = nil, subTitle: String? = nil, body: String? = nil) {
         
         let content = UNMutableNotificationContent()
         content.title = title ?? ""
@@ -62,6 +60,8 @@ extension NSObject {
         
         let request = UNNotificationRequest(identifier: "notification", content: content, trigger: trigger)
         
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        UNUserNotificationCenter.current().add(request) { error in
+            
+        }
     }
 }
