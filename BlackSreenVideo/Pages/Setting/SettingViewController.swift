@@ -79,6 +79,29 @@ class SettingViewController: BaseTableViewController {
         
         self.rowModels.append(videoRowModel)
         
+        //解析度
+        let resolutionsCodeModel = CodeModel.resolutions.first(where: {$0.number == UserInfoCenter.shared.loadValue(.resolutions) as? Int}) ?? .init()
+        
+        let resolutionsRowModel = SettingCellRowModel(title: "解析度",
+                                    detail: resolutionsCodeModel.text,
+                                    imageName: "aqi.medium",
+                                    showSwitch: false,
+                                    switchON: true,
+                                    switchAction: nil,
+                                    cellDidSelect: { [weak self] _ in
+            self?.pushToSelectVC(dataSource: CodeModel.resolutions,
+                                 seletedModel: CodeModel.resolutions.filter({$0 == resolutionsCodeModel}),
+                                 confirmAction: { codeModels in
+                if let codeModel = codeModels.first {
+                    UserInfoCenter.shared.storeValue(.resolutions, data: codeModel.number)
+                    self?.setupRowModel()
+                    
+                }
+            })
+        })
+        
+        self.rowModels.append(resolutionsRowModel)
+        
         //循環錄影
         let cycleTagRowModel = TagCellRowModel(title: "循環錄影")
         self.rowModels.append(cycleTagRowModel)

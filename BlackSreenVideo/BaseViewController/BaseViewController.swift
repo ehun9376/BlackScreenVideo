@@ -139,7 +139,7 @@ class BaseViewController: UIViewController {
         
         if #available(iOS 13.0, *) {
             let barAppearance = UINavigationBarAppearance()
-            barAppearance.backgroundColor = .white
+            barAppearance.backgroundColor = (UserInfoCenter.shared.loadValue(.darkMode) as? Bool ?? false) ? .black : .white
             barAppearance.shadowColor = .clear
             navigationItem.standardAppearance = barAppearance
             navigationItem.scrollEdgeAppearance = barAppearance

@@ -21,6 +21,7 @@ class UserInfoCenter: NSObject {
         ///相機位置
         case cameraLocation = "cameraLocation"
         case videoDirection = "videoDirection"
+        case resolutions = "resolutions"
         
         //MARK: - 循環錄影
         ///影片時間限制開關
@@ -128,6 +129,10 @@ class UserInfoCenter: NSObject {
             self.storeValue(.darkMode, data: false)
         }
         
+        ///解析度
+        if self.loadValue(.resolutions) == nil {
+            self.storeValue(.resolutions, data: 3)
+        }
     }
     
     func cleanAll() {

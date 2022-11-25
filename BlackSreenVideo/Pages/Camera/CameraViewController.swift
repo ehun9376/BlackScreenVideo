@@ -209,7 +209,18 @@ class CameraViewController: BaseViewController {
 
         session.beginConfiguration()
         
-        session.sessionPreset = .hd1920x1080
+        switch (UserInfoCenter.shared.loadValue(.resolutions) as? Int ?? 0) {
+        case 0:
+            session.sessionPreset = .cif352x288
+        case 1:
+            session.sessionPreset = .vga640x480
+        case 2:
+            session.sessionPreset = .hd1280x720
+        case 3:
+            session.sessionPreset = .hd1920x1080
+        default :
+            session.sessionPreset = .hd1920x1080
+        }
         
         do {
             self.audioDeviceInput = try AVCaptureDeviceInput(device: AVCaptureDevice.default(for: .audio)!)
