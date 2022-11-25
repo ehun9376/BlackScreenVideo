@@ -24,8 +24,6 @@ class SettingViewController: BaseTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setupRowModel()
-        self.systemVibration(sender: self, complete: {})
-
     }
     
     func setupRowModel() {
@@ -40,7 +38,7 @@ class SettingViewController: BaseTableViewController {
         let caremaCodeModel = CodeModel.cameraLocation.first(where: {$0.number == UserInfoCenter.shared.loadValue(.cameraLocation) as? Int}) ?? .init()
         let caremaRowModel = SettingCellRowModel(title: "相機",
                                                  detail: caremaCodeModel.text,
-                                                 imageName: "",
+                                                 imageName: "video",
                                                  showSwitch: false,
                                                  switchON: true,
                                                  switchAction: nil,
@@ -61,13 +59,13 @@ class SettingViewController: BaseTableViewController {
         //影片方向
         let videoCodeModel = CodeModel.videoDirection.first(where: {$0.number == UserInfoCenter.shared.loadValue(.videoDirection) as? Int}) ?? .init()
         
-        let _ = SettingCellRowModel(title: "影片方向",
-                                                detail: videoCodeModel.text,
-                                                imageName: "",
-                                                showSwitch: false,
-                                                switchON: true,
-                                                switchAction: nil,
-                                                cellDidSelect: { [weak self] _ in
+        let videoRowModel = SettingCellRowModel(title: "影片方向",
+                                    detail: videoCodeModel.text,
+                                    imageName: "iphone.gen1.landscape",
+                                    showSwitch: false,
+                                    switchON: true,
+                                    switchAction: nil,
+                                    cellDidSelect: { [weak self] _ in
             self?.pushToSelectVC(dataSource: CodeModel.videoDirection,
                                  seletedModel: CodeModel.videoDirection.filter({$0 == videoCodeModel}),
                                  confirmAction: { codeModels in
@@ -79,7 +77,7 @@ class SettingViewController: BaseTableViewController {
             })
         })
         
-        //        self.rowModels.append(videoRowModel)
+        self.rowModels.append(videoRowModel)
         
         //循環錄影
         let cycleTagRowModel = TagCellRowModel(title: "循環錄影")
@@ -89,7 +87,7 @@ class SettingViewController: BaseTableViewController {
         let time = UserInfoCenter.shared.loadValue(.videoMaxTime) as? Int ?? 0
         let videoMaxTimeRowModel = SettingCellRowModel(title: String(format: "時間限制(%d分鐘%d秒)",time / 60 ,time % 60),
                                                        detail: "限制錄影時間",
-                                                       imageName: "",
+                                                       imageName: "clock",
                                                        showSwitch: true,
                                                        switchON: UserInfoCenter.shared.loadValue(.lockVideoMaxTime) as? Bool ?? false,
                                                        switchAction: { [weak self] isON in
@@ -107,7 +105,7 @@ class SettingViewController: BaseTableViewController {
         //循環錄影
         let cycleRecodingRowModel = SettingCellRowModel(title: "循環錄影",
                                                         detail: "影片達到限制時間後，繼續錄製影片",
-                                                        imageName: "",
+                                                        imageName: "repeat",
                                                         showSwitch: true,
                                                         switchON: UserInfoCenter.shared.loadValue(.cycleRecoding) as? Bool ?? false,
                                                         switchAction: { isON in
@@ -121,20 +119,20 @@ class SettingViewController: BaseTableViewController {
         self.rowModels.append(normalTagRowModel)
         
         let previewViewRowModel = SettingCellRowModel(title: "預覽畫面",
-                                                         detail: "顯示正在錄製的畫面",
-                                                         imageName: "",
-                                                         showSwitch: true,
-                                                         switchON: UserInfoCenter.shared.loadValue(.showPreviewView) as? Bool ?? false,
-                                                         switchAction: { isON in
+                                                      detail: "顯示正在錄製的畫面",
+                                                      imageName: "viewfinder",
+                                                      showSwitch: true,
+                                                      switchON: UserInfoCenter.shared.loadValue(.showPreviewView) as? Bool ?? false,
+                                                      switchAction: { isON in
             UserInfoCenter.shared.storeValue(.showPreviewView, data: isON)
         },
-                                                         cellDidSelect: nil)
+                                                      cellDidSelect: nil)
         self.rowModels.append(previewViewRowModel)
         
         //錄影完成時通知
         let recordingCompleteModel = SettingCellRowModel(title: "錄影完成",
                                                          detail: "停止錄影時顯示通知",
-                                                         imageName: "",
+                                                         imageName: "bell",
                                                          showSwitch: true,
                                                          switchON: UserInfoCenter.shared.loadValue(.notifiyWhenComplete) as? Bool ?? false,
                                                          switchAction: { isON in
@@ -146,7 +144,7 @@ class SettingViewController: BaseTableViewController {
         //開始錄影時振動
         let shakeWhenStartRowModel = SettingCellRowModel(title: "開始錄影時振動",
                                                          detail: nil,
-                                                         imageName: "",
+                                                         imageName: "iphone.gen1.radiowaves.left.and.right",
                                                          showSwitch: true,
                                                          switchON: UserInfoCenter.shared.loadValue(.shakeWhenStart) as? Bool ?? false,
                                                          switchAction: { isON in
@@ -154,23 +152,23 @@ class SettingViewController: BaseTableViewController {
         },
                                                          cellDidSelect: nil)
         
-//        self.rowModels.append(shakeWhenStartRowModel)
+        self.rowModels.append(shakeWhenStartRowModel)
         
         //結束錄影時振動
         let shakeWhenEndRowModel = SettingCellRowModel(title: "結束錄影時振動",
                                                        detail: nil,
-                                                       imageName: "",
+                                                       imageName: "iphone.gen1.radiowaves.left.and.right",
                                                        showSwitch: true,
                                                        switchON: UserInfoCenter.shared.loadValue(.shakeWhenEnd) as? Bool ?? false,
                                                        switchAction: { isON in
             UserInfoCenter.shared.storeValue(.shakeWhenEnd, data: isON)
         },
                                                        cellDidSelect: nil)
-//        self.rowModels.append(shakeWhenEndRowModel)
+        self.rowModels.append(shakeWhenEndRowModel)
         
         //DarkMode
         let darkModeRowModel = SettingCellRowModel(title: "深色模式",
-                                                   imageName: "",
+                                                   imageName: "circle.righthalf.filled",
                                                    showSwitch: true,
                                                    switchON: (UserInfoCenter.shared.loadValue(.darkMode) as? Bool ?? false),
                                                    switchAction: { isON in
@@ -185,6 +183,18 @@ class SettingViewController: BaseTableViewController {
         
         self.rowModels.append(darkModeRowModel)
         
+        //清除所有
+        let cleanRowModel = SettingCellRowModel(title: "清除所有檔案",
+                                                imageName: "clear",
+                                                showSwitch: false,
+                                                cellDidSelect:  { [weak self] _ in
+            self?.removeFile(complete: {
+                self?.showToast(message: "檔案已空")
+            })
+        })
+        
+        self.rowModels.append(cleanRowModel)
+        
         
         //安全設定
         let safetyTagRowModel = TagCellRowModel(title: "安全設定")
@@ -193,7 +203,7 @@ class SettingViewController: BaseTableViewController {
         //使用者驗證
         let needPassWordRowModel = SettingCellRowModel(title: "使用者驗證",
                                                        detail: "開啟前輸入密碼",
-                                                       imageName: "",
+                                                       imageName: "lock",
                                                        showSwitch: true,
                                                        switchON: UserInfoCenter.shared.loadValue(.needPassword) as? Bool ?? false,
                                                        switchAction: { [weak self] isON in
@@ -214,7 +224,7 @@ class SettingViewController: BaseTableViewController {
         //變更密碼
         let passWordRowModel = SettingCellRowModel(title: "變更密碼",
                                                    detail: passWordDetail,
-                                                   imageName: "",
+                                                   imageName: "textformat.abc.dottedunderline",
                                                    showSwitch: false,
                                                    switchAction: nil,
                                                    cellDidSelect: { [weak self] _ in
@@ -229,7 +239,7 @@ class SettingViewController: BaseTableViewController {
         
         //恢復購買紀錄
         let reBuyRowModel = SettingCellRowModel(title: "恢復購買紀錄",
-                                                imageName: "",
+                                                imageName: "briefcase",
                                                 showSwitch: false,
                                                 cellDidSelect: { [weak self] _ in
             self?.showToast(message: "購買紀錄已恢復")
@@ -279,6 +289,35 @@ class SettingViewController: BaseTableViewController {
         vc.selectedModels = seletedModel
         vc.confirmAction = confirmAction
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func getAllfileURL() -> [URL] {
+        var urls: [URL] = []
+        do {
+            let documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+            if let path = documentURL {
+                let directoryContents = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil, options: [])
+                return directoryContents
+            }
+        }
+        catch {
+            print(error.localizedDescription)
+        }
+        return urls
+    }
+    
+    func removeFile(complete: (()->())?) {
+        
+        for url in self.getAllfileURL(){
+            if FileManager.default.fileExists(atPath: url.path) {
+                do {
+                    try FileManager.default.removeItem(at: url)
+                } catch {
+                    print("remove failed")
+                }
+            }
+        }
+        complete?()
     }
     
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,34 +16,64 @@
                 <rect key="frame" x="0.0" y="0.0" width="463" height="113"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SaS-Je-HoY">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SaS-Je-HoY">
                         <rect key="frame" x="10" y="10" width="100" height="100"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="100" id="a6j-7R-5aA"/>
                             <constraint firstAttribute="height" constant="100" id="v8A-qn-mSZ"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQz-6o-iBJ">
-                        <rect key="frame" x="125" y="49.666666666666664" width="318" height="20.999999999999993"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="kgc-0k-Ev4">
+                        <rect key="frame" x="130" y="10" width="283" height="100"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFX-cA-Ffm">
+                                <rect key="frame" x="0.0" y="0.0" width="41.333333333333336" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yql-rb-iYF">
+                                <rect key="frame" x="0.0" y="50" width="41.333333333333336" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="YJV-O5-ug9"/>
+                        </constraints>
+                    </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6n-W2-Sl9">
+                        <rect key="frame" x="423" y="45" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="38k-75-503"/>
+                            <constraint firstAttribute="width" constant="30" id="4Ud-k9-oXm"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="trash" catalog="system"/>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="kgc-0k-Ev4" firstAttribute="leading" secondItem="SaS-Je-HoY" secondAttribute="trailing" constant="20" id="2oW-Zh-w8u"/>
+                    <constraint firstItem="kgc-0k-Ev4" firstAttribute="centerY" secondItem="SaS-Je-HoY" secondAttribute="centerY" id="5w1-C2-sty"/>
                     <constraint firstItem="SaS-Je-HoY" firstAttribute="leading" secondItem="G22-Q6-FDf" secondAttribute="leading" constant="10" id="QdP-YR-puC"/>
-                    <constraint firstItem="dQz-6o-iBJ" firstAttribute="leading" secondItem="SaS-Je-HoY" secondAttribute="trailing" constant="15" id="fyf-1I-uB1"/>
-                    <constraint firstItem="dQz-6o-iBJ" firstAttribute="centerY" secondItem="SaS-Je-HoY" secondAttribute="centerY" id="iWy-AM-428"/>
-                    <constraint firstAttribute="bottom" secondItem="SaS-Je-HoY" secondAttribute="bottom" constant="10" id="icO-dI-EzG"/>
-                    <constraint firstItem="SaS-Je-HoY" firstAttribute="top" secondItem="G22-Q6-FDf" secondAttribute="top" constant="10" id="mPD-4l-7cu"/>
-                    <constraint firstAttribute="trailing" secondItem="dQz-6o-iBJ" secondAttribute="trailing" constant="20" id="rW6-Fq-sbZ"/>
+                    <constraint firstItem="f6n-W2-Sl9" firstAttribute="leading" secondItem="kgc-0k-Ev4" secondAttribute="trailing" constant="10" id="dBr-nI-l89"/>
+                    <constraint firstAttribute="bottom" secondItem="kgc-0k-Ev4" secondAttribute="bottom" constant="10" id="etg-Yt-W1I"/>
+                    <constraint firstAttribute="trailing" secondItem="f6n-W2-Sl9" secondAttribute="trailing" constant="10" id="f8Z-66-Kw5"/>
+                    <constraint firstItem="f6n-W2-Sl9" firstAttribute="centerY" secondItem="kgc-0k-Ev4" secondAttribute="centerY" id="nCj-yV-JNw"/>
+                    <constraint firstItem="kgc-0k-Ev4" firstAttribute="top" secondItem="G22-Q6-FDf" secondAttribute="top" constant="10" id="yZr-dy-Y7s"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="fileNameLabel" destination="dQz-6o-iBJ" id="qZ9-W4-f7q"/>
+                <outlet property="createTimeLabel" destination="WFX-cA-Ffm" id="5D4-F2-Isj"/>
+                <outlet property="deleteButton" destination="f6n-W2-Sl9" id="W8K-eN-pFM"/>
                 <outlet property="previewImageView" destination="SaS-Je-HoY" id="C2X-g7-4p3"/>
+                <outlet property="videoTimeLabel" destination="Yql-rb-iYF" id="DSm-RJ-klN"/>
             </connections>
             <point key="canvasLocation" x="-353.07692307692304" y="18.127962085308056"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="trash" catalog="system" width="117" height="128"/>
+    </resources>
 </document>

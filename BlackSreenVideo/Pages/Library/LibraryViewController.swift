@@ -31,15 +31,21 @@ class LibraryViewController: BaseTableViewController {
         var rowModels: [CellRowModel] = []
         //最新的放到最上面
         for url in self.allFileURL.reversed() {
+            
             let rowModel = PreviewCellRowModel(image: self.generateThumbnail(path: url),
                                                fileName: getFileName(url: url),
+                                               fileCreateTime: getfileModificationDate(url: url),
+                                               videoTime: getVideoTime(url: url),
                                                fileURL: url,
+                                               deletebuttonAction: { [weak self] in
+                self?.removeFile(url: url,
+                                complete: {
+                    self?.getAllfileURL()
+                    self?.setupRow()
+                })
+            },
                                                cellDidSelect: { [weak self] _ in
                 self?.showPlayViewController(url: url)
-//                self?.removeFile(url: url, complete: {
-//                    self?.getAllfileURL()
-//                    self?.setupRow()
-//                })
             })
             rowModels.append(rowModel)
         }
@@ -47,10 +53,10 @@ class LibraryViewController: BaseTableViewController {
 
     }
     
-    func showPlayViewController(url:URL) {
+    func showPlayViewController(url: URL) {
         let vc = PlayViewController()
         vc.url = url
-        self.present(vc, animated: true)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func getAllfileURL() {
@@ -72,7 +78,7 @@ class LibraryViewController: BaseTableViewController {
             let asset = AVURLAsset(url: path, options: nil)
             let imgGenerator = AVAssetImageGenerator(asset: asset)
             imgGenerator.appliesPreferredTrackTransform = true
-            let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(value: 0, timescale: 1), actualTime: nil)
+            let cgImage = try imgGenerator.copyCGImage(at: .init(value: 1000, timescale: 1000), actualTime: nil)
             let thumbnail = UIImage(cgImage: cgImage)
             return thumbnail
         } catch let error {
@@ -81,21 +87,58 @@ class LibraryViewController: BaseTableViewController {
         }
     }
     
+    //MARK: - File
     func getFileName(url:URL) -> String {
         return String(url.absoluteString.split(separator: "/").last ?? "")
     }
     
-    func removeFile(url:URL?, complete: (()->())?) {
-        if FileManager.default.fileExists(atPath: url?.path ?? "") {
-            do {
-                if let fileURL = url {
-                    try FileManager.default.removeItem(at: fileURL)
-                    complete?()
-                }
-            } catch {
-                print("remove failed")
-            }
+    func getfileModificationDate(url: URL) -> String? {
+        let dataFormatter = DateFormatter()
+        dataFormatter.locale = Locale(identifier: "zh_Hant_TW")
+        dataFormatter.dateFormat = "YYYY-MM-dd"
+
+        do {
+            let attr = try FileManager.default.attributesOfItem(atPath: url.path)
+            let date = attr[FileAttributeKey.modificationDate] as? Date ?? Date()
+            return dataFormatter.string(from: date)
+        } catch {
+            return nil
         }
+        
     }
     
+    func getVideoTime(url: URL?) -> String {
+        if let url = url {
+            let asset = AVAsset(url: url)
+            let duration = Int(asset.duration.seconds)
+            let minutes = duration/60
+            let seconds = duration%60
+            let videoDuration = String(format: "%02d:%02d", minutes,seconds)
+            return videoDuration
+        }
+        return ""
+    }
+    
+    func removeFile(url:URL?, complete: (()->())?) {
+        
+        self.showAlert(title: "警告",
+                       message: "你確定要刪除嗎",
+                       confirmTitle: "確定",
+                       cancelTitle: "取消",
+                       confirmAction: {
+            if FileManager.default.fileExists(atPath: url?.path ?? "") {
+                do {
+                    if let fileURL = url {
+                        try FileManager.default.removeItem(at: fileURL)
+                        complete?()
+                    }
+                } catch {
+                    print("remove failed")
+                }
+            }
+        },
+                       cancelAction: nil)
+        
+
+    }
 }

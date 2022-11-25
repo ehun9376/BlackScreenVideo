@@ -79,7 +79,7 @@ class UserInfoCenter: NSObject {
         }
         //影片方向
         if self.loadValue(.videoDirection) == nil {
-            self.storeValue(.videoDirection, data: CodeModel.vertically.number)
+            self.storeValue(.videoDirection, data: CodeModel.auto.number)
         }
         
         //是否需要密碼(預設不要)

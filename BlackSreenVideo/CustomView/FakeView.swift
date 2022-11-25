@@ -33,7 +33,7 @@ class FakeView: UIView {
     }
     
     @objc func fakeTapGestureAction(_ sender: UITapGestureRecognizer) {
-        self.removeFromSuperview()
+        self.isHidden = true
         self.dismissAction?()
     }
     

@@ -18,6 +18,10 @@ class CameraViewController: BaseViewController {
     
     @IBOutlet weak var timeLabel: UILabel!
     
+    var windowOrientation: UIInterfaceOrientation {
+        return view.window?.windowScene?.interfaceOrientation ?? .unknown
+    }
+    
     private var movieFileOutput: AVCaptureMovieFileOutput?
     
     private var backgroundRecordingID: UIBackgroundTaskIdentifier?
@@ -32,6 +36,11 @@ class CameraViewController: BaseViewController {
     private var setupResult: SessionSetupResult = .success
     
     private let photoOutput = AVCapturePhotoOutput()
+    
+    
+    var audioDeviceInput: AVCaptureDeviceInput?
+    
+    var blackScreenView: FakeView?
     
     
     override var prefersStatusBarHidden: Bool {
@@ -72,7 +81,7 @@ class CameraViewController: BaseViewController {
     
     var hideSrceen: Bool = false {
         didSet {
-            self.fakeHideScreen()
+            self.fakeHideScreen(hideSrceen: hideSrceen)
         }
     }
     
@@ -82,7 +91,7 @@ class CameraViewController: BaseViewController {
         self.addfakeTapGesture()
         self.defaultSetupRecordButton()
         self.defaultSetupTimeLabel()
-        
+        self.defaultSetupFakeView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,6 +102,49 @@ class CameraViewController: BaseViewController {
         self.prepareOutput()
         self.showAuthorizationAlert()
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        
+        
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        
+        
+        if let videoPreviewLayerConnection = previewView.videoPreviewLayer.connection {
+            let deviceOrientation = UIDevice.current.orientation
+            guard let newVideoOrientation = AVCaptureVideoOrientation(rawValue: deviceOrientation.rawValue),
+                deviceOrientation.isPortrait || deviceOrientation.isLandscape else {
+                    return
+            }
+            
+            videoPreviewLayerConnection.videoOrientation = newVideoOrientation
+        }
+        self.fakeHideScreen(hideSrceen: self.hideSrceen)
+        
+    }
+    
+    func defaultSetupFakeView() {
+        
+        self.blackScreenView = FakeView(frame: .zero)
+        self.blackScreenView?.translatesAutoresizingMaskIntoConstraints = false
+        self.navigationController?.view.addSubview(self.blackScreenView ?? .init())
+        
+        if let navigationControllerView = self.navigationController?.view {
+            self.blackScreenView?.topAnchor.constraint(equalTo: navigationControllerView.topAnchor).isActive = true
+            self.blackScreenView?.bottomAnchor.constraint(equalTo: navigationControllerView.bottomAnchor).isActive = true
+            self.blackScreenView?.leadingAnchor.constraint(equalTo: navigationControllerView.leadingAnchor).isActive = true
+            self.blackScreenView?.trailingAnchor.constraint(equalTo: navigationControllerView.trailingAnchor).isActive = true
+        }
+        
+        self.blackScreenView?.dismissAction = {
+            UIScreen.main.brightness = self.currentScreenBrightness
+            self.hideSrceen = false
+        }
+        self.blackScreenView?.isHidden = true
+        
+    }
+
+    
     //MARK: - 權限相關
     func showAuthorizationAlert() {
         sessionQueue.async {
@@ -101,25 +153,25 @@ class CameraViewController: BaseViewController {
                 self.session.startRunning()
                 break
             case .notAuthorized:
-                    self.showAlert(title: "提示",
-                                   message: "你尚未開啟相機權限，\n快去設定開啟相機權限吧",
-                                   confirmTitle: "前往設定",
-                                   cancelTitle: "取消",
-                                   confirmAction: {
-                        if let url = URL(string: UIApplication.openSettingsURLString) {
-                            UIApplication.shared.open(url,
-                                                      options: [:],
-                                                      completionHandler: nil)
-                        }
-                        
-                    },
-                                   cancelAction: nil)
+                self.showAlert(title: "提示",
+                               message: "你尚未開啟相機權限，\n快去設定開啟相機權限吧",
+                               confirmTitle: "前往設定",
+                               cancelTitle: "取消",
+                               confirmAction: {
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        UIApplication.shared.open(url,
+                                                  options: [:],
+                                                  completionHandler: nil)
+                    }
                     
+                },
+                               cancelAction: nil)
+                
             case .configurationFailed:
-                    self.showSingleAlert(title: "偵測到錯誤",
-                                         message: "請重新安裝或諮詢客服",
-                                         confirmTitle: "確定",
-                                         confirmAction: nil)
+                self.showSingleAlert(title: "偵測到錯誤",
+                                     message: "請重新安裝或諮詢客服",
+                                     confirmTitle: "確定",
+                                     confirmAction: nil)
             }
         }
         
@@ -154,9 +206,17 @@ class CameraViewController: BaseViewController {
             return
         }
         
+
         session.beginConfiguration()
         
         session.sessionPreset = .hd1920x1080
+        
+        do {
+            self.audioDeviceInput = try AVCaptureDeviceInput(device: AVCaptureDevice.default(for: .audio)!)
+        } catch {
+            
+        }
+        
         
         //建立輸入源
         //在此確定要用哪個鏡頭
@@ -194,9 +254,42 @@ class CameraViewController: BaseViewController {
             if session.canAddInput(videoDeviceInput) {
                 self.videoDeviceInput = videoDeviceInput
                 self.session.addInput(videoDeviceInput)
+//                DispatchQueue.main.async {
+
+//                }
                 DispatchQueue.main.async {
-                    let videoDirection: AVCaptureVideoOrientation = (UserInfoCenter.shared.loadValue(.videoDirection) as? Int ?? 0) == 0 ? .landscapeLeft : .portrait
-                    self.previewView.videoPreviewLayer.connection?.videoOrientation = videoDirection
+                    /*
+                     Dispatch video streaming to the main queue because AVCaptureVideoPreviewLayer is the backing layer for PreviewView.
+                     You can manipulate UIView only on the main thread.
+                     Note: As an exception to the above rule, it's not necessary to serialize video orientation changes
+                     on the AVCaptureVideoPreviewLayer’s connection with other session manipulation.
+                     
+                     Use the window scene's orientation as the initial video orientation. Subsequent orientation changes are
+                     handled by CameraViewController.viewWillTransition(to:with:).
+                     */
+                    var initialVideoOrientation: AVCaptureVideoOrientation = .portrait
+
+                    switch (UserInfoCenter.shared.loadValue(.videoDirection) as? Int ?? 0) {
+                        
+                    case 0:
+                        
+                        if self.windowOrientation != .unknown {
+                            if let videoOrientation = AVCaptureVideoOrientation(rawValue: self.windowOrientation.rawValue) {
+                                initialVideoOrientation = videoOrientation
+                            }
+                        }
+                        
+                    case 1:
+                        initialVideoOrientation = .landscapeLeft
+                        
+                    case 2:
+                        initialVideoOrientation = .portrait
+
+                    default:
+                        break
+                    }
+
+                    self.previewView.videoPreviewLayer.connection?.videoOrientation = initialVideoOrientation
                 }
             } else {
                 print("Couldn't add video device input to the session.")
@@ -212,18 +305,19 @@ class CameraViewController: BaseViewController {
         }
         
         // Add an audio input device.
-        do {
-            let audioDevice = AVCaptureDevice.default(for: .audio)
-            let audioDeviceInput = try AVCaptureDeviceInput(device: audioDevice!)
-            
-            if session.canAddInput(audioDeviceInput) {
-                session.addInput(audioDeviceInput)
-            } else {
-                print("Could not add audio device input to the session")
-            }
-        } catch {
-            print("Could not create audio device input: \(error)")
-        }
+        //        do {
+        //            let audioDevice = AVCaptureDevice.default(for: .audio)
+        //            let audioDeviceInput = try AVCaptureDeviceInput(device: audioDevice!)
+        //            session.removeInput(audioDeviceInput)
+        //
+        //            if session.canAddInput(audioDeviceInput) {
+        //                session.addInput(audioDeviceInput)
+        //            } else {
+        //                print("Could not add audio device input to the session")
+        //            }
+        //        } catch {
+        //            print("Could not create audio device input: \(error)")
+        //        }
         
         session.commitConfiguration()
     }
@@ -239,7 +333,6 @@ class CameraViewController: BaseViewController {
             if self.session.canAddOutput(movieFileOutput) {
                 self.session.beginConfiguration()
                 self.session.addOutput(movieFileOutput)
-                self.session.sessionPreset = .high
                 
                 do {
                     try self.videoDeviceInput.device.lockForConfiguration()
@@ -263,7 +356,7 @@ class CameraViewController: BaseViewController {
     }
     
     func startRecoding(turnOn: Bool) {
-                
+        
         guard let movieFileOutput = self.movieFileOutput else { return }
         guard let videoPreviewLayerOrientation = previewView.videoPreviewLayer.connection?.videoOrientation else { return }
         sessionQueue.async {
@@ -307,6 +400,17 @@ class CameraViewController: BaseViewController {
     }
     
     func checkShake(turnOn: Bool) {
+        do {
+            session.beginConfiguration()
+            if let audioDeviceInput = self.audioDeviceInput, session.inputs.contains(audioDeviceInput) {
+                session.removeInput(audioDeviceInput)
+            }
+            
+            session.commitConfiguration()
+        } catch {
+            
+        }
+        
         
         if turnOn {
             let shakeAtStart = UserInfoCenter.shared.loadValue(.shakeWhenStart) as? Bool ?? false
@@ -319,11 +423,25 @@ class CameraViewController: BaseViewController {
                 self.systemVibration(sender: self, complete: nil)
             }
         }
+        
+        do {
+            session.beginConfiguration()
+            
+            if let audioDeviceInput = self.audioDeviceInput ,
+               !session.inputs.contains(audioDeviceInput),
+               session.canAddInput(audioDeviceInput){
+                session.addInput(audioDeviceInput)
+            }
+            session.commitConfiguration()
+
+        } catch {
+            
+        }
     }
     
     
     
-
+    
     
     
     //MARK: - Label
@@ -335,7 +453,7 @@ class CameraViewController: BaseViewController {
     func setupLabelWithTime(time: Int) {
         self.timeLabel.text = String(format: "%02d:%02d", time/60 ,time%60)
     }
-        
+    
     //MARK: - 預覽畫面
     func checkShowPreview() {
         self.previewView.isHidden = !(UserInfoCenter.shared.loadValue(.showPreviewView) as? Bool ?? false)
@@ -393,10 +511,11 @@ class CameraViewController: BaseViewController {
         
         UIView.animate(withDuration: 0.5) {
             self.recodingButton.setTitle(nil, for: .normal)
-            self.recodingButton.setImage(UIImage(systemName: isRecording ? "" : ""), for: .normal)
+            self.recodingButton.setImage(UIImage(systemName: isRecording ? "stop.circle" : "record.circle")?.withRenderingMode(.alwaysTemplate).resizeImage(targetSize: .init(width: 50, height: 50)), for: .normal)
+            self.recodingButton.tintColor = .red
             self.recodingButton.clipsToBounds = true
-            self.recodingButton.layer.borderWidth = 5
-            self.recodingButton.layer.borderColor = isRecording ? UIColor.red.cgColor : UIColor.yellow.cgColor
+//            self.recodingButton.layer.borderWidth = 5
+//            self.recodingButton.layer.borderColor = isRecording ? UIColor.red.cgColor : UIColor.yellow.cgColor
             self.recodingButton.layer.cornerRadius = self.recodingButton.frame.width / 2
         }
         
@@ -418,32 +537,20 @@ class CameraViewController: BaseViewController {
     
     //MARK: - 螢幕手勢
     func addfakeTapGesture() {
-        self.view.isUserInteractionEnabled = true
+        self.previewView.isUserInteractionEnabled = true
         let tapGes = UITapGestureRecognizer(target: self, action: #selector(fakeTapGestureAction(_:)))
         tapGes.numberOfTouchesRequired = 3
         tapGes.numberOfTapsRequired = 3
-        self.view.addGestureRecognizer(tapGes)
+        self.previewView.addGestureRecognizer(tapGes)
     }
     
     @objc func fakeTapGestureAction(_ sender: UITapGestureRecognizer) {
         self.hideSrceen.toggle()
     }
     
-    func fakeHideScreen() {
-        
-        for view in self.view.subviews {
-            if let fakeView = view as? FakeView {
-                fakeView.removeFromSuperview()
-            }
-        }
-        
-        let fakeView = FakeView(frame: UIScreen.main.bounds)
-        fakeView.dismissAction = {
-            UIScreen.main.brightness = self.currentScreenBrightness
-        }
-        self.navigationController?.view.addSubview(fakeView)
+    func fakeHideScreen(hideSrceen: Bool) {
+        self.blackScreenView?.isHidden = !hideSrceen
         UIScreen.main.brightness = 0.0
-        
     }
     
     func addClear() {
@@ -457,40 +564,8 @@ class CameraViewController: BaseViewController {
     @objc func claearAction(_ sender: UITapGestureRecognizer) {
         UserInfoCenter.shared.cleanAll()
         UserInfoCenter.shared.startCheck()
-        self.removeFile(complete: nil)
         self.showToast(message: "UserInfo已經恢復成預設")
     }
-    
-    func getAllfileURL() -> [URL] {
-        var urls: [URL] = []
-        do {
-            let documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-            if let path = documentURL {
-                let directoryContents = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil, options: [])
-                return directoryContents
-            }
-        }
-        catch {
-            print(error.localizedDescription)
-        }
-        return urls
-    }
-    
-    func removeFile( complete: (()->())?) {
-        
-        for url in self.getAllfileURL(){
-            if FileManager.default.fileExists(atPath: url.path ?? "") {
-                do {
-                    try FileManager.default.removeItem(at: url)
-                    complete?()
-                } catch {
-                    print("remove failed")
-                }
-            }
-        }
-    }
-    
-    
     
 }
 

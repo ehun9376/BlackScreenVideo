@@ -34,7 +34,7 @@ class SelectViewController: BaseTableViewController {
             rowModels.append(SettingCellRowModel(title: model.text,
                                                  detail: nil,
                                                  //TODO: - 換圖
-                                                 imageName: isSelected ? "check" : "",
+                                                 imageName: isSelected ? "checkmark" : "",
                                                  imageTintColor: (UserInfoCenter.shared.loadValue(.darkMode) as? Bool ?? false) ? .red : .black,
                                                  showSwitch: false,
                                                  switchON: false,

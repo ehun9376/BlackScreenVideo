@@ -123,7 +123,7 @@ class BaseViewController: UIViewController {
             let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
             self.present(alert, animated: true, completion: nil)
             DispatchQueue.global().async {
-                sleep(2)
+                sleep(1)
                 DispatchQueue.main.async {
                     alert.dismiss(animated: true, completion: nil)
                 }

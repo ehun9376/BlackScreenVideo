@@ -2,6 +2,39 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundleAlternateIcons</key>
+		<dict>
+			<key>charmanderIcon</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>charmander</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>pikachuIcon</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>pikachu</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+		</dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>58-1</string>
+			</array>
+			<key>UIPrerenderedIcon</key>
+			<false/>
+		</dict>
+	</dict>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -26,42 +59,5 @@
 			</array>
 		</dict>
 	</dict>
-    <key>CFBundleIcons</key>
-        <dict>
-            <key>CFBundlePrimaryIcon</key>
-            <dict>
-                <key>CFBundleIconFiles</key>
-                <array>
-                    <string>58-1</string>
-                </array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
-            </dict>
-            
-            <key>CFBundleAlternateIcons</key>
-            <dict>
-            
-                <key>charmanderIcon</key>
-                <dict>
-                    <key>CFBundleIconFiles</key>
-                    <array>
-                        <string>charmander</string>
-                    </array>
-                    <key>UIPrerenderedIcon</key>
-                    <false/>
-                </dict>
-                
-                <key>pikachuIcon</key>
-                <dict>
-                    <key>CFBundleIconFiles</key>
-                    <array>
-                        <string>pikachu</string>
-                    </array>
-                    <key>UIPrerenderedIcon</key>
-                    <false/>
-                </dict>
-                
-            </dict>
-        </dict>
 </dict>
 </plist>
