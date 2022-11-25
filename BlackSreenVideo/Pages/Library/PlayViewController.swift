@@ -8,6 +8,9 @@
 import Foundation
 import UIKit
 class PlayViewController: BaseViewController {
+    
+    var url: URL?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
@@ -18,7 +21,7 @@ class PlayViewController: BaseViewController {
         videoView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 16/9).isActive = true
         videoView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         videoView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        if let url = URL(string: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4") {
+        if let url = self.url {
             videoView.play(with: url)
         }
     }

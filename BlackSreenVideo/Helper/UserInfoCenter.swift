@@ -50,6 +50,9 @@ class UserInfoCenter: NSObject {
         ///錄製時啟用勿擾模式
         case notNofitiyInRecoding = "notNofitiyInRecoding"
         
+        ///顯示預覽
+        case showPreviewView = "showPreviewView"
+        
         ///DarkMode
         case darkMode = "darkMode"
         
@@ -113,6 +116,11 @@ class UserInfoCenter: NSObject {
         ///循環錄影
         if self.loadValue(.cycleRecoding) == nil {
             self.storeValue(.cycleRecoding, data: false)
+        }
+        
+        ///顯示預覽畫面
+        if self.loadValue(.showPreviewView) == nil {
+            self.storeValue(.showPreviewView, data: false)
         }
         
         ///DarkMode

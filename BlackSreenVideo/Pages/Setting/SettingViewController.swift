@@ -61,7 +61,7 @@ class SettingViewController: BaseTableViewController {
         //影片方向
         let videoCodeModel = CodeModel.videoDirection.first(where: {$0.number == UserInfoCenter.shared.loadValue(.videoDirection) as? Int}) ?? .init()
         
-        let videoRowModel = SettingCellRowModel(title: "影片方向",
+        let _ = SettingCellRowModel(title: "影片方向",
                                                 detail: videoCodeModel.text,
                                                 imageName: "",
                                                 showSwitch: false,
@@ -119,6 +119,17 @@ class SettingViewController: BaseTableViewController {
         //一般設定
         let normalTagRowModel = TagCellRowModel(title: "一般設定")
         self.rowModels.append(normalTagRowModel)
+        
+        let previewViewRowModel = SettingCellRowModel(title: "預覽畫面",
+                                                         detail: "顯示正在錄製的畫面",
+                                                         imageName: "",
+                                                         showSwitch: true,
+                                                         switchON: UserInfoCenter.shared.loadValue(.showPreviewView) as? Bool ?? false,
+                                                         switchAction: { isON in
+            UserInfoCenter.shared.storeValue(.showPreviewView, data: isON)
+        },
+                                                         cellDidSelect: nil)
+        self.rowModels.append(previewViewRowModel)
         
         //錄影完成時通知
         let recordingCompleteModel = SettingCellRowModel(title: "錄影完成",

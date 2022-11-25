@@ -42,6 +42,8 @@ class CameraViewController: BaseViewController {
         return true
     }
     
+    ///是不是循環錄影
+    var isRepete: Bool = false
     
     //紀錄目前的亮度
     let currentScreenBrightness = UIScreen.main.brightness
@@ -52,7 +54,8 @@ class CameraViewController: BaseViewController {
     //紀錄目前錄影多久
     var recodingTime: Int = 0 {
         didSet {
-            setupLabelWithTime(time: recodingTime)
+            self.checkMaxTime(currentTime: recodingTime)
+            self.setupLabelWithTime(time: recodingTime)
         }
     }
     
@@ -60,9 +63,10 @@ class CameraViewController: BaseViewController {
     var isRecoding: Bool = false {
         didSet {
             self.checkRecordButton(isRecording: isRecoding)
-            self.checkRecording(turnOn: isRecoding)
+            self.checkRecordingAlert(turnOn: isRecoding)
             self.setupTimer(isRecording: isRecoding)
-            self.startRecoding()
+            self.checkShake(turnOn: isRecoding)
+            self.startRecoding(turnOn: isRecoding)
         }
     }
     
@@ -83,12 +87,13 @@ class CameraViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.checkShowPreview()
         self.checkAuthorizationStatus()
         self.prepareInput()
         self.prepareOutput()
         self.showAuthorizationAlert()
     }
-    
+    //MARK: - 權限相關
     func showAuthorizationAlert() {
         sessionQueue.async {
             switch self.setupResult {
@@ -142,7 +147,7 @@ class CameraViewController: BaseViewController {
         }
         
     }
-    
+    //MARK: - 準備輸入輸出
     private func prepareInput() {
         
         if setupResult != .success {
@@ -257,27 +262,12 @@ class CameraViewController: BaseViewController {
         }
     }
     
-    //MARK: - 開始錄影
-    func checkRecording(turnOn: Bool) {
-        if turnOn {
-            self.showSingleAlert(title: "提示",
-                                 message: "點擊",
-                                 confirmTitle: "確認",
-                                 confirmAction: nil)
-        } else {
-            
-        }
-        
-    }
-    
-    func startRecoding() {
+    func startRecoding(turnOn: Bool) {
                 
-        guard let movieFileOutput = self.movieFileOutput else {
-            return
-        }
-        guard let videoPreviewLayerOrientation = previewView.videoPreviewLayer.connection?.videoOrientation else {return}
+        guard let movieFileOutput = self.movieFileOutput else { return }
+        guard let videoPreviewLayerOrientation = previewView.videoPreviewLayer.connection?.videoOrientation else { return }
         sessionQueue.async {
-            if !movieFileOutput.isRecording {
+            if turnOn {
                 if UIDevice.current.isMultitaskingSupported {
                     self.backgroundRecordingID = UIApplication.shared.beginBackgroundTask(expirationHandler: nil)
                 }
@@ -294,16 +284,46 @@ class CameraViewController: BaseViewController {
                 
                 // Start recording video to a temporary file.
                 let outputFileName = NSUUID().uuidString
-                let outputFilePath = (NSTemporaryDirectory() as NSString).appendingPathComponent((outputFileName as NSString).appendingPathExtension("mov")!)
                 let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
                 let url = documents.appendingPathComponent((outputFileName as NSString).appendingPathExtension("mov")!)
-                print("存取路徑\(url)")
                 movieFileOutput.startRecording(to: url, recordingDelegate: self)
             } else {
                 movieFileOutput.stopRecording()
             }
         }
     }
+    
+    
+    //MARK: - 錄影相關
+    func checkRecordingAlert(turnOn: Bool) {
+        if turnOn && !self.isRepete {
+            self.showSingleAlert(title: "已開啟錄影",
+                                 message: "三隻手指點擊三下可以開關黑幕",
+                                 confirmTitle: "確認",
+                                 confirmAction: { [weak self] in
+                self?.hideSrceen.toggle()
+            })
+        }
+    }
+    
+    func checkShake(turnOn: Bool) {
+        
+        if turnOn {
+            let shakeAtStart = UserInfoCenter.shared.loadValue(.shakeWhenStart) as? Bool ?? false
+            if shakeAtStart {
+                self.systemVibration(sender: self, complete: nil)
+            }
+        } else {
+            let shakeAtEnd = UserInfoCenter.shared.loadValue(.shakeWhenEnd) as? Bool ?? false
+            if shakeAtEnd {
+                self.systemVibration(sender: self, complete: nil)
+            }
+        }
+    }
+    
+    
+    
+
     
     
     //MARK: - Label
@@ -314,6 +334,11 @@ class CameraViewController: BaseViewController {
     
     func setupLabelWithTime(time: Int) {
         self.timeLabel.text = String(format: "%02d:%02d", time/60 ,time%60)
+    }
+        
+    //MARK: - 預覽畫面
+    func checkShowPreview() {
+        self.previewView.isHidden = !(UserInfoCenter.shared.loadValue(.showPreviewView) as? Bool ?? false)
     }
     
     
@@ -337,6 +362,21 @@ class CameraViewController: BaseViewController {
     
     func timerAction() {
         self.recodingTime += 1
+    }
+    
+    func checkMaxTime(currentTime: Int) {
+        let openMaxTime = UserInfoCenter.shared.loadValue(.lockVideoMaxTime) as? Bool ?? false
+        if openMaxTime {
+            let maxTime = UserInfoCenter.shared.loadValue(.videoMaxTime) as? Int ?? 0
+            if currentTime >= maxTime {
+                self.isRecoding.toggle()
+                let isRepeat = UserInfoCenter.shared.loadValue(.cycleRecoding) as? Bool ?? false
+                if isRepeat {
+                    self.isRepete = true
+                    self.isRecoding.toggle()
+                }
+            }
+        }
     }
     
     
@@ -363,11 +403,10 @@ class CameraViewController: BaseViewController {
     }
     
     @objc func recordButtonAction(_ sender: UIButton) {
-        
+        self.isRepete = false
         let totalTime = UserInfoCenter.shared.loadValue(.totalRecordTime) as? Int ?? 0
-        let shakeStart = UserInfoCenter.shared.loadValue(.shakeWhenStart) as? Bool ?? false
         //TODO: - 或是有購買
-        if totalTime < 60 {
+        if totalTime < 60 || self.isRecoding {
             self.isRecoding.toggle()
         } else {
             self.showToast(message: "需要購買")
@@ -402,7 +441,7 @@ class CameraViewController: BaseViewController {
         fakeView.dismissAction = {
             UIScreen.main.brightness = self.currentScreenBrightness
         }
-        self.tabBarController?.view.addSubview(fakeView)
+        self.navigationController?.view.addSubview(fakeView)
         UIScreen.main.brightness = 0.0
         
     }
@@ -418,9 +457,38 @@ class CameraViewController: BaseViewController {
     @objc func claearAction(_ sender: UITapGestureRecognizer) {
         UserInfoCenter.shared.cleanAll()
         UserInfoCenter.shared.startCheck()
+        self.removeFile(complete: nil)
         self.showToast(message: "UserInfo已經恢復成預設")
     }
     
+    func getAllfileURL() -> [URL] {
+        var urls: [URL] = []
+        do {
+            let documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+            if let path = documentURL {
+                let directoryContents = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil, options: [])
+                return directoryContents
+            }
+        }
+        catch {
+            print(error.localizedDescription)
+        }
+        return urls
+    }
+    
+    func removeFile( complete: (()->())?) {
+        
+        for url in self.getAllfileURL(){
+            if FileManager.default.fileExists(atPath: url.path ?? "") {
+                do {
+                    try FileManager.default.removeItem(at: url)
+                    complete?()
+                } catch {
+                    print("remove failed")
+                }
+            }
+        }
+    }
     
     
     
@@ -436,11 +504,9 @@ extension CameraViewController:  AVCaptureFileOutputRecordingDelegate {
             print(path)
         }
         
-        if let shakeWhenEnd = UserInfoCenter.shared.loadValue(.shakeWhenEnd) as? Bool, shakeWhenEnd {
-            self.systemVibration(sender: self, complete: {})
+        let notifiy = UserInfoCenter.shared.loadValue(.notifiyWhenComplete) as? Bool ?? false
+        if notifiy {
+            self.sendLocalNotication(title: "錄影完成")
         }
- 
-
-        
     }
 }
