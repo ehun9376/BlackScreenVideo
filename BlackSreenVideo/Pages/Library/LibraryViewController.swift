@@ -8,6 +8,7 @@
 import Foundation
 import AVFoundation
 import UIKit
+import AVKit
 
 class LibraryViewController: BaseTableViewController {
     
@@ -54,9 +55,12 @@ class LibraryViewController: BaseTableViewController {
     }
     
     func showPlayViewController(url: URL) {
-        let vc = PlayViewController()
-        vc.url = url
-        self.navigationController?.pushViewController(vc, animated: true)
+        let player = AVPlayer(url: url)
+        let playerViewController = AVPlayerViewController()
+        playerViewController.player = player
+        self.present(playerViewController, animated: true) {
+            playerViewController.player!.play()
+        }
     }
     
     func getAllfileURL() {
