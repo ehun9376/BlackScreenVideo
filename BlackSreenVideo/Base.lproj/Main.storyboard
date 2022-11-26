@@ -22,16 +22,16 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fe-1q-HGG">
-                                <rect key="frame" x="157.66666666666666" y="656" width="75" height="75"/>
+                                <rect key="frame" x="145" y="631" width="100" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="75" id="52c-n2-g7W"/>
-                                    <constraint firstAttribute="height" constant="75" id="pfZ-aN-Vuj"/>
+                                    <constraint firstAttribute="width" constant="100" id="52c-n2-g7W"/>
+                                    <constraint firstAttribute="height" constant="100" id="pfZ-aN-Vuj"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="record.circle"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdP-fr-O63">
-                                <rect key="frame" x="174" y="635" width="42" height="21"/>
+                                <rect key="frame" x="174" y="610" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

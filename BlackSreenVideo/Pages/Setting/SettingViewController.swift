@@ -12,7 +12,9 @@ class SettingViewController: BaseTableViewController {
     
     var rowModels: [CellRowModel] = []
     
-    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.regisCellID(cellIDs: [
@@ -196,12 +198,14 @@ class SettingViewController: BaseTableViewController {
                                                    switchON: (UserInfoCenter.shared.loadValue(.darkMode) as? Bool ?? false),
                                                    switchAction: { isON in
             UserInfoCenter.shared.storeValue(.darkMode, data: isON)
+            
             let scene = UIApplication.shared.connectedScenes.first
             
             if let delegate : SceneDelegate = (scene?.delegate as? SceneDelegate){
                 delegate.window?.overrideUserInterfaceStyle = isON ? .dark : .light
                 delegate.window?.makeKeyAndVisible()
             }
+
         })
         
         self.rowModels.append(darkModeRowModel)

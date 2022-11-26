@@ -42,6 +42,9 @@ class CameraViewController: BaseViewController {
     
     var blackScreenView: FakeView?
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -457,7 +460,7 @@ class CameraViewController: BaseViewController {
     
     //MARK: - Label
     func defaultSetupTimeLabel() {
-        self.timeLabel.font = .systemFont(ofSize: 25)
+        self.timeLabel.font = .systemFont(ofSize: 30)
         self.timeLabel.text = String(format: "%02d:%02d",0 ,0)
     }
     
@@ -522,7 +525,7 @@ class CameraViewController: BaseViewController {
         
         UIView.animate(withDuration: 0.5) {
             self.recodingButton.setTitle(nil, for: .normal)
-            self.recodingButton.setImage(UIImage(systemName: isRecording ? "stop.circle" : "record.circle")?.withRenderingMode(.alwaysTemplate).resizeImage(targetSize: .init(width: 50, height: 50)), for: .normal)
+            self.recodingButton.setImage(UIImage(systemName: isRecording ? "stop.circle" : "record.circle")?.withRenderingMode(.alwaysTemplate).resizeImage(targetSize: .init(width: 75, height: 75)), for: .normal)
             self.recodingButton.tintColor = .red
             self.recodingButton.clipsToBounds = true
 //            self.recodingButton.layer.borderWidth = 5
