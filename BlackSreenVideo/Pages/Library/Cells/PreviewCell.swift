@@ -75,9 +75,10 @@ class PreviewCell: UITableViewCell {
     }
     
 }
-extension PreviewCell: CellViewBase {
-    func setupCellView(rowModel: CellRowModel) {
-        guard let rowModel = rowModel as? PreviewCellRowModel else { return }
+
+extension PreviewCell: BaseCellView {
+    func setupCellView(model: BaseCellModel) {
+        guard let rowModel = model as? PreviewCellRowModel else { return }
         
         self.rowModel = rowModel
         

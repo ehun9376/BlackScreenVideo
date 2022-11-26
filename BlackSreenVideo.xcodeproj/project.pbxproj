@@ -40,6 +40,19 @@
 		9492AFD7292E494100C4AA13 /* CodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9492AFD6292E494100C4AA13 /* CodeModel.swift */; };
 		9492AFDC292E506800C4AA13 /* LaunchviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9492AFDB292E506800C4AA13 /* LaunchviewController.swift */; };
 		9492AFDE292E61A500C4AA13 /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9492AFDD292E61A500C4AA13 /* SelectViewController.swift */; };
+		94C26A112931B279001A3C20 /* CollectionViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C26A102931B279001A3C20 /* CollectionViewAdapter.swift */; };
+		94C26A142931B3DF001A3C20 /* CellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C26A132931B3DF001A3C20 /* CellProtocol.swift */; };
+		94C26A162931B625001A3C20 /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C26A152931B625001A3C20 /* GridViewController.swift */; };
+		94C26A192931B6E8001A3C20 /* CollectionImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C26A182931B6E8001A3C20 /* CollectionImageCell.swift */; };
+		94C26A1C2931B702001A3C20 /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C26A1A2931B702001A3C20 /* ImageCell.xib */; };
+		94C26A1D2931B702001A3C20 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C26A1B2931B702001A3C20 /* ImageCell.swift */; };
+		94C26A252931BC99001A3C20 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C26A242931BC99001A3C20 /* BaseCollectionViewController.swift */; };
+		94C26A382931BDB1001A3C20 /* charmander@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94C26A352931BDB1001A3C20 /* charmander@1x.png */; };
+		94C26A392931BDB1001A3C20 /* charmander@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94C26A362931BDB1001A3C20 /* charmander@2x.png */; };
+		94C26A3A2931BDB1001A3C20 /* charmander@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94C26A372931BDB1001A3C20 /* charmander@3x.png */; };
+		94C26A3E2931BDB7001A3C20 /* pikachu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94C26A3B2931BDB7001A3C20 /* pikachu@2x.png */; };
+		94C26A3F2931BDB7001A3C20 /* pikachu@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94C26A3C2931BDB7001A3C20 /* pikachu@1x.png */; };
+		94C26A402931BDB7001A3C20 /* pikachu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94C26A3D2931BDB7001A3C20 /* pikachu@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +110,19 @@
 		9492AFD6292E494100C4AA13 /* CodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeModel.swift; sourceTree = "<group>"; };
 		9492AFDB292E506800C4AA13 /* LaunchviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchviewController.swift; sourceTree = "<group>"; };
 		9492AFDD292E61A500C4AA13 /* SelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
+		94C26A102931B279001A3C20 /* CollectionViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewAdapter.swift; sourceTree = "<group>"; };
+		94C26A132931B3DF001A3C20 /* CellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellProtocol.swift; sourceTree = "<group>"; };
+		94C26A152931B625001A3C20 /* GridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
+		94C26A182931B6E8001A3C20 /* CollectionImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionImageCell.swift; sourceTree = "<group>"; };
+		94C26A1A2931B702001A3C20 /* ImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
+		94C26A1B2931B702001A3C20 /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		94C26A242931BC99001A3C20 /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
+		94C26A352931BDB1001A3C20 /* charmander@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "charmander@1x.png"; sourceTree = "<group>"; };
+		94C26A362931BDB1001A3C20 /* charmander@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "charmander@2x.png"; sourceTree = "<group>"; };
+		94C26A372931BDB1001A3C20 /* charmander@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "charmander@3x.png"; sourceTree = "<group>"; };
+		94C26A3B2931BDB7001A3C20 /* pikachu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pikachu@2x.png"; sourceTree = "<group>"; };
+		94C26A3C2931BDB7001A3C20 /* pikachu@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pikachu@1x.png"; sourceTree = "<group>"; };
+		94C26A3D2931BDB7001A3C20 /* pikachu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pikachu@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,9 +175,9 @@
 			children = (
 				36120D4D2927074000B0A5E2 /* AppDelegate.swift */,
 				36120D4F2927074000B0A5E2 /* SceneDelegate.swift */,
+				94C26A1F2931BB46001A3C20 /* IConManager */,
 				36F6174C292E24D200CA3C7F /* Helper */,
-				36F6174D292E24D900CA3C7F /* BaseViewController */,
-				36F61747292E240600CA3C7F /* TableviewBase + Adapter */,
+				94C26A122931B39E001A3C20 /* BaseView + Adapter */,
 				36F61740292E232500CA3C7F /* CustomView */,
 				36F6174E292E24F000CA3C7F /* Pages */,
 				36120D532927074000B0A5E2 /* Main.storyboard */,
@@ -177,13 +203,6 @@
 				36120D702927074200B0A5E2 /* BlackSreenVideoUITestsLaunchTests.swift */,
 			);
 			path = BlackSreenVideoUITests;
-			sourceTree = "<group>";
-		};
-		362EB2D629309D0F002898E8 /* AppIcon */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AppIcon;
 			sourceTree = "<group>";
 		};
 		36F6173D292E14E400CA3C7F /* Camera */ = {
@@ -228,8 +247,6 @@
 		36F6174C292E24D200CA3C7F /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				362EB2D629309D0F002898E8 /* AppIcon */,
-				362EB2D429309BD5002898E8 /* IConManager.swift */,
 				9492AFD4292E46BC00C4AA13 /* UserInfoCenter.swift */,
 				36F61748292E243000CA3C7F /* KeyboardHelper.swift */,
 				9492AFCF292E421B00C4AA13 /* Extension.swift */,
@@ -249,11 +266,12 @@
 		36F6174E292E24F000CA3C7F /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				9492AFDB292E506800C4AA13 /* LaunchviewController.swift */,
 				9492AFDD292E61A500C4AA13 /* SelectViewController.swift */,
-				9492AFD1292E445700C4AA13 /* Setting */,
+				94C26A172931B6C4001A3C20 /* GridViewController */,
 				36F6173D292E14E400CA3C7F /* Camera */,
 				36F61742292E23A100CA3C7F /* Library */,
-				9492AFDB292E506800C4AA13 /* LaunchviewController.swift */,
+				9492AFD1292E445700C4AA13 /* Setting */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -293,6 +311,67 @@
 				36F61753292E260100CA3C7F /* Cells */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		94C26A0F2931B23A001A3C20 /* CollectionView + Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				94C26A102931B279001A3C20 /* CollectionViewAdapter.swift */,
+				94C26A242931BC99001A3C20 /* BaseCollectionViewController.swift */,
+			);
+			path = "CollectionView + Adapter";
+			sourceTree = "<group>";
+		};
+		94C26A122931B39E001A3C20 /* BaseView + Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				36F6174D292E24D900CA3C7F /* BaseViewController */,
+				94C26A0F2931B23A001A3C20 /* CollectionView + Adapter */,
+				36F61747292E240600CA3C7F /* TableviewBase + Adapter */,
+				94C26A132931B3DF001A3C20 /* CellProtocol.swift */,
+			);
+			path = "BaseView + Adapter";
+			sourceTree = "<group>";
+		};
+		94C26A172931B6C4001A3C20 /* GridViewController */ = {
+			isa = PBXGroup;
+			children = (
+				94C26A152931B625001A3C20 /* GridViewController.swift */,
+				94C26A182931B6E8001A3C20 /* CollectionImageCell.swift */,
+				94C26A1E2931B80F001A3C20 /* Cell */,
+			);
+			path = GridViewController;
+			sourceTree = "<group>";
+		};
+		94C26A1E2931B80F001A3C20 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				94C26A1B2931B702001A3C20 /* ImageCell.swift */,
+				94C26A1A2931B702001A3C20 /* ImageCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		94C26A1F2931BB46001A3C20 /* IConManager */ = {
+			isa = PBXGroup;
+			children = (
+				362EB2D429309BD5002898E8 /* IConManager.swift */,
+				94C26A262931BD4C001A3C20 /* ICons */,
+			);
+			path = IConManager;
+			sourceTree = "<group>";
+		};
+		94C26A262931BD4C001A3C20 /* ICons */ = {
+			isa = PBXGroup;
+			children = (
+				94C26A352931BDB1001A3C20 /* charmander@1x.png */,
+				94C26A362931BDB1001A3C20 /* charmander@2x.png */,
+				94C26A372931BDB1001A3C20 /* charmander@3x.png */,
+				94C26A3C2931BDB7001A3C20 /* pikachu@1x.png */,
+				94C26A3B2931BDB7001A3C20 /* pikachu@2x.png */,
+				94C26A3D2931BDB7001A3C20 /* pikachu@3x.png */,
+			);
+			path = ICons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -399,12 +478,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94C26A3A2931BDB1001A3C20 /* charmander@3x.png in Resources */,
 				36120D5A2927074200B0A5E2 /* LaunchScreen.storyboard in Resources */,
 				36F61757292EF1E100CA3C7F /* TagCell.xib in Resources */,
+				94C26A382931BDB1001A3C20 /* charmander@1x.png in Resources */,
+				94C26A1C2931B702001A3C20 /* ImageCell.xib in Resources */,
 				36120D572927074200B0A5E2 /* Assets.xcassets in Resources */,
+				94C26A392931BDB1001A3C20 /* charmander@2x.png in Resources */,
+				94C26A3F2931BDB7001A3C20 /* pikachu@1x.png in Resources */,
 				9492AFCE292E3DC500C4AA13 /* SettingCell.xib in Resources */,
+				94C26A402931BDB7001A3C20 /* pikachu@3x.png in Resources */,
 				36F6176729304CEF00CA3C7F /* PreviewCell.xib in Resources */,
 				36120D552927074000B0A5E2 /* Main.storyboard in Resources */,
+				94C26A3E2931BDB7001A3C20 /* pikachu@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +516,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				362EB2D529309BD5002898E8 /* IConManager.swift in Sources */,
+				94C26A142931B3DF001A3C20 /* CellProtocol.swift in Sources */,
 				9492AFDE292E61A500C4AA13 /* SelectViewController.swift in Sources */,
 				36F61762292F5B1A00CA3C7F /* PreviewView.swift in Sources */,
 				36F61749292E243000CA3C7F /* KeyboardHelper.swift in Sources */,
@@ -437,6 +524,7 @@
 				36F6176529304BEA00CA3C7F /* PreviewCell.swift in Sources */,
 				9492AFD7292E494100C4AA13 /* CodeModel.swift in Sources */,
 				36F61760292F584700CA3C7F /* PlayViewController.swift in Sources */,
+				94C26A252931BC99001A3C20 /* BaseCollectionViewController.swift in Sources */,
 				36F61745292E240300CA3C7F /* BaseTableViewController.swift in Sources */,
 				9492AFDC292E506800C4AA13 /* LaunchviewController.swift in Sources */,
 				36120D522927074000B0A5E2 /* CameraViewController.swift in Sources */,
@@ -444,15 +532,19 @@
 				9492AFD0292E421B00C4AA13 /* Extension.swift in Sources */,
 				36F61752292E259400CA3C7F /* SettingCell.swift in Sources */,
 				36F61746292E240300CA3C7F /* TableViewAdapter.swift in Sources */,
+				94C26A112931B279001A3C20 /* CollectionViewAdapter.swift in Sources */,
 				36F61755292EF18900CA3C7F /* TagCell.swift in Sources */,
+				94C26A192931B6E8001A3C20 /* CollectionImageCell.swift in Sources */,
 				36F6174B292E246100CA3C7F /* BaseViewController.swift in Sources */,
 				36F61750292E251F00CA3C7F /* LibraryViewController.swift in Sources */,
 				36F6175E292F564200CA3C7F /* VideoView.swift in Sources */,
 				94801DBC292E649000B018E6 /* SwiftButton.swift in Sources */,
 				36F6173F292E20BE00CA3C7F /* FakeView.swift in Sources */,
+				94C26A162931B625001A3C20 /* GridViewController.swift in Sources */,
 				36120D4E2927074000B0A5E2 /* AppDelegate.swift in Sources */,
 				36120D502927074000B0A5E2 /* SceneDelegate.swift in Sources */,
 				9492AFD5292E46BC00C4AA13 /* UserInfoCenter.swift in Sources */,
+				94C26A1D2931B702001A3C20 /* ImageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

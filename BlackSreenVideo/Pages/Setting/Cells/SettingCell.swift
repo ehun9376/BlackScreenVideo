@@ -82,11 +82,11 @@ class SettingCell: UITableViewCell {
     
 }
 
-extension SettingCell: CellViewBase {
+extension SettingCell: BaseCellView {
     
-    func setupCellView(rowModel: CellRowModel) {
+    func setupCellView(model: BaseCellModel) {
         
-        guard let rowModel = rowModel as? SettingCellRowModel else { return }
+        guard let rowModel = model as? SettingCellRowModel else { return }
         
         self.rowModel = rowModel
         
@@ -110,12 +110,6 @@ extension SettingCell: CellViewBase {
         self.functionSwitch.isOn = rowModel.switchON
         
         self.iconImageView.image = UIImage(systemName: rowModel.imageName ?? "")?.withRenderingMode(.alwaysTemplate).resizeImage(targetSize: .init(width: 30, height: 30)).withTintColor(.systemRed)
-        
-        
-        
-//        if let tintColor = rowModel.imageTintColor {
-//            self.iconImageView.tintColor = tintColor
-//        }
         
     }
     

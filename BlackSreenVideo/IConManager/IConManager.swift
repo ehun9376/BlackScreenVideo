@@ -8,14 +8,16 @@
 import Foundation
 import UIKit
 
-public class IconManager {
+enum AppIcon: String {
+    case charmanderIcon
+    case pikachuIcon
+}
+
+class IconManager {
+    
+    static let shared = IconManager()
     
     private let application = UIApplication.shared
-    
-    public enum AppIcon: String {
-        case charmanderIcon = "charmanderIcon"
-        case pikachuIcon = "pikachuIcon"
-    }
    
     public func changeAppIcon(to appIcon: AppIcon) {
         application.setAlternateIconName(appIcon.rawValue)

@@ -8,35 +8,6 @@
 import Foundation
 import UIKit
 
-
-protocol CellViewBase {
-    func setupCellView(rowModel: CellRowModel)
-}
-
-protocol CellRowModelBase {
-    func cellReUseID() -> String
-}
-
-
-class CellRowModel: CellRowModelBase {
-    func cellReUseID() -> String {
-        fatalError("Need Override ")
-    }
-    var cellDidSelect: ((CellRowModel)->())?
-    var indexPath: IndexPath?
-    weak var tableView: UITableView?
-    
-    func updateCellView() {
-        DispatchQueue.main.async {
-            if let tableView = self.tableView {
-                tableView.reloadRows(at: [self.indexPath ?? IndexPath()], with: .none)
-            }
-        }
-
-    }
-}
-
-
 class TableViewAdapter: NSObject {
     
     var tableView: UITableView?
@@ -82,8 +53,8 @@ extension TableViewAdapter: UITableViewDataSource {
         self.rowModels[indexPath.row].tableView = tableView
         let rowModel = self.rowModels[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: rowModel.cellReUseID(), for: indexPath)
-        if let cell = cell as? CellViewBase {
-            cell.setupCellView(rowModel: rowModel)
+        if let cell = cell as? BaseCellView {
+            cell.setupCellView(model: rowModel)
         }
         
         //如果顯示出來的是最後一個，就執行到底的Action

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFg-TZ-fcZ">
-                        <rect key="frame" x="10" y="10" width="482" height="85"/>
+                        <rect key="frame" x="20" y="10" width="472" height="85"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -27,7 +27,7 @@
                     <constraint firstItem="JFg-TZ-fcZ" firstAttribute="top" secondItem="wLG-ci-j68" secondAttribute="top" constant="10" id="6f0-f8-38U"/>
                     <constraint firstAttribute="trailing" secondItem="JFg-TZ-fcZ" secondAttribute="trailing" constant="10" id="D5F-2W-E0s"/>
                     <constraint firstAttribute="bottom" secondItem="JFg-TZ-fcZ" secondAttribute="bottom" constant="10" id="bx7-VK-KBp"/>
-                    <constraint firstItem="JFg-TZ-fcZ" firstAttribute="leading" secondItem="wLG-ci-j68" secondAttribute="leading" constant="10" id="mYb-mC-b7I"/>
+                    <constraint firstItem="JFg-TZ-fcZ" firstAttribute="leading" secondItem="wLG-ci-j68" secondAttribute="leading" constant="20" id="mYb-mC-b7I"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

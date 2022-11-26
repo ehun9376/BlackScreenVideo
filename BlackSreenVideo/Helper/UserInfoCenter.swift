@@ -131,7 +131,7 @@ class UserInfoCenter: NSObject {
         
         ///解析度
         if self.loadValue(.resolutions) == nil {
-            self.storeValue(.resolutions, data: 3)
+            self.storeValue(.resolutions, data: 4)
         }
     }
     

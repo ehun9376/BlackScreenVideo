@@ -40,11 +40,11 @@ class TagCell: UITableViewCell {
 
 }
 
-extension TagCell: CellViewBase {
+extension TagCell: BaseCellView {
     
-    func setupCellView(rowModel: CellRowModel) {
+    func setupCellView(model: BaseCellModel) {
         
-        guard let rowModel = rowModel as? TagCellRowModel else { return }
+        guard let rowModel = model as? TagCellRowModel else { return }
                 
         if let title = rowModel.title, title != "" {
             self.titleLabel.text = title

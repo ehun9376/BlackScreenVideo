@@ -216,8 +216,10 @@ class CameraViewController: BaseViewController {
             session.sessionPreset = .hd1280x720
         case 3:
             session.sessionPreset = .hd1920x1080
+        case 4:
+            session.sessionPreset = .hd4K3840x2160
         default :
-            session.sessionPreset = .hd1920x1080
+            session.sessionPreset = .hd4K3840x2160
         }
         
         do {

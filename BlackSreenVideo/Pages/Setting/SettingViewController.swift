@@ -218,6 +218,16 @@ class SettingViewController: BaseTableViewController {
         
         self.rowModels.append(cleanRowModel)
         
+        //換App圖片
+        let appImageRowModel = SettingCellRowModel(title: "更換AppIcon",
+                                                imageName: "circle.grid.2x2.fill",
+                                                showSwitch: false,
+                                                cellDidSelect:  { [weak self] _ in
+            self?.pushToGridView()
+        })
+        
+        self.rowModels.append(appImageRowModel)
+        
         
         //安全設定
         let safetyTagRowModel = TagCellRowModel(title: "安全設定")
@@ -272,6 +282,11 @@ class SettingViewController: BaseTableViewController {
         
         
         self.adapter?.updateTableViewData(rowModels: rowModels)
+    }
+    
+    func pushToGridView() {
+        let gridViewController = GridViewController()
+        self.navigationController?.pushViewController(gridViewController, animated: true)
     }
     
     func showPasswordAlert() {
