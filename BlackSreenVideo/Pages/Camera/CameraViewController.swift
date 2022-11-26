@@ -119,8 +119,6 @@ class CameraViewController: BaseViewController {
             
             videoPreviewLayerConnection.videoOrientation = newVideoOrientation
         }
-        self.fakeHideScreen(hideSrceen: self.hideSrceen)
-        
     }
     
     func defaultSetupFakeView() {

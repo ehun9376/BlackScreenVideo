@@ -31,7 +31,7 @@ class LibraryViewController: BaseTableViewController {
         
         var rowModels: [CellRowModel] = []
         //最新的放到最上面
-        for url in self.allFileURL.reversed() {
+        for url in self.allFileURL {
             
             let rowModel = PreviewCellRowModel(image: self.generateThumbnail(path: url),
                                                fileName: getFileName(url: url),
