@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 
@@ -153,6 +154,15 @@ class UserInfoCenter: NSObject {
         
         for type in allType {
             UserDefaults.standard.removeObject(forKey: type.rawValue)
+        }
+        
+        self.startCheck()
+
+        let scene = UIApplication.shared.connectedScenes.first
+        
+        if let delegate : SceneDelegate = (scene?.delegate as? SceneDelegate){
+            delegate.window?.overrideUserInterfaceStyle = (UserInfoCenter.shared.loadValue(.darkMode) as? Bool ?? false) ? .dark : .light
+            delegate.window?.makeKeyAndVisible()
         }
     }
 }

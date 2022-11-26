@@ -334,8 +334,8 @@ class SettingViewController: BaseTableViewController {
         do {
             let documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
             if let path = documentURL {
-                let directoryContents = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil, options: [])
-                return directoryContents
+                urls = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil, options: [])
+                return urls
             }
         }
         catch {
