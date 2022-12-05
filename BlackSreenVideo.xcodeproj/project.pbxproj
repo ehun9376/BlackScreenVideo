@@ -267,7 +267,6 @@
 		36F6174D292E24D900CA3C7F /* BaseViewController */ = {
 			isa = PBXGroup;
 			children = (
-				36F6174A292E246100CA3C7F /* BaseViewController.swift */,
 			);
 			path = BaseViewController;
 			sourceTree = "<group>";
@@ -346,6 +345,7 @@
 				94C26A0F2931B23A001A3C20 /* CollectionView + Adapter */,
 				36F61747292E240600CA3C7F /* TableviewBase + Adapter */,
 				94C26A132931B3DF001A3C20 /* CellProtocol.swift */,
+				36F6174A292E246100CA3C7F /* BaseViewController.swift */,
 			);
 			path = "BaseView + Adapter";
 			sourceTree = "<group>";
@@ -739,9 +739,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BlackSreenVideo/BlackSreenVideoDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 98S428Y7GT;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -763,7 +763,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tw.com.chenchien.OPBlackScreenVideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = chechienDis;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = chenchien;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -779,9 +779,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 98S428Y7GT;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -803,7 +803,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tw.com.chenchien.OPBlackScreenVideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = chechienDis;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = chenchien;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

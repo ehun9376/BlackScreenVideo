@@ -42,9 +42,9 @@ class CameraViewController: BaseViewController {
     
     var blackScreenView: FakeView?
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        .lightContent
-    }
+//    override var preferredStatusBarStyle: UIStatusBarStyle {
+//        .lightContent
+//    }
     
     override var prefersStatusBarHidden: Bool {
         return true
