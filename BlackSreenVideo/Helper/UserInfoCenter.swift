@@ -16,6 +16,9 @@ class UserInfoCenter: NSObject {
     
     enum UserInfoDataType: String{
         
+        ///已購買項目
+        case iaped = "iaped"
+        
         ///錄影總時間
         case totalRecordTime = "totalRecordTime"
         
@@ -138,6 +141,7 @@ class UserInfoCenter: NSObject {
     
     func cleanAll() {
         let allType: [UserInfoDataType] = [
+            .iaped,
             .totalRecordTime,
             .cameraLocation,
             .lockVideoMaxTime,

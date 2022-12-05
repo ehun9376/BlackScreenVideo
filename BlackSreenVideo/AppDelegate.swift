@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StoreKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -23,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         })
         
         UNUserNotificationCenter.current().delegate = self
+        SKPaymentQueue.default().add(IAPCenter.shared)
+
 
         return true
     }

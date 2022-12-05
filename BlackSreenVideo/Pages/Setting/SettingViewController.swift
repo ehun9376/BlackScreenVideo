@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import StoreKit
 
 class SettingViewController: BaseTableViewController {
     
@@ -280,6 +281,7 @@ class SettingViewController: BaseTableViewController {
                                                 showSwitch: false,
                                                 cellDidSelect: { [weak self] _ in
             self?.showToast(message: "購買紀錄已恢復")
+            SKPaymentQueue.default().restoreCompletedTransactions()
         })
         
         self.rowModels.append(reBuyRowModel)

@@ -117,7 +117,7 @@ class BaseViewController: UIViewController {
     
     func setBottomBarView(buttons: [BottomBarButton]) { }
     
-    func showToast(message:String) {
+    func showToast(message:String, complete: (()->())? = nil) {
         DispatchQueue.main.async {
             guard self.presentedViewController?.classForCoder != UIAlertController.self else { return }
             let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
@@ -126,6 +126,7 @@ class BaseViewController: UIViewController {
                 sleep(1)
                 DispatchQueue.main.async {
                     alert.dismiss(animated: true, completion: nil)
+                    complete?()
                 }
             }
         }

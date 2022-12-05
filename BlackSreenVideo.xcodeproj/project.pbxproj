@@ -31,6 +31,8 @@
 		36F61762292F5B1A00CA3C7F /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F61761292F5B1A00CA3C7F /* PreviewView.swift */; };
 		36F6176529304BEA00CA3C7F /* PreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F6176429304BEA00CA3C7F /* PreviewCell.swift */; };
 		36F6176729304CEF00CA3C7F /* PreviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F6176629304CEF00CA3C7F /* PreviewCell.xib */; };
+		94627F93293A2AF9007DBBBA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94627F92293A2AF9007DBBBA /* StoreKit.framework */; };
+		94627F95293A2D16007DBBBA /* IAPCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94627F94293A2D16007DBBBA /* IAPCenter.swift */; };
 		94801DBA292E645B00B018E6 /* StackBottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94801DB9292E645B00B018E6 /* StackBottomBarView.swift */; };
 		94801DBC292E649000B018E6 /* SwiftButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94801DBB292E649000B018E6 /* SwiftButton.swift */; };
 		9492AFCE292E3DC500C4AA13 /* SettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9492AFCD292E3DC500C4AA13 /* SettingCell.xib */; };
@@ -101,6 +103,9 @@
 		36F61761292F5B1A00CA3C7F /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		36F6176429304BEA00CA3C7F /* PreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCell.swift; sourceTree = "<group>"; };
 		36F6176629304CEF00CA3C7F /* PreviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreviewCell.xib; sourceTree = "<group>"; };
+		94627F92293A2AF9007DBBBA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		94627F94293A2D16007DBBBA /* IAPCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPCenter.swift; sourceTree = "<group>"; };
+		947B64A8293E237E0058813E /* BlackSreenVideoDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BlackSreenVideoDebug.entitlements; sourceTree = "<group>"; };
 		94801DB9292E645B00B018E6 /* StackBottomBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackBottomBarView.swift; sourceTree = "<group>"; };
 		94801DBB292E649000B018E6 /* SwiftButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftButton.swift; sourceTree = "<group>"; };
 		9492AFCD292E3DC500C4AA13 /* SettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCell.xib; sourceTree = "<group>"; };
@@ -130,6 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94627F93293A2AF9007DBBBA /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +163,7 @@
 				36120D632927074200B0A5E2 /* BlackSreenVideoTests */,
 				36120D6D2927074200B0A5E2 /* BlackSreenVideoUITests */,
 				36120D4B2927074000B0A5E2 /* Products */,
+				94627F91293A2AF9007DBBBA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -173,6 +180,7 @@
 		36120D4C2927074000B0A5E2 /* BlackSreenVideo */ = {
 			isa = PBXGroup;
 			children = (
+				947B64A8293E237E0058813E /* BlackSreenVideoDebug.entitlements */,
 				36120D4D2927074000B0A5E2 /* AppDelegate.swift */,
 				36120D4F2927074000B0A5E2 /* SceneDelegate.swift */,
 				94C26A1F2931BB46001A3C20 /* IConManager */,
@@ -251,6 +259,7 @@
 				36F61748292E243000CA3C7F /* KeyboardHelper.swift */,
 				9492AFCF292E421B00C4AA13 /* Extension.swift */,
 				36F61758292EF6E700CA3C7F /* CodeModel */,
+				94627F94293A2D16007DBBBA /* IAPCenter.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -302,6 +311,14 @@
 				36F6176629304CEF00CA3C7F /* PreviewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		94627F91293A2AF9007DBBBA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				94627F92293A2AF9007DBBBA /* StoreKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		9492AFD1292E445700C4AA13 /* Setting */ = {
@@ -544,6 +561,7 @@
 				36120D4E2927074000B0A5E2 /* AppDelegate.swift in Sources */,
 				36120D502927074000B0A5E2 /* SceneDelegate.swift in Sources */,
 				9492AFD5292E46BC00C4AA13 /* UserInfoCenter.swift in Sources */,
+				94627F95293A2D16007DBBBA /* IAPCenter.swift in Sources */,
 				94C26A1D2931B702001A3C20 /* ImageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -650,7 +668,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -704,7 +722,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -719,9 +737,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NZT54R9366;
+				CODE_SIGN_ENTITLEMENTS = BlackSreenVideo/BlackSreenVideoDebug.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 98S428Y7GT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BlackSreenVideo/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "uses the camera to take photos and video.";
@@ -738,11 +760,16 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = tw.com.ehun.BlackSreenVideo;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.com.chenchien.OPBlackScreenVideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = chechienDis;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -751,9 +778,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NZT54R9366;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 98S428Y7GT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BlackSreenVideo/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "uses the camera to take photos and video.";
@@ -770,11 +800,16 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = tw.com.ehun.BlackSreenVideo;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.com.chenchien.OPBlackScreenVideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = chechienDis;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

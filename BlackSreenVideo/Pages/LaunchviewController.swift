@@ -44,13 +44,22 @@ class LaunchViewController: BaseViewController {
     }
     
     func pushToTabbarController() {
-        let scene = UIApplication.shared.connectedScenes.first
         
-        if let delegate : SceneDelegate = (scene?.delegate as? SceneDelegate),
-           let initialViewController = self.storyboard?.instantiateViewController(withIdentifier: "NavigationVC"){
-            delegate.window?.rootViewController = initialViewController
-            delegate.window?.makeKeyAndVisible()
+        IAPCenter.shared.requestComplete = {
+            DispatchQueue.main.async {
+                let scene = UIApplication.shared.connectedScenes.first
+                
+                if let delegate : SceneDelegate = (scene?.delegate as? SceneDelegate),
+                   let initialViewController = self.storyboard?.instantiateViewController(withIdentifier: "NavigationVC"){
+                    delegate.window?.rootViewController = initialViewController
+                    delegate.window?.makeKeyAndVisible()
+                }
+            }
         }
+        
+        IAPCenter.shared.getProducts()
+
+
         
     }
     

@@ -226,7 +226,9 @@ class CameraViewController: BaseViewController {
         }
         
         do {
-            self.audioDeviceInput = try AVCaptureDeviceInput(device: AVCaptureDevice.default(for: .audio)!)
+            if let audio = AVCaptureDevice.default(for: .audio) {
+                self.audioDeviceInput = try AVCaptureDeviceInput(device: audio)
+            }
         } catch {
             
         }
@@ -538,13 +540,22 @@ class CameraViewController: BaseViewController {
     @objc func recordButtonAction(_ sender: UIButton) {
         self.isRepete = false
         let totalTime = UserInfoCenter.shared.loadValue(.totalRecordTime) as? Int ?? 0
+        let buyedIDs = UserInfoCenter.shared.loadValue(.iaped) as? [String] ?? []
         //TODO: - 或是有購買
-        if totalTime < 60 || self.isRecoding {
+        if totalTime < 120 || self.isRecoding || buyedIDs.contains(ProductID.alwaysCanUse.rawValue){
             self.isRecoding.toggle()
         } else {
-            self.showToast(message: "需要購買")
+            self.showAlert(title: "提示",
+                           message: "您已超過試用時間，需要購買以永久使用",
+                           confirmTitle: "前往購買",
+                           cancelTitle: "取消",
+                           confirmAction: {
+                if let product = IAPCenter.shared.products.first {
+                    IAPCenter.shared.buy(product: product)
+                }
+            },
+                           cancelAction: nil)
         }
-        
     }
     
     
@@ -572,7 +583,7 @@ class CameraViewController: BaseViewController {
         let tapGes = UITapGestureRecognizer(target: self, action: #selector(claearAction(_:)))
         tapGes.numberOfTouchesRequired = 2
         tapGes.numberOfTapsRequired = 5
-        self.view.addGestureRecognizer(tapGes)
+//        self.view.addGestureRecognizer(tapGes)
     }
     
     @objc func claearAction(_ sender: UITapGestureRecognizer) {
