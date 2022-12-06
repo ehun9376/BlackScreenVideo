@@ -84,6 +84,7 @@ class CameraViewController: BaseViewController {
     
     var hideSrceen: Bool = false {
         didSet {
+            guard VersionCheckCenter.shared.isOnline else { return }
             self.fakeHideScreen(hideSrceen: hideSrceen)
         }
     }
@@ -567,6 +568,7 @@ class CameraViewController: BaseViewController {
         tapGes.numberOfTouchesRequired = 3
         tapGes.numberOfTapsRequired = 3
         self.previewView.addGestureRecognizer(tapGes)
+        self.view.addGestureRecognizer(tapGes)
     }
     
     @objc func fakeTapGestureAction(_ sender: UITapGestureRecognizer) {
@@ -582,8 +584,8 @@ class CameraViewController: BaseViewController {
         self.view.isUserInteractionEnabled = true
         let tapGes = UITapGestureRecognizer(target: self, action: #selector(claearAction(_:)))
         tapGes.numberOfTouchesRequired = 2
-        tapGes.numberOfTapsRequired = 5
-//        self.view.addGestureRecognizer(tapGes)
+        tapGes.numberOfTapsRequired = 10
+        self.view.addGestureRecognizer(tapGes)
     }
     
     @objc func claearAction(_ sender: UITapGestureRecognizer) {

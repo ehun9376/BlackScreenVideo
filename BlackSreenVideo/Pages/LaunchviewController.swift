@@ -13,6 +13,7 @@ class LaunchViewController: BaseViewController {
         super.viewDidLoad()
         UserInfoCenter.shared.startCheck()
         UIApplication.shared.applicationIconBadgeNumber = 0
+        VersionCheckCenter.shared.enablePurchaseInAppIfNeeded()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
