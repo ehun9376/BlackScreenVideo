@@ -406,6 +406,7 @@ class CameraViewController: BaseViewController {
     
     //MARK: - 錄影相關
     func checkRecordingAlert(turnOn: Bool) {
+        guard VersionCheckCenter.shared.isOnline else { return }
         if turnOn && !self.isRepete {
             self.showSingleAlert(title: "已開啟錄影",
                                  message: "三隻手指點擊三下可以開關黑幕",

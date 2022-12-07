@@ -14,8 +14,8 @@
             filePath = "BlackSreenVideo/Pages/Camera/CameraViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "422"
-            endingLineNumber = "422"
+            startingLineNumber = "423"
+            endingLineNumber = "423"
             landmarkName = "checkShake(turnOn:)"
             landmarkType = "7">
          </BreakpointContent>
