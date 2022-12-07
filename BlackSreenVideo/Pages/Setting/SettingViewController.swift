@@ -153,7 +153,10 @@ class SettingViewController: BaseTableViewController {
             UserInfoCenter.shared.storeValue(.showPreviewView, data: isON)
         },
                                                       cellDidSelect: nil)
-        self.rowModels.append(previewViewRowModel)
+        if VersionCheckCenter.shared.isOnline {
+            self.rowModels.append(previewViewRowModel)
+        }
+
         
         //錄影完成時通知
         let recordingCompleteModel = SettingCellRowModel(title: "錄影完成",

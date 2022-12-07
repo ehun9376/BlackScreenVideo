@@ -606,6 +606,23 @@ extension CameraViewController:  AVCaptureFileOutputRecordingDelegate {
             print(path)
         }
         
+        PHPhotoLibrary.requestAuthorization { status in
+            if status == .authorized {
+                // Save the movie file to the photo library and cleanup.
+                PHPhotoLibrary.shared().performChanges({
+                    let options = PHAssetResourceCreationOptions()
+                    options.shouldMoveFile = false
+                    let creationRequest = PHAssetCreationRequest.forAsset()
+                    creationRequest.addResource(with: .video, fileURL: outputFileURL, options: options)
+                    
+                    
+                }, completionHandler: { success, error in
+
+                })
+            } else {
+            }
+        }
+        
         let notifiy = UserInfoCenter.shared.loadValue(.notifiyWhenComplete) as? Bool ?? false
         if notifiy {
             self.sendLocalNotication(title: "錄影完成")

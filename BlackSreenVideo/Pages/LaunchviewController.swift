@@ -9,15 +9,21 @@ import Foundation
 import UIKit
 
 class LaunchViewController: BaseViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         UserInfoCenter.shared.startCheck()
         UIApplication.shared.applicationIconBadgeNumber = 0
-        VersionCheckCenter.shared.enablePurchaseInAppIfNeeded()
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.checkPassword()
+        VersionCheckCenter.shared.enablePurchaseInAppIfNeeded(complete: {
+            DispatchQueue.main.async {
+                self.checkPassword()
+            }
+        })
+
     }
     
     func checkPassword(password: String? = nil) {

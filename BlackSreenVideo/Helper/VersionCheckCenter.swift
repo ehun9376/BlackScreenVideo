@@ -13,7 +13,7 @@ class VersionCheckCenter {
     
     var isOnline: Bool = false
     
-    func enablePurchaseInAppIfNeeded() {
+    func enablePurchaseInAppIfNeeded(complete: (()->())? = nil) {
         guard let bundleID = Bundle.main.bundleIdentifier,
               let dict = Bundle.main.infoDictionary else { return }
         
@@ -45,7 +45,7 @@ class VersionCheckCenter {
                     }
                 }
             }
-            
+            complete?()
         }.resume()
     }
     

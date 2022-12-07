@@ -125,7 +125,7 @@ class UserInfoCenter: NSObject {
         
         ///顯示預覽畫面
         if self.loadValue(.showPreviewView) == nil {
-            self.storeValue(.showPreviewView, data: false)
+            self.storeValue(.showPreviewView, data: true)
         }
         
         ///DarkMode
