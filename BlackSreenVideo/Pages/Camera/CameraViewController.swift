@@ -530,10 +530,10 @@ class CameraViewController: BaseViewController {
         UIView.animate(withDuration: 0.5) {
             self.recodingButton.setTitle(nil, for: .normal)
             self.recodingButton.setImage(UIImage(systemName: isRecording ? "stop.circle" : "record.circle")?.withRenderingMode(.alwaysTemplate).resizeImage(targetSize: .init(width: 75, height: 75)), for: .normal)
-            self.recodingButton.tintColor = .red
+            self.recodingButton.tintColor = isRecording ? UIColor.red : UIColor.yellow
             self.recodingButton.clipsToBounds = true
 //            self.recodingButton.layer.borderWidth = 5
-//            self.recodingButton.layer.borderColor = isRecording ? UIColor.red.cgColor : UIColor.yellow.cgColor
+            self.recodingButton.layer.borderColor = isRecording ? UIColor.red.cgColor : UIColor.yellow.cgColor
             self.recodingButton.layer.cornerRadius = self.recodingButton.frame.width / 2
         }
         
