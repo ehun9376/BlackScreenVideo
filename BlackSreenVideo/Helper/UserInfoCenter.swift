@@ -130,7 +130,7 @@ class UserInfoCenter: NSObject {
         
         ///DarkMode
         if self.loadValue(.darkMode) == nil {
-            self.storeValue(.darkMode, data: false)
+            self.storeValue(.darkMode, data: true)
         }
         
         ///解析度
