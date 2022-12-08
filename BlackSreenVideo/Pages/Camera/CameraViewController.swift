@@ -77,7 +77,7 @@ class CameraViewController: BaseViewController {
             self.checkRecordButton(isRecording: isRecoding)
             self.checkRecordingAlert(turnOn: isRecoding)
             self.setupTimer(isRecording: isRecoding)
-//            self.checkShake(turnOn: isRecoding)
+            self.checkShake(turnOn: isRecoding)
             self.startRecoding(turnOn: isRecoding)
         }
     }
@@ -109,6 +109,7 @@ class CameraViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         do {
             session.beginConfiguration()
             if let audioDeviceInput = self.audioDeviceInput, session.inputs.contains(audioDeviceInput) {
@@ -437,6 +438,7 @@ class CameraViewController: BaseViewController {
     }
     
     func checkShake(turnOn: Bool) {
+        guard VersionCheckCenter.shared.isOnline else { return }
         do {
             session.beginConfiguration()
             if let audioDeviceInput = self.audioDeviceInput, session.inputs.contains(audioDeviceInput) {
@@ -483,7 +485,7 @@ class CameraViewController: BaseViewController {
     
     //MARK: - Label
     func defaultSetupTimeLabel() {
-        self.timeLabel.font = .systemFont(ofSize: 30)
+        self.timeLabel.font = .systemFont(ofSize: 35)
         self.timeLabel.text = String(format: "%02d:%02d",0 ,0)
     }
     
@@ -549,7 +551,7 @@ class CameraViewController: BaseViewController {
         UIView.animate(withDuration: 0.5) {
             self.recodingButton.setTitle(nil, for: .normal)
             self.recodingButton.setImage(UIImage(systemName: isRecording ? "stop.circle" : "record.circle")?.withRenderingMode(.alwaysTemplate).resizeImage(targetSize: .init(width: 75, height: 75)), for: .normal)
-            self.recodingButton.tintColor = isRecording ? UIColor.red : UIColor.yellow
+            self.recodingButton.tintColor = UIColor.red
             self.recodingButton.clipsToBounds = true
 //            self.recodingButton.layer.borderWidth = 5
             self.recodingButton.layer.borderColor = isRecording ? UIColor.red.cgColor : UIColor.yellow.cgColor

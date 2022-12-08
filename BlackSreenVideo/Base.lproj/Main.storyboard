@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z42-zs-RPK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z42-zs-RPK">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -31,7 +31,7 @@
                                 <buttonConfiguration key="configuration" style="plain" image="record.circle"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdP-fr-O63">
-                                <rect key="frame" x="174" y="610" width="42" height="21"/>
+                                <rect key="frame" x="174" y="595" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -41,7 +41,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9fe-1q-HGG" secondAttribute="bottom" constant="30" id="2cj-6U-ni3"/>
-                            <constraint firstItem="9fe-1q-HGG" firstAttribute="top" secondItem="pdP-fr-O63" secondAttribute="bottom" id="D2x-hP-5UD"/>
+                            <constraint firstItem="9fe-1q-HGG" firstAttribute="top" secondItem="pdP-fr-O63" secondAttribute="bottom" constant="15" id="D2x-hP-5UD"/>
                             <constraint firstItem="jZD-YV-1Eh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="dtU-LC-cUQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jZD-YV-1Eh" secondAttribute="bottom" constant="20" id="eeN-bq-SVn"/>
                             <constraint firstItem="jZD-YV-1Eh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fyd-A9-XCr"/>
