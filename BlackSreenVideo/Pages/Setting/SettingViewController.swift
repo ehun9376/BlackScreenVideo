@@ -181,7 +181,7 @@ class SettingViewController: BaseTableViewController {
         },
                                                          cellDidSelect: nil)
         
-        self.rowModels.append(shakeWhenStartRowModel)
+//        self.rowModels.append(shakeWhenStartRowModel)
         
         //結束錄影時振動
         let shakeWhenEndRowModel = SettingCellRowModel(title: "結束錄影時振動",
@@ -193,7 +193,7 @@ class SettingViewController: BaseTableViewController {
             UserInfoCenter.shared.storeValue(.shakeWhenEnd, data: isON)
         },
                                                        cellDidSelect: nil)
-        self.rowModels.append(shakeWhenEndRowModel)
+//        self.rowModels.append(shakeWhenEndRowModel)
         
         //DarkMode
         let darkModeRowModel = SettingCellRowModel(title: "深色模式",

@@ -77,7 +77,7 @@ class CameraViewController: BaseViewController {
             self.checkRecordButton(isRecording: isRecoding)
             self.checkRecordingAlert(turnOn: isRecoding)
             self.setupTimer(isRecording: isRecoding)
-            self.checkShake(turnOn: isRecoding)
+//            self.checkShake(turnOn: isRecoding)
             self.startRecoding(turnOn: isRecoding)
         }
     }
@@ -105,6 +105,25 @@ class CameraViewController: BaseViewController {
         self.prepareInput()
         self.prepareOutput()
         self.showAuthorizationAlert()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        do {
+            session.beginConfiguration()
+            if let audioDeviceInput = self.audioDeviceInput, session.inputs.contains(audioDeviceInput) {
+                session.removeInput(audioDeviceInput)
+            }
+            
+            if let videoDeviceInput = self.videoDeviceInput, session.inputs.contains(videoDeviceInput) {
+                session.removeInput(videoDeviceInput)
+            }
+            
+            session.commitConfiguration()
+        } catch {
+            
+        }
+        
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
