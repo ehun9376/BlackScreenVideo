@@ -565,7 +565,7 @@ class CameraViewController: BaseViewController {
         let totalTime = UserInfoCenter.shared.loadValue(.totalRecordTime) as? Int ?? 0
         let buyedIDs = UserInfoCenter.shared.loadValue(.iaped) as? [String] ?? []
         //TODO: - 或是有購買
-        if totalTime < 120 || self.isRecoding || buyedIDs.contains(ProductID.alwaysCanUse.rawValue){
+        if totalTime < 300 || self.isRecoding || buyedIDs.contains(ProductID.alwaysCanUse.rawValue){
             self.isRecoding.toggle()
         } else {
             self.showAlert(title: "提示",
