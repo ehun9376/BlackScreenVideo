@@ -24,11 +24,11 @@
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
-			<key>oilIcon</key>
+			<key>messageIcon</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>oil</string>
+					<string>message</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
@@ -42,11 +42,11 @@
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
-			<key>messageIcon</key>
+			<key>oilIcon</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>message</string>
+					<string>oil</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>

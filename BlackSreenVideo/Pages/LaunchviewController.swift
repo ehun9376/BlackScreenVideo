@@ -15,12 +15,16 @@ class LaunchViewController: BaseViewController {
         UserInfoCenter.shared.startCheck()
         UIApplication.shared.applicationIconBadgeNumber = 0
         
-        let scene = UIApplication.shared.connectedScenes.first
-        
-        if let delegate : SceneDelegate = (scene?.delegate as? SceneDelegate){
-            delegate.window?.overrideUserInterfaceStyle = .dark
-            delegate.window?.makeKeyAndVisible()
+        if let dark = UserInfoCenter.shared.loadValue(.darkMode) as? Bool, dark {
+            
+            let scene = UIApplication.shared.connectedScenes.first
+            
+            if let delegate : SceneDelegate = (scene?.delegate as? SceneDelegate){
+                delegate.window?.overrideUserInterfaceStyle = .dark
+                delegate.window?.makeKeyAndVisible()
+            }
         }
+
     }
     
     override func viewDidAppear(_ animated: Bool) {

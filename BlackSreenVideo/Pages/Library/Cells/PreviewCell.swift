@@ -68,6 +68,9 @@ class PreviewCell: UITableViewCell {
         self.videoTimeLabel.numberOfLines = 0
         
         self.deleteButton.addTarget(self, action: #selector(deleteButtonAction(_:)), for: .touchUpInside)
+        
+        self.previewImageView.layer.cornerRadius = 5
+        self.previewImageView.clipsToBounds = true
     }
     
     @objc func deleteButtonAction(_ sender: UIButton) {
