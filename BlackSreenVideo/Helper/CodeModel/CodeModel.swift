@@ -40,19 +40,23 @@ class CodeModel: Equatable {
         .vertically
     ]
     
-    //影片解析度
-    static let v352x288: CodeModel = .init(text: "352x288", number: 0)
-    static let v640x480: CodeModel = .init(text: "640x480", number: 1)
-    static let v1280x720: CodeModel = .init(text: "1280x720", number: 2)
-    static let v1920x1080: CodeModel = .init(text: "1920x1080", number: 3)
-    static let v3840x2160: CodeModel = .init(text: "3840x2160", number: 4)
+//    //影片解析度
+//    static let v352x288: CodeModel = .init(text: "352x288", number: 0)
+//    static let v640x480: CodeModel = .init(text: "640x480", number: 1)
+//    static let v1280x720: CodeModel = .init(text: "1280x720", number: 2)
+//    static let v1920x1080: CodeModel = .init(text: "1920x1080", number: 3)
+//    static let v3840x2160: CodeModel = .init(text: "3840x2160", number: 4)
+
+    
+    static let vHigh: CodeModel = .init(text: "高", number: 0)
+    static let vMiddle: CodeModel = .init(text: "中", number: 1)
+    static let vLow: CodeModel = .init(text: "低", number: 2)
     static let resolutions: [CodeModel] = [
-        .v352x288,
-        .v640x480,
-        .v1280x720,
-        .v1920x1080,
-        .v3840x2160
+        .vHigh,
+        .vMiddle,
+        .vLow
     ]
+
 
     
 }

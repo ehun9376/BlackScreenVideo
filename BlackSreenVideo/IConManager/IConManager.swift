@@ -9,8 +9,12 @@ import Foundation
 import UIKit
 
 enum AppIcon: String {
-    case charmanderIcon
-    case pikachuIcon
+    case ballIcon
+    case mailIcon
+    case messageIcon
+    case oilIcon
+    case oil2Icon
+    case youtubeIcon
 }
 
 class IconManager {
@@ -20,6 +24,12 @@ class IconManager {
     private let application = UIApplication.shared
    
     public func changeAppIcon(to appIcon: AppIcon) {
-        application.setAlternateIconName(appIcon.rawValue)
+        guard UIApplication.shared.supportsAlternateIcons else { return }
+
+        let name = appIcon.rawValue
+        DispatchQueue.main.async {
+            self.application.setAlternateIconName(name)
+
+        }
     }
 }

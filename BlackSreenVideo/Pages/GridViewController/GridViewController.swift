@@ -35,8 +35,12 @@ class GridViewController: BaseCollectionViewController {
         var itemModels: [CollectionItemModel]? = []
         
         var appModels: [AppImageModel] = [
-            .init(image: UIImage(named: "pikachu"), imageName: .pikachuIcon),
-            .init(image: UIImage(named: "charmander"), imageName: .charmanderIcon)
+            .init(image: UIImage(named: "ball1"), imageName: .ballIcon),
+            .init(image: UIImage(named: "mail1"), imageName: .mailIcon),
+            .init(image: UIImage(named: "message1"), imageName: .messageIcon),
+            .init(image: UIImage(named: "oil1"), imageName: .oilIcon),
+            .init(image: UIImage(named: "oil21"), imageName: .oil2Icon),
+            .init(image: UIImage(named: "youtube1"), imageName: .youtubeIcon),
         ]
         
 
@@ -44,11 +48,13 @@ class GridViewController: BaseCollectionViewController {
         let width = self.view.frame.width / 3
         
         for appModel in appModels {
-            let itemModel: ImageCellItemModel = .init(image: appModel.image,
+            let itemModel: ImageCellItemModel = .init(image: appModel.image?.resizeImage(targetSize: .init(width: width, height: width)),
                                                       imageName: appModel.imageName,
                                                       itemSize: .init(width: width, height: width),
                                                       cellDidPressed: { [weak self] _ in
-                IconManager.shared.changeAppIcon(to: appModel.imageName ?? .pikachuIcon)
+                if let image = appModel.imageName {
+                    IconManager.shared.changeAppIcon(to: image)
+                }
 //                self?.showSingleAlert(title: "提示",
 //                                      message: "你的AppIcon已更換",
 //                                      confirmTitle: "確定",

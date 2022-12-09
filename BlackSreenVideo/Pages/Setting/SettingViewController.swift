@@ -253,7 +253,7 @@ class SettingViewController: BaseTableViewController {
                                                        switchAction: { [weak self] isON in
             UserInfoCenter.shared.storeValue(.needPassword, data: isON)
             if UserInfoCenter.shared.loadValue(.password) == nil {
-                self?.showPasswordAlert()
+                self?.showPasswordAlert(isON: isON, fromSwitch: true)
             }
         },
                                                        cellDidSelect: nil)
@@ -272,7 +272,7 @@ class SettingViewController: BaseTableViewController {
                                                    showSwitch: false,
                                                    switchAction: nil,
                                                    cellDidSelect: { [weak self] _ in
-            self?.showPasswordAlert()
+            self?.showPasswordAlert(isON: true,fromSwitch: false)
         })
         
         self.rowModels.append(passWordRowModel)
@@ -301,14 +301,19 @@ class SettingViewController: BaseTableViewController {
         self.navigationController?.pushViewController(gridViewController, animated: true)
     }
     
-    func showPasswordAlert() {
+    func showPasswordAlert(isON: Bool, fromSwitch: Bool) {
         self.showInputDialog(title: "提示",
                              subtitle: "請輸入新密碼",
                              actionTitle: "確認",
                              cancelTitle: "取消",
                              inputPlaceholder: "請輸入密碼",
                              inputKeyboardType: .numberPad,
-                             cancelHandler: nil,
+                             cancelHandler: { [weak self] _ in
+            if isON, fromSwitch {
+                UserInfoCenter.shared.storeValue(.needPassword, data: false)
+                self?.setupRowModel()
+            }
+        },
                              actionHandler: { [weak self] password in
             if let password = password {
                 UserInfoCenter.shared.storeValue(.password, data: password)

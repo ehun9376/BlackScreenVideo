@@ -6,20 +6,56 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-			<key>charmanderIcon</key>
+			<key>ballIcon</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>charmander</string>
+					<string>ball</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
-			<key>pikachuIcon</key>
+			<key>mailIcon</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>pikachu</string>
+					<string>mail</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>oilIcon</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>oil</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>oil2Icon</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>oil2</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>messageIcon</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>message</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>youtubeIcon</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>youtube</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>

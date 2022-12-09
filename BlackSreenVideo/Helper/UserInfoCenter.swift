@@ -20,7 +20,7 @@ class UserInfoCenter: NSObject {
         case iaped = "iaped"
         
         ///錄影總時間
-        case totalRecordTime = "totalRecordTime"
+        case deadLine = "deadLine"
         
         ///相機位置
         case cameraLocation = "cameraLocation"
@@ -77,6 +77,20 @@ class UserInfoCenter: NSObject {
     }
     
     func startCheck() {
+        
+        if self.loadValue(.deadLine) == nil {
+            var dateFormatter: DateFormatter {
+                let formatter = DateFormatter()
+                formatter.locale = Locale(identifier: "zh_TW")
+                formatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+                formatter.locale = Locale.current
+                formatter.timeZone = TimeZone.current
+                return formatter
+            }
+            let endDate = Date().addingTimeInterval(60*60)
+            let dateString = dateFormatter.string(from: endDate)
+            self.storeValue(.deadLine, data: dateString)
+        }
         
         //相機
         if self.loadValue(.cameraLocation) == nil {
@@ -135,14 +149,14 @@ class UserInfoCenter: NSObject {
         
         ///解析度
         if self.loadValue(.resolutions) == nil {
-            self.storeValue(.resolutions, data: 4)
+            self.storeValue(.resolutions, data: 0)
         }
     }
     
     func cleanAll() {
         let allType: [UserInfoDataType] = [
             .iaped,
-            .totalRecordTime,
+            .deadLine,
             .cameraLocation,
             .lockVideoMaxTime,
             .videoMaxTime,

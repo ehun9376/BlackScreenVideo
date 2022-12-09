@@ -105,6 +105,7 @@ class CameraViewController: BaseViewController {
         self.prepareInput()
         self.prepareOutput()
         self.showAuthorizationAlert()
+        self.defaultSetupTimeLabel()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -233,17 +234,13 @@ class CameraViewController: BaseViewController {
         
         switch (UserInfoCenter.shared.loadValue(.resolutions) as? Int ?? 0) {
         case 0:
-            session.sessionPreset = .cif352x288
+            session.sessionPreset = .high
         case 1:
-            session.sessionPreset = .vga640x480
+            session.sessionPreset = .medium
         case 2:
-            session.sessionPreset = .hd1280x720
-        case 3:
-            session.sessionPreset = .hd1920x1080
-        case 4:
-            session.sessionPreset = .hd4K3840x2160
+            session.sessionPreset = .low
         default :
-            session.sessionPreset = .hd4K3840x2160
+            session.sessionPreset = .high
         }
         
         do {
@@ -485,8 +482,19 @@ class CameraViewController: BaseViewController {
     
     //MARK: - Label
     func defaultSetupTimeLabel() {
-        self.timeLabel.font = .systemFont(ofSize: 35)
+        
+        self.timeLabel.font = .systemFont(ofSize: 40)
         self.timeLabel.text = String(format: "%02d:%02d",0 ,0)
+        self.timeLabel.layer.cornerRadius = self.timeLabel.frame.height / 2
+        self.timeLabel.layer.borderWidth = 5
+
+        if UserInfoCenter.shared.loadValue(.darkMode) as? Bool ?? true {
+            self.timeLabel.layer.borderColor = UIColor.white.cgColor
+        } else {
+            self.timeLabel.layer.borderColor = UIColor.black.cgColor
+
+        }
+
     }
     
     func setupLabelWithTime(time: Int) {
@@ -508,9 +516,6 @@ class CameraViewController: BaseViewController {
                 self?.timerAction()
             }
         } else {
-            var totalTime = UserInfoCenter.shared.loadValue(.totalRecordTime) as? Int ?? 0
-            totalTime += recodingTime
-            UserInfoCenter.shared.storeValue(.totalRecordTime, data: totalTime)
             self.timer?.invalidate()
             self.recodingTime = 0
         }
@@ -550,7 +555,7 @@ class CameraViewController: BaseViewController {
         
         UIView.animate(withDuration: 0.5) {
             self.recodingButton.setTitle(nil, for: .normal)
-            self.recodingButton.setImage(UIImage(systemName: isRecording ? "stop.circle" : "record.circle")?.withRenderingMode(.alwaysTemplate).resizeImage(targetSize: .init(width: 75, height: 75)), for: .normal)
+            self.recodingButton.setImage(UIImage(systemName: isRecording ? "stop.circle" : "record.circle")?.withRenderingMode(.alwaysTemplate).resizeImage(targetSize: .init(width: 100, height: 100)), for: .normal)
             self.recodingButton.tintColor = UIColor.red
             self.recodingButton.clipsToBounds = true
 //            self.recodingButton.layer.borderWidth = 5
@@ -560,12 +565,39 @@ class CameraViewController: BaseViewController {
         
     }
     
+    var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "zh_TW")
+        formatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        formatter.locale = Locale.current
+        formatter.timeZone = TimeZone.current
+        return formatter
+    }
+    
     @objc func recordButtonAction(_ sender: UIButton) {
+        recordAction()
+    }
+    
+    func recordAction() {
         self.isRepete = false
-        let totalTime = UserInfoCenter.shared.loadValue(.totalRecordTime) as? Int ?? 0
+        
+        var dead = false
+        
+        if let deadLineStr = UserInfoCenter.shared.loadValue(.deadLine) as? String,
+           let deadLine = dateFormatter.date(from: deadLineStr) {
+            let nowStr = dateFormatter.string(from: Date())
+            if let now = dateFormatter.date(from: nowStr){
+                if deadLine <= now{
+                    dead = true
+                }
+            }
+            
+
+        }
+        
         let buyedIDs = UserInfoCenter.shared.loadValue(.iaped) as? [String] ?? []
         //TODO: - 或是有購買
-        if totalTime < 300 || self.isRecoding || buyedIDs.contains(ProductID.alwaysCanUse.rawValue){
+        if !dead || self.isRecoding || buyedIDs.contains(ProductID.alwaysCanUse.rawValue){
             self.isRecoding.toggle()
         } else {
             self.showAlert(title: "提示",
