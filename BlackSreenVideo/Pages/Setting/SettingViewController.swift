@@ -29,7 +29,6 @@ class SettingViewController: BaseTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setupRowModel()
-        self.title = "相機"
 //        let stackView = UIStackView()
 //        stackView.alignment = .fill
 //        stackView.axis = .horizontal
