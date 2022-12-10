@@ -25,6 +25,13 @@ class LibraryViewController: BaseTableViewController {
         super.viewWillAppear(animated)
         self.getAllfileURL()
         self.setupRow()
+        let button = UIButton()
+        button.setImage(UIImage(named: "ballna")?.resizeImage(targetSize: .init(width: 50, height: 50)), for: .normal)
+        button.setTitle("相簿", for: .normal)
+        button.setTitleColor(UIColor.label, for: .normal)
+//
+        
+        self.navigationController?.navigationBar.topItem?.titleView = button
     }
     
     func setupRow() {

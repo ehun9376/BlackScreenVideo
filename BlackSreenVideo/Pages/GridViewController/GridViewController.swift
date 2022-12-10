@@ -34,10 +34,10 @@ class GridViewController: BaseCollectionViewController {
         
         var itemModels: [CollectionItemModel]? = []
         
-        var appModels: [AppImageModel] = [
-            .init(image: UIImage(named: "ball1"), imageName: .ballIcon),
-            .init(image: UIImage(named: "mail1"), imageName: .mailIcon),
-            .init(image: UIImage(named: "message1"), imageName: .messageIcon),
+        let appModels: [AppImageModel] = [
+            .init(image: UIImage(named: "ball1"), imageName: .ball1Icon),
+            .init(image: UIImage(named: "mail1"), imageName: .mail1Icon),
+            .init(image: UIImage(named: "message1"), imageName: .message1Icon),
             .init(image: UIImage(named: "oil1"), imageName: .oilIcon),
             .init(image: UIImage(named: "oil21"), imageName: .oil2Icon),
             .init(image: UIImage(named: "youtube1"), imageName: .youtubeIcon),
@@ -51,7 +51,7 @@ class GridViewController: BaseCollectionViewController {
             let itemModel: ImageCellItemModel = .init(image: appModel.image?.resizeImage(targetSize: .init(width: width, height: width)),
                                                       imageName: appModel.imageName,
                                                       itemSize: .init(width: width, height: width),
-                                                      cellDidPressed: { [weak self] _ in
+                                                      cellDidPressed: { _ in
                 if let image = appModel.imageName {
                     IconManager.shared.changeAppIcon(to: image)
                 }

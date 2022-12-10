@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 enum AppIcon: String {
-    case ballIcon
-    case mailIcon
-    case messageIcon
+    case ball1Icon
+    case mail1Icon
+    case message1Icon
     case oilIcon
     case oil2Icon
     case youtubeIcon

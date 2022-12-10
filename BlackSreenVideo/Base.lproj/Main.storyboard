@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z42-zs-RPK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z42-zs-RPK">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="91" width="390" height="650"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdP-fr-O63">
-                                        <rect key="frame" x="75" y="205" width="240" height="240"/>
+                                        <rect key="frame" x="75" y="100" width="240" height="240"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="pdP-fr-O63" secondAttribute="height" multiplier="1:1" id="Dss-33-XWl"/>
                                         </constraints>
@@ -38,14 +38,24 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="record.circle"/>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="84t-ap-3X3">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="1"/>
+                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="GiC-8T-YMC"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="pdP-fr-O63" firstAttribute="centerY" secondItem="jZD-YV-1Eh" secondAttribute="centerY" id="2oy-Nc-u1c"/>
+                                    <constraint firstItem="84t-ap-3X3" firstAttribute="top" secondItem="jZD-YV-1Eh" secondAttribute="top" id="1jX-bP-Ejz"/>
+                                    <constraint firstItem="pdP-fr-O63" firstAttribute="top" secondItem="jZD-YV-1Eh" secondAttribute="top" constant="100" id="HYy-pd-PaL"/>
+                                    <constraint firstAttribute="trailing" secondItem="84t-ap-3X3" secondAttribute="trailing" id="McR-0U-noM"/>
                                     <constraint firstAttribute="trailing" secondItem="pdP-fr-O63" secondAttribute="trailing" constant="75" id="Nbo-h3-rF2"/>
                                     <constraint firstAttribute="bottom" secondItem="9fe-1q-HGG" secondAttribute="bottom" constant="20" id="eDu-ol-Ibe"/>
                                     <constraint firstItem="9fe-1q-HGG" firstAttribute="centerX" secondItem="jZD-YV-1Eh" secondAttribute="centerX" id="skN-j8-abD"/>
                                     <constraint firstItem="pdP-fr-O63" firstAttribute="leading" secondItem="jZD-YV-1Eh" secondAttribute="leading" constant="75" id="uIm-LA-OEK"/>
+                                    <constraint firstItem="84t-ap-3X3" firstAttribute="leading" secondItem="jZD-YV-1Eh" secondAttribute="leading" id="yhn-Nm-Rls"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -67,7 +77,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="708" y="-1258"/>
+            <point key="canvasLocation" x="707.69230769230762" y="-1258.2938388625591"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="SdY-c5-ukD">
@@ -159,6 +169,9 @@
         <image name="camera" catalog="system" width="128" height="93"/>
         <image name="folder.badge.gearshape" catalog="system" width="128" height="91"/>
         <image name="record.circle" width="128" height="128"/>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

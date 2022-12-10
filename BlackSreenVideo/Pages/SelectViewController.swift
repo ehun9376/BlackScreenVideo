@@ -6,8 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 class SelectViewController: BaseTableViewController {
+    
+    var navigationtitle: String = ""
     
     var selectedModels: [CodeModel] = []
     
@@ -21,8 +24,23 @@ class SelectViewController: BaseTableViewController {
         self.regisCellID(cellIDs: [
             "SettingCell"
         ])
-        
         self.setupRow()
+
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let button = UIButton()
+        button.setImage(UIImage(named: "ballna")?.resizeImage(targetSize: .init(width: 50, height: 50)), for: .normal)
+        button.setTitle(navigationtitle, for: .normal)
+        button.setTitleColor(UIColor.label, for: .normal)
+//
+        
+        self.navigationItem.titleView = button
+        
+
     }
     
     func setupRow() {

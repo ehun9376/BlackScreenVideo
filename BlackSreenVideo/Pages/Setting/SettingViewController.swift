@@ -22,11 +22,39 @@ class SettingViewController: BaseTableViewController {
             "SettingCell",
             "TagCell"
         ])
+
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setupRowModel()
+        self.title = "相機"
+//        let stackView = UIStackView()
+//        stackView.alignment = .fill
+//        stackView.axis = .horizontal
+//
+//        let label = UILabel()
+//        label.text = "相機"
+//        label.sizeToFit()
+//        label.textColor = .white
+//
+//        let imageView = UIImageView()
+//        imageView.image = UIImage(named: "ball1")
+//
+//        stackView.addArrangedSubview(label)
+//        stackView.addArrangedSubview(imageView)
+        
+        let button = UIButton()
+        button.setImage(UIImage(named: "ballna")?.resizeImage(targetSize: .init(width: 50, height: 50)), for: .normal)
+        button.setTitle("設定", for: .normal)
+        button.setTitleColor(UIColor.label, for: .normal)
+//
+        
+        self.navigationController?.navigationBar.topItem?.titleView = button
+        
+            
+//        navigationController?.navigationBar.isTranslucent = false
     }
     
     func setupRowModel() {
@@ -46,7 +74,8 @@ class SettingViewController: BaseTableViewController {
                                                  switchON: true,
                                                  switchAction: nil,
                                                  cellDidSelect: { [weak self] _ in
-            self?.pushToSelectVC(dataSource: CodeModel.cameraLocation,
+            self?.pushToSelectVC(title: "相機位置",
+                                 dataSource: CodeModel.cameraLocation,
                                  seletedModel: CodeModel.cameraLocation.filter({$0 == caremaCodeModel}),
                                  confirmAction: { codeModels in
                 if let codeModel = codeModels.first {
@@ -69,7 +98,8 @@ class SettingViewController: BaseTableViewController {
                                     switchON: true,
                                     switchAction: nil,
                                     cellDidSelect: { [weak self] _ in
-            self?.pushToSelectVC(dataSource: CodeModel.videoDirection,
+            self?.pushToSelectVC(title: "影片方向",
+                                 dataSource: CodeModel.videoDirection,
                                  seletedModel: CodeModel.videoDirection.filter({$0 == videoCodeModel}),
                                  confirmAction: { codeModels in
                 if let codeModel = codeModels.first {
@@ -92,7 +122,8 @@ class SettingViewController: BaseTableViewController {
                                     switchON: true,
                                     switchAction: nil,
                                     cellDidSelect: { [weak self] _ in
-            self?.pushToSelectVC(dataSource: CodeModel.resolutions,
+            self?.pushToSelectVC(title: "解析度",
+                                 dataSource: CodeModel.resolutions,
                                  seletedModel: CodeModel.resolutions.filter({$0 == resolutionsCodeModel}),
                                  confirmAction: { codeModels in
                 if let codeModel = codeModels.first {
@@ -338,8 +369,9 @@ class SettingViewController: BaseTableViewController {
         })
     }
     
-    func pushToSelectVC(dataSource: [CodeModel], seletedModel: [CodeModel], confirmAction:(([CodeModel])->())?) {
+    func pushToSelectVC(title: String,dataSource: [CodeModel], seletedModel: [CodeModel], confirmAction:(([CodeModel])->())?) {
         let vc = SelectViewController()
+        vc.navigationtitle = title
         vc.dataSourceModels = dataSource
         vc.selectedModels = seletedModel
         vc.confirmAction = confirmAction

@@ -96,6 +96,8 @@ class CameraViewController: BaseViewController {
         self.defaultSetupRecordButton()
         self.defaultSetupTimeLabel()
         self.defaultSetupFakeView()
+
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,25 +108,30 @@ class CameraViewController: BaseViewController {
         self.prepareOutput()
         self.showAuthorizationAlert()
         self.defaultSetupTimeLabel()
+        let button = UIButton()
+        button.setImage(UIImage(named: "ballna")?.resizeImage(targetSize: .init(width: 50, height: 50)), for: .normal)
+        button.setTitle("相機", for: .normal)
+        button.setTitleColor(UIColor.label, for: .normal)
+//
+        
+        self.navigationController?.navigationBar.topItem?.titleView = button
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        do {
-            session.beginConfiguration()
-            if let audioDeviceInput = self.audioDeviceInput, session.inputs.contains(audioDeviceInput) {
-                session.removeInput(audioDeviceInput)
-            }
-            
-            if let videoDeviceInput = self.videoDeviceInput, session.inputs.contains(videoDeviceInput) {
-                session.removeInput(videoDeviceInput)
-            }
-            
-            session.commitConfiguration()
-        } catch {
-            
+        session.beginConfiguration()
+        if let audioDeviceInput = self.audioDeviceInput, session.inputs.contains(audioDeviceInput) {
+            session.removeInput(audioDeviceInput)
         }
+        
+        if let videoDeviceInput = self.videoDeviceInput, session.inputs.contains(videoDeviceInput) {
+            session.removeInput(videoDeviceInput)
+        }
+        
+        session.commitConfiguration()
+        
+        self.isRecoding = false
         
     }
     
@@ -138,8 +145,8 @@ class CameraViewController: BaseViewController {
         if let videoPreviewLayerConnection = previewView.videoPreviewLayer.connection {
             let deviceOrientation = UIDevice.current.orientation
             guard let newVideoOrientation = AVCaptureVideoOrientation(rawValue: deviceOrientation.rawValue),
-                deviceOrientation.isPortrait || deviceOrientation.isLandscape else {
-                    return
+                  deviceOrientation.isPortrait || deviceOrientation.isLandscape else {
+                return
             }
             
             videoPreviewLayerConnection.videoOrientation = newVideoOrientation
@@ -166,7 +173,7 @@ class CameraViewController: BaseViewController {
         self.blackScreenView?.isHidden = true
         
     }
-
+    
     
     //MARK: - 權限相關
     func showAuthorizationAlert() {
@@ -229,7 +236,7 @@ class CameraViewController: BaseViewController {
             return
         }
         
-
+        
         session.beginConfiguration()
         
         switch (UserInfoCenter.shared.loadValue(.resolutions) as? Int ?? 0) {
@@ -288,9 +295,9 @@ class CameraViewController: BaseViewController {
             if session.canAddInput(videoDeviceInput) {
                 self.videoDeviceInput = videoDeviceInput
                 self.session.addInput(videoDeviceInput)
-//                DispatchQueue.main.async {
-
-//                }
+                //                DispatchQueue.main.async {
+                
+                //                }
                 DispatchQueue.main.async {
                     /*
                      Dispatch video streaming to the main queue because AVCaptureVideoPreviewLayer is the backing layer for PreviewView.
@@ -302,7 +309,7 @@ class CameraViewController: BaseViewController {
                      handled by CameraViewController.viewWillTransition(to:with:).
                      */
                     var initialVideoOrientation: AVCaptureVideoOrientation = .portrait
-
+                    
                     switch (UserInfoCenter.shared.loadValue(.videoDirection) as? Int ?? 0) {
                         
                     case 0:
@@ -318,11 +325,11 @@ class CameraViewController: BaseViewController {
                         
                     case 2:
                         initialVideoOrientation = .portrait
-
+                        
                     default:
                         break
                     }
-
+                    
                     self.previewView.videoPreviewLayer.connection?.videoOrientation = initialVideoOrientation
                 }
             } else {
@@ -436,16 +443,13 @@ class CameraViewController: BaseViewController {
     
     func checkShake(turnOn: Bool) {
         guard VersionCheckCenter.shared.isOnline else { return }
-        do {
-            session.beginConfiguration()
-            if let audioDeviceInput = self.audioDeviceInput, session.inputs.contains(audioDeviceInput) {
-                session.removeInput(audioDeviceInput)
-            }
-            
-            session.commitConfiguration()
-        } catch {
-            
+        session.beginConfiguration()
+        if let audioDeviceInput = self.audioDeviceInput, session.inputs.contains(audioDeviceInput) {
+            session.removeInput(audioDeviceInput)
         }
+        
+        session.commitConfiguration()
+        
         
         
         if turnOn {
@@ -460,19 +464,15 @@ class CameraViewController: BaseViewController {
             }
         }
         
-        do {
-            session.beginConfiguration()
-            
-            if let audioDeviceInput = self.audioDeviceInput ,
-               !session.inputs.contains(audioDeviceInput),
-               session.canAddInput(audioDeviceInput){
-                session.addInput(audioDeviceInput)
-            }
-            session.commitConfiguration()
-
-        } catch {
-            
+        session.beginConfiguration()
+        
+        if let audioDeviceInput = self.audioDeviceInput ,
+           !session.inputs.contains(audioDeviceInput),
+           session.canAddInput(audioDeviceInput){
+            session.addInput(audioDeviceInput)
         }
+        session.commitConfiguration()
+        
     }
     
     
@@ -487,14 +487,14 @@ class CameraViewController: BaseViewController {
         self.timeLabel.text = String(format: "%02d:%02d",0 ,0)
         self.timeLabel.layer.cornerRadius = self.timeLabel.frame.height / 2
         self.timeLabel.layer.borderWidth = 5
-
+        
         if UserInfoCenter.shared.loadValue(.darkMode) as? Bool ?? true {
             self.timeLabel.layer.borderColor = UIColor.white.cgColor
         } else {
             self.timeLabel.layer.borderColor = UIColor.black.cgColor
-
+            
         }
-
+        
     }
     
     func setupLabelWithTime(time: Int) {
@@ -558,7 +558,7 @@ class CameraViewController: BaseViewController {
             self.recodingButton.setImage(UIImage(systemName: isRecording ? "stop.circle" : "record.circle")?.withRenderingMode(.alwaysTemplate).resizeImage(targetSize: .init(width: 100, height: 100)), for: .normal)
             self.recodingButton.tintColor = UIColor.red
             self.recodingButton.clipsToBounds = true
-//            self.recodingButton.layer.borderWidth = 5
+            //            self.recodingButton.layer.borderWidth = 5
             self.recodingButton.layer.borderColor = isRecording ? UIColor.red.cgColor : UIColor.yellow.cgColor
             self.recodingButton.layer.cornerRadius = self.recodingButton.frame.width / 2
         }
@@ -592,7 +592,7 @@ class CameraViewController: BaseViewController {
                 }
             }
             
-
+            
         }
         
         let buyedIDs = UserInfoCenter.shared.loadValue(.iaped) as? [String] ?? []
@@ -616,13 +616,16 @@ class CameraViewController: BaseViewController {
     
     
     //MARK: - 螢幕手勢
+    
     func addfakeTapGesture() {
+        guard VersionCheckCenter.shared.isOnline else { return }
+
         self.previewView.isUserInteractionEnabled = true
         let tapGes = UITapGestureRecognizer(target: self, action: #selector(fakeTapGestureAction(_:)))
         tapGes.numberOfTouchesRequired = 3
         tapGes.numberOfTapsRequired = 3
+        
         self.previewView.addGestureRecognizer(tapGes)
-        self.view.addGestureRecognizer(tapGes)
     }
     
     @objc func fakeTapGestureAction(_ sender: UITapGestureRecognizer) {
@@ -671,7 +674,7 @@ extension CameraViewController:  AVCaptureFileOutputRecordingDelegate {
                     
                     
                 }, completionHandler: { success, error in
-
+                    
                 })
             } else {
             }
