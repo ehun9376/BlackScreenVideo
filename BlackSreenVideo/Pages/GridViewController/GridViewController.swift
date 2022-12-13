@@ -35,12 +35,9 @@ class GridViewController: BaseCollectionViewController {
         var itemModels: [CollectionItemModel]? = []
         
         let appModels: [AppImageModel] = [
-            .init(image: UIImage(named: "ball1"), imageName: .ball1Icon),
-            .init(image: UIImage(named: "mail1"), imageName: .mail1Icon),
-            .init(image: UIImage(named: "message1"), imageName: .message1Icon),
-            .init(image: UIImage(named: "oil1"), imageName: .oilIcon),
-            .init(image: UIImage(named: "oil21"), imageName: .oil2Icon),
-            .init(image: UIImage(named: "youtube1"), imageName: .youtubeIcon),
+            .init(image: UIImage(named: "op"), imageName: .opIcon),
+            .init(image: UIImage(named: "black"), imageName: .blackIcon),
+            .init(image: UIImage(named: "ranbow"), imageName: .ranbowIcon),
         ]
         
 

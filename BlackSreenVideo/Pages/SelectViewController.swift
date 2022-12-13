@@ -33,7 +33,7 @@ class SelectViewController: BaseTableViewController {
         super.viewWillAppear(animated)
         
         let button = UIButton()
-        button.setImage(UIImage(named: "ballna")?.resizeImage(targetSize: .init(width: 50, height: 50)), for: .normal)
+        button.setImage(UIImage(named: "op")?.resizeImage(targetSize: .init(width: 50, height: 50)), for: .normal)
         button.setTitle(navigationtitle, for: .normal)
         button.setTitleColor(UIColor.label, for: .normal)
 //
