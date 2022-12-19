@@ -45,6 +45,16 @@ class IAPCenter: NSObject {
         if SKPaymentQueue.canMakePayments() {
             let payment = SKPayment(product: product)
             SKPaymentQueue.default().add(payment)
+        } else {
+            let scenes = UIApplication.shared.connectedScenes
+            let windowScene = scenes.first as? UIWindowScene
+            let window = windowScene?.windows.first
+            if let controller = window?.rootViewController as? BaseViewController {
+                controller.showSingleAlert(title: "提示",
+                                           message: "你的帳號無法購買",
+                                           confirmTitle: "OK",
+                                           confirmAction: nil)
+            }
         }
     }
     
