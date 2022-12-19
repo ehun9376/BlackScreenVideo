@@ -87,7 +87,7 @@ class UserInfoCenter: NSObject {
                 formatter.timeZone = TimeZone.current
                 return formatter
             }
-            let endDate = Date().addingTimeInterval(60*60)
+            let endDate = Date().addingTimeInterval(60 * 60)
             let dateString = dateFormatter.string(from: endDate)
             self.storeValue(.deadLine, data: dateString)
         }

@@ -63,6 +63,22 @@ extension IAPCenter: SKProductsRequestDelegate {
 }
 
 extension IAPCenter: SKPaymentTransactionObserver {
+    
+    func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
+        print(error.localizedDescription)
+        
+        let scenes = UIApplication.shared.connectedScenes
+        let windowScene = scenes.first as? UIWindowScene
+        let window = windowScene?.windows.first
+        
+        if let controller = window?.rootViewController as? BaseViewController {
+            controller.showSingleAlert(title: "錯誤",
+                                       message: error.localizedDescription,
+                                       confirmTitle: "OK",
+                                       confirmAction: nil)
+        }
+    }
+    
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         
         var iapedIDs = UserInfoCenter.shared.loadValue(.iaped) as? [String] ?? []
