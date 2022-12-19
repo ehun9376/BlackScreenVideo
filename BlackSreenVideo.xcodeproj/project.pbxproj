@@ -756,11 +756,14 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = BlackSreenVideo/BlackSreenVideoDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = NZT54R9366;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 8;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 98S428Y7GT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BlackSreenVideo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "OP錄影";
 				INFOPLIST_KEY_NSCameraUsageDescription = "uses the camera to take photos and video.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "uses the microphone to record sound during Live Photos and movies.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "saves captured photos and videos to your photo library.";
@@ -776,9 +779,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = tw.com.ehun.BlackScreenVideo;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.com.chenchien.OPBlackScreenVideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = chechienDis;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -795,11 +799,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = NZT54R9366;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 8;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 98S428Y7GT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BlackSreenVideo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "OP錄影";
 				INFOPLIST_KEY_NSCameraUsageDescription = "uses the camera to take photos and video.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "uses the microphone to record sound during Live Photos and movies.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "saves captured photos and videos to your photo library.";
@@ -815,9 +822,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = tw.com.ehun.BlackScreenVideo;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.com.chenchien.OPBlackScreenVideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = chechienDis;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
