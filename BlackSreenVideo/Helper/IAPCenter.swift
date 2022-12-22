@@ -63,9 +63,22 @@ class IAPCenter: NSObject {
 extension IAPCenter: SKProductsRequestDelegate {
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         print("產品列表")
-        response.products.forEach {
-            print($0.localizedTitle, $0.price, $0.localizedDescription)
+        if response.products.count != 0 {
+            response.products.forEach {
+                print($0.localizedTitle, $0.price, $0.localizedDescription)
+            }
+        } else {
+            let scenes = UIApplication.shared.connectedScenes
+            let windowScene = scenes.first as? UIWindowScene
+            let window = windowScene?.windows.first
+            if let controller = window?.rootViewController as? BaseViewController {
+                controller.showSingleAlert(title: "取得產品資料錯誤",
+                                           message: response.debugDescription,
+                                           confirmTitle: "OK",
+                                           confirmAction: nil)
+            }
         }
+
         self.products = response.products
         requestComplete?()
     }
