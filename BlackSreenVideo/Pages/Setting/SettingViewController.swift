@@ -310,7 +310,31 @@ class SettingViewController: BaseTableViewController {
         //購買紀錄
         let shopingTagRowModel = TagCellRowModel(title: "購買紀錄")
         self.rowModels.append(shopingTagRowModel)
+
+        let buyedIDs = UserInfoCenter.shared.loadValue(.iaped) as? [String] ?? []
+
+        //前往購買
+        let buyRowModel = SettingCellRowModel(title: "購買以永久使用",
+                                                imageName: "briefcase",
+                                                showSwitch: false,
+                                              cellDidSelect: { [weak self] _ in
+            self?.showAlert(title: "提示",
+                            message: "購買以永久使用",
+                            confirmTitle: "前往購買",
+                            cancelTitle: "取消",
+                            confirmAction: {
+                if let product = IAPCenter.shared.products.first {
+                    IAPCenter.shared.buy(product: product)
+                }
+            })
+            
+        })
         
+        if !buyedIDs.contains(ProductID.alwaysCanUse.rawValue){
+            self.rowModels.append(buyRowModel)
+        }
+        
+
         //恢復購買紀錄
         let reBuyRowModel = SettingCellRowModel(title: "恢復購買紀錄",
                                                 imageName: "briefcase",
