@@ -18,6 +18,7 @@
 		36120D6F2927074200B0A5E2 /* BlackSreenVideoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36120D6E2927074200B0A5E2 /* BlackSreenVideoUITests.swift */; };
 		36120D712927074200B0A5E2 /* BlackSreenVideoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36120D702927074200B0A5E2 /* BlackSreenVideoUITestsLaunchTests.swift */; };
 		362EB2D529309BD5002898E8 /* IConManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362EB2D429309BD5002898E8 /* IConManager.swift */; };
+		365FED392956AEC000A88A0D /* JBJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365FED382956AEC000A88A0D /* JBJson.swift */; };
 		3689587E294839AE000DE393 /* op@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36895875294839AD000DE393 /* op@2x.png */; };
 		3689587F294839AE000DE393 /* black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36895876294839AD000DE393 /* black@3x.png */; };
 		36895880294839AE000DE393 /* black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36895877294839AD000DE393 /* black@2x.png */; };
@@ -94,6 +95,7 @@
 		36120D6E2927074200B0A5E2 /* BlackSreenVideoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackSreenVideoUITests.swift; sourceTree = "<group>"; };
 		36120D702927074200B0A5E2 /* BlackSreenVideoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackSreenVideoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		362EB2D429309BD5002898E8 /* IConManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IConManager.swift; sourceTree = "<group>"; };
+		365FED382956AEC000A88A0D /* JBJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JBJson.swift; sourceTree = "<group>"; };
 		36895875294839AD000DE393 /* op@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "op@2x.png"; sourceTree = "<group>"; };
 		36895876294839AD000DE393 /* black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black@3x.png"; sourceTree = "<group>"; };
 		36895877294839AD000DE393 /* black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black@2x.png"; sourceTree = "<group>"; };
@@ -267,8 +269,9 @@
 				9492AFD4292E46BC00C4AA13 /* UserInfoCenter.swift */,
 				36F61748292E243000CA3C7F /* KeyboardHelper.swift */,
 				9492AFCF292E421B00C4AA13 /* Extension.swift */,
-				36F61758292EF6E700CA3C7F /* CodeModel */,
 				3608EF1F293ECEBF0079C4A3 /* VersionCheckCenter.swift */,
+				365FED382956AEC000A88A0D /* JBJson.swift */,
+				36F61758292EF6E700CA3C7F /* CodeModel */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 				36F61752292E259400CA3C7F /* SettingCell.swift in Sources */,
 				36F61746292E240300CA3C7F /* TableViewAdapter.swift in Sources */,
 				94C26A112931B279001A3C20 /* CollectionViewAdapter.swift in Sources */,
+				365FED392956AEC000A88A0D /* JBJson.swift in Sources */,
 				36F61755292EF18900CA3C7F /* TagCell.swift in Sources */,
 				94C26A192931B6E8001A3C20 /* CollectionImageCell.swift in Sources */,
 				36F6174B292E246100CA3C7F /* BaseViewController.swift in Sources */,
@@ -756,9 +760,9 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = BlackSreenVideo/BlackSreenVideoDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 98S428Y7GT;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -782,7 +786,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tw.com.chenchien.OPBlackScreenVideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = chenchien;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = chechienDis;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -799,9 +803,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 98S428Y7GT;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -825,7 +829,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tw.com.chenchien.OPBlackScreenVideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = chenchien;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = chechienDis;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
