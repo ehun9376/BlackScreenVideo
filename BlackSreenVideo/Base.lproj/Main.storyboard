@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z42-zs-RPK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z42-zs-RPK">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,24 +20,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jZD-YV-1Eh" customClass="PreviewView" customModule="BlackSreenVideo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="91" width="390" height="650"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdP-fr-O63">
-                                        <rect key="frame" x="75" y="100" width="240" height="240"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="pdP-fr-O63" secondAttribute="height" multiplier="1:1" id="Dss-33-XWl"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fe-1q-HGG">
-                                        <rect key="frame" x="120" y="480" width="150" height="150"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="150" id="cid-Bp-vqB"/>
-                                            <constraint firstAttribute="height" constant="150" id="kwo-Fs-HCY"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="record.circle"/>
-                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="84t-ap-3X3">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="1"/>
                                         <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
@@ -45,16 +27,34 @@
                                             <constraint firstAttribute="height" constant="1" id="GiC-8T-YMC"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fe-1q-HGG">
+                                        <rect key="frame" x="120" y="480" width="150" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="chs-sH-N9z"/>
+                                            <constraint firstAttribute="height" constant="150" id="paQ-g1-lvb"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="record.circle"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdP-fr-O63">
+                                        <rect key="frame" x="75" y="101" width="240" height="240"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="pdP-fr-O63" secondAttribute="height" multiplier="1:1" id="z7L-TI-cNc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="84t-ap-3X3" firstAttribute="top" secondItem="jZD-YV-1Eh" secondAttribute="top" id="1jX-bP-Ejz"/>
-                                    <constraint firstItem="pdP-fr-O63" firstAttribute="top" secondItem="jZD-YV-1Eh" secondAttribute="top" constant="100" id="HYy-pd-PaL"/>
+                                    <constraint firstItem="pdP-fr-O63" firstAttribute="leading" secondItem="jZD-YV-1Eh" secondAttribute="leading" constant="75" id="9Kl-rj-hZO"/>
+                                    <constraint firstAttribute="bottom" secondItem="9fe-1q-HGG" secondAttribute="bottom" constant="20" id="H7Z-Ax-FFD"/>
                                     <constraint firstAttribute="trailing" secondItem="84t-ap-3X3" secondAttribute="trailing" id="McR-0U-noM"/>
-                                    <constraint firstAttribute="trailing" secondItem="pdP-fr-O63" secondAttribute="trailing" constant="75" id="Nbo-h3-rF2"/>
-                                    <constraint firstAttribute="bottom" secondItem="9fe-1q-HGG" secondAttribute="bottom" constant="20" id="eDu-ol-Ibe"/>
-                                    <constraint firstItem="9fe-1q-HGG" firstAttribute="centerX" secondItem="jZD-YV-1Eh" secondAttribute="centerX" id="skN-j8-abD"/>
-                                    <constraint firstItem="pdP-fr-O63" firstAttribute="leading" secondItem="jZD-YV-1Eh" secondAttribute="leading" constant="75" id="uIm-LA-OEK"/>
+                                    <constraint firstItem="9fe-1q-HGG" firstAttribute="centerX" secondItem="jZD-YV-1Eh" secondAttribute="centerX" id="bUQ-4p-usb"/>
+                                    <constraint firstItem="pdP-fr-O63" firstAttribute="top" secondItem="84t-ap-3X3" secondAttribute="bottom" constant="100" id="pYG-eU-FLJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="pdP-fr-O63" secondAttribute="trailing" constant="75" id="tIC-Pv-mWk"/>
                                     <constraint firstItem="84t-ap-3X3" firstAttribute="leading" secondItem="jZD-YV-1Eh" secondAttribute="leading" id="yhn-Nm-Rls"/>
                                 </constraints>
                             </view>
