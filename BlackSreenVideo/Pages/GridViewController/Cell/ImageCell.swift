@@ -37,7 +37,8 @@ class ImageCell: UICollectionViewCell {
     @IBOutlet weak var backImageView: UIImageView!
         
     override func awakeFromNib() {
-        
+        self.backImageView.layer.cornerRadius = 5
+        self.clipsToBounds = true
     }
 
 }

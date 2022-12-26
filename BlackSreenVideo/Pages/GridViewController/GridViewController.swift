@@ -30,6 +30,17 @@ class GridViewController: BaseCollectionViewController {
         self.setupItemModel()
     }
     
+    override func creatLayout() -> UICollectionViewFlowLayout {
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.minimumLineSpacing = 10
+        layout.minimumInteritemSpacing = 0
+        layout.scrollDirection = .vertical
+        
+        return layout
+    }
+    
     func setupItemModel() {
         
         var itemModels: [CollectionItemModel]? = []
@@ -47,7 +58,7 @@ class GridViewController: BaseCollectionViewController {
         for appModel in appModels {
             let itemModel: ImageCellItemModel = .init(image: appModel.image?.resizeImage(targetSize: .init(width: width, height: width)),
                                                       imageName: appModel.imageName,
-                                                      itemSize: .init(width: width, height: width),
+                                                      itemSize: .init(width: self.view.frame.width, height: width),
                                                       cellDidPressed: { _ in
                 if let image = appModel.imageName {
                     IconManager.shared.changeAppIcon(to: image)
