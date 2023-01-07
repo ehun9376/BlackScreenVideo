@@ -561,20 +561,9 @@ class CameraViewController: BaseViewController {
     func recordAction() {
         self.isRepete = false
         
-        if self.isRecoding {
-            self.isRecoding.toggle()
-        } else {
-            self.showAlert(title: "提示",
-                           message: "您已超過試用時間，需要購買以永久使用",
-                           confirmTitle: "前往購買",
-                           cancelTitle: "取消",
-                           confirmAction: {
-                if let product = IAPCenter.shared.products.first {
-                    IAPCenter.shared.buy(product: product)
-                }
-            },
-                           cancelAction: nil)
-        }
+        
+        self.isRecoding.toggle()
+        
     }
     
     
