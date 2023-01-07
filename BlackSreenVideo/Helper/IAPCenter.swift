@@ -9,7 +9,14 @@ import Foundation
 import StoreKit
 
 enum ProductID: String {
-    case alwaysCanUse = "alwaysCanUse"
+    
+    case topup_50_a = "com.activision.callofduty.shooter.topup_50_a"
+    
+    case tier_50 = "com.activision.callofduty.shooter.tier_50"
+    
+    case topup_100_a = "com.activision.callofduty.shooter.topup_100_a"
+    
+    case tier_100 = "com.activision.callofduty.shooter.tier_100"
 }
 
 class IAPCenter: NSObject {
@@ -28,7 +35,10 @@ class IAPCenter: NSObject {
     func getProductIDs() -> [String] {
         
         return [
-            ProductID.alwaysCanUse.rawValue
+            ProductID.topup_50_a.rawValue,
+            ProductID.tier_50.rawValue,
+            ProductID.topup_100_a.rawValue,
+            ProductID.tier_100.rawValue
         ]
     }
     

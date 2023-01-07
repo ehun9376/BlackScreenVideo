@@ -78,20 +78,6 @@ class UserInfoCenter: NSObject {
     
     func startCheck() {
         
-        if self.loadValue(.deadLine) == nil {
-            var dateFormatter: DateFormatter {
-                let formatter = DateFormatter()
-                formatter.locale = Locale(identifier: "zh_TW")
-                formatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
-                formatter.locale = Locale.current
-                formatter.timeZone = TimeZone.current
-                return formatter
-            }
-            let endDate = Date().addingTimeInterval(60 * 60)
-            let dateString = dateFormatter.string(from: endDate)
-            self.storeValue(.deadLine, data: dateString)
-        }
-        
         //相機
         if self.loadValue(.cameraLocation) == nil {
             self.storeValue(.cameraLocation, data: CodeModel.backCamera.number)

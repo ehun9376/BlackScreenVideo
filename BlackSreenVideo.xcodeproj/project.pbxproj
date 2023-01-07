@@ -19,15 +19,6 @@
 		36120D712927074200B0A5E2 /* BlackSreenVideoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36120D702927074200B0A5E2 /* BlackSreenVideoUITestsLaunchTests.swift */; };
 		362EB2D529309BD5002898E8 /* IConManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362EB2D429309BD5002898E8 /* IConManager.swift */; };
 		365FED392956AEC000A88A0D /* JBJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365FED382956AEC000A88A0D /* JBJson.swift */; };
-		3689587E294839AE000DE393 /* op@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36895875294839AD000DE393 /* op@2x.png */; };
-		3689587F294839AE000DE393 /* black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36895876294839AD000DE393 /* black@3x.png */; };
-		36895880294839AE000DE393 /* black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36895877294839AD000DE393 /* black@2x.png */; };
-		36895881294839AE000DE393 /* op@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36895878294839AD000DE393 /* op@1x.png */; };
-		36895882294839AE000DE393 /* ranbow@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36895879294839AE000DE393 /* ranbow@1x.png */; };
-		36895883294839AE000DE393 /* ranbow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3689587A294839AE000DE393 /* ranbow@3x.png */; };
-		36895884294839AE000DE393 /* op@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3689587B294839AE000DE393 /* op@3x.png */; };
-		36895885294839AE000DE393 /* black@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3689587C294839AE000DE393 /* black@1x.png */; };
-		36895886294839AE000DE393 /* ranbow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3689587D294839AE000DE393 /* ranbow@2x.png */; };
 		36F6173F292E20BE00CA3C7F /* FakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F6173E292E20BE00CA3C7F /* FakeView.swift */; };
 		36F61745292E240300CA3C7F /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F61743292E240300CA3C7F /* BaseTableViewController.swift */; };
 		36F61746292E240300CA3C7F /* TableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F61744292E240300CA3C7F /* TableViewAdapter.swift */; };
@@ -96,15 +87,6 @@
 		36120D702927074200B0A5E2 /* BlackSreenVideoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackSreenVideoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		362EB2D429309BD5002898E8 /* IConManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IConManager.swift; sourceTree = "<group>"; };
 		365FED382956AEC000A88A0D /* JBJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JBJson.swift; sourceTree = "<group>"; };
-		36895875294839AD000DE393 /* op@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "op@2x.png"; sourceTree = "<group>"; };
-		36895876294839AD000DE393 /* black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black@3x.png"; sourceTree = "<group>"; };
-		36895877294839AD000DE393 /* black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black@2x.png"; sourceTree = "<group>"; };
-		36895878294839AD000DE393 /* op@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "op@1x.png"; sourceTree = "<group>"; };
-		36895879294839AE000DE393 /* ranbow@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ranbow@1x.png"; sourceTree = "<group>"; };
-		3689587A294839AE000DE393 /* ranbow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ranbow@3x.png"; sourceTree = "<group>"; };
-		3689587B294839AE000DE393 /* op@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "op@3x.png"; sourceTree = "<group>"; };
-		3689587C294839AE000DE393 /* black@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black@1x.png"; sourceTree = "<group>"; };
-		3689587D294839AE000DE393 /* ranbow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ranbow@2x.png"; sourceTree = "<group>"; };
 		36F6173E292E20BE00CA3C7F /* FakeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeView.swift; sourceTree = "<group>"; };
 		36F61743292E240300CA3C7F /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		36F61744292E240300CA3C7F /* TableViewAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewAdapter.swift; sourceTree = "<group>"; };
@@ -385,25 +367,8 @@
 			isa = PBXGroup;
 			children = (
 				362EB2D429309BD5002898E8 /* IConManager.swift */,
-				94C26A262931BD4C001A3C20 /* ICons */,
 			);
 			path = IConManager;
-			sourceTree = "<group>";
-		};
-		94C26A262931BD4C001A3C20 /* ICons */ = {
-			isa = PBXGroup;
-			children = (
-				3689587C294839AE000DE393 /* black@1x.png */,
-				36895877294839AD000DE393 /* black@2x.png */,
-				36895876294839AD000DE393 /* black@3x.png */,
-				36895878294839AD000DE393 /* op@1x.png */,
-				36895875294839AD000DE393 /* op@2x.png */,
-				3689587B294839AE000DE393 /* op@3x.png */,
-				36895879294839AE000DE393 /* ranbow@1x.png */,
-				3689587D294839AE000DE393 /* ranbow@2x.png */,
-				3689587A294839AE000DE393 /* ranbow@3x.png */,
-			);
-			path = ICons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -512,20 +477,11 @@
 			files = (
 				36120D5A2927074200B0A5E2 /* LaunchScreen.storyboard in Resources */,
 				36F61757292EF1E100CA3C7F /* TagCell.xib in Resources */,
-				36895884294839AE000DE393 /* op@3x.png in Resources */,
-				36895886294839AE000DE393 /* ranbow@2x.png in Resources */,
 				94C26A1C2931B702001A3C20 /* ImageCell.xib in Resources */,
 				36120D572927074200B0A5E2 /* Assets.xcassets in Resources */,
 				9492AFCE292E3DC500C4AA13 /* SettingCell.xib in Resources */,
-				3689587E294839AE000DE393 /* op@2x.png in Resources */,
-				36895882294839AE000DE393 /* ranbow@1x.png in Resources */,
 				36F6176729304CEF00CA3C7F /* PreviewCell.xib in Resources */,
-				3689587F294839AE000DE393 /* black@3x.png in Resources */,
-				36895883294839AE000DE393 /* ranbow@3x.png in Resources */,
-				36895880294839AE000DE393 /* black@2x.png in Resources */,
 				36120D552927074000B0A5E2 /* Main.storyboard in Resources */,
-				36895885294839AE000DE393 /* black@1x.png in Resources */,
-				36895881294839AE000DE393 /* op@1x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -760,14 +716,12 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = BlackSreenVideo/BlackSreenVideoDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 98S428Y7GT;
+				DEVELOPMENT_TEAM = 89P6MA394F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BlackSreenVideo/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "OP錄影";
+				INFOPLIST_KEY_CFBundleDisplayName = "安娜錄影";
 				INFOPLIST_KEY_NSCameraUsageDescription = "uses the camera to take photos and video.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "uses the microphone to record sound during Live Photos and movies.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "saves captured photos and videos to your photo library.";
@@ -783,10 +737,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = tw.com.chenchien.OPBlackScreenVideo;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.com.anna.recording;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = chechienDis;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -803,14 +756,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 98S428Y7GT;
+				DEVELOPMENT_TEAM = 89P6MA394F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BlackSreenVideo/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "OP錄影";
+				INFOPLIST_KEY_CFBundleDisplayName = "安娜錄影";
 				INFOPLIST_KEY_NSCameraUsageDescription = "uses the camera to take photos and video.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "uses the microphone to record sound during Live Photos and movies.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "saves captured photos and videos to your photo library.";
@@ -826,10 +777,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = tw.com.chenchien.OPBlackScreenVideo;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.com.anna.recording;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = chechienDis;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

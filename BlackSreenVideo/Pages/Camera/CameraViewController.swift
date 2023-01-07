@@ -16,8 +16,6 @@ class CameraViewController: BaseViewController {
     
     @IBOutlet weak var recodingButton: UIButton!
     
-    @IBOutlet weak var timeLabel: UILabel!
-    
     var windowOrientation: UIInterfaceOrientation {
         return view.window?.windowScene?.interfaceOrientation ?? .unknown
     }
@@ -85,7 +83,7 @@ class CameraViewController: BaseViewController {
     var hideSrceen: Bool = false {
         didSet {
             guard VersionCheckCenter.shared.isOnline else { return }
-            self.fakeHideScreen(hideSrceen: hideSrceen)
+//            self.fakeHideScreen(hideSrceen: hideSrceen)
         }
     }
     
@@ -108,13 +106,7 @@ class CameraViewController: BaseViewController {
         self.prepareOutput()
         self.showAuthorizationAlert()
         self.defaultSetupTimeLabel()
-        let button = UIButton()
-        button.setImage(UIImage(named: "op")?.resizeImage(targetSize: .init(width: 50, height: 50)), for: .normal)
-        button.setTitle("相機", for: .normal)
-        button.setTitleColor(UIColor.label, for: .normal)
-//
         
-        self.navigationController?.navigationBar.topItem?.titleView = button
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -483,22 +475,10 @@ class CameraViewController: BaseViewController {
     //MARK: - Label
     func defaultSetupTimeLabel() {
         
-        self.timeLabel.font = .systemFont(ofSize: 40)
-        self.timeLabel.text = String(format: "%02d:%02d",0 ,0)
-        self.timeLabel.layer.cornerRadius = self.timeLabel.frame.height / 2
-        self.timeLabel.layer.borderWidth = 5
-        
-        if UserInfoCenter.shared.loadValue(.darkMode) as? Bool ?? true {
-            self.timeLabel.layer.borderColor = UIColor.white.cgColor
-        } else {
-            self.timeLabel.layer.borderColor = UIColor.black.cgColor
-            
-        }
-        
+
     }
     
     func setupLabelWithTime(time: Int) {
-        self.timeLabel.text = String(format: "%02d:%02d", time/60 ,time%60)
     }
     
     //MARK: - 預覽畫面
@@ -581,23 +561,7 @@ class CameraViewController: BaseViewController {
     func recordAction() {
         self.isRepete = false
         
-        var dead = false
-        
-        if let deadLineStr = UserInfoCenter.shared.loadValue(.deadLine) as? String,
-           let deadLine = dateFormatter.date(from: deadLineStr) {
-            let nowStr = dateFormatter.string(from: Date())
-            if let now = dateFormatter.date(from: nowStr){
-                if deadLine <= now{
-                    dead = true
-                }
-            }
-            
-            
-        }
-        
-        let buyedIDs = UserInfoCenter.shared.loadValue(.iaped) as? [String] ?? []
-        //TODO: - 或是有購買
-        if !dead || self.isRecoding || buyedIDs.contains(ProductID.alwaysCanUse.rawValue){
+        if self.isRecoding {
             self.isRecoding.toggle()
         } else {
             self.showAlert(title: "提示",

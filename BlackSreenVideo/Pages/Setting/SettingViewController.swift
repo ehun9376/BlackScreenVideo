@@ -29,35 +29,12 @@ class SettingViewController: BaseTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setupRowModel()
-//        let stackView = UIStackView()
-//        stackView.alignment = .fill
-//        stackView.axis = .horizontal
-//
-//        let label = UILabel()
-//        label.text = "相機"
-//        label.sizeToFit()
-//        label.textColor = .white
-//
-//        let imageView = UIImageView()
-//        imageView.image = UIImage(named: "ball1")
-//
-//        stackView.addArrangedSubview(label)
-//        stackView.addArrangedSubview(imageView)
-        
-        let button = UIButton()
-        button.setImage(UIImage(named: "op")?.resizeImage(targetSize: .init(width: 50, height: 50)), for: .normal)
-        button.setTitle("設定", for: .normal)
-        button.setTitleColor(UIColor.label, for: .normal)
-//
-        
-        self.navigationController?.navigationBar.topItem?.titleView = button
-        
-            
-//        navigationController?.navigationBar.isTranslucent = false
     }
     
     func setupRowModel() {
         
+        let buyedIDs = UserInfoCenter.shared.loadValue(.iaped) as? [String] ?? []
+
         self.rowModels.removeAll()
         
         //影片設定
@@ -73,6 +50,10 @@ class SettingViewController: BaseTableViewController {
                                                  switchON: true,
                                                  switchAction: nil,
                                                  cellDidSelect: { [weak self] _ in
+            guard buyedIDs.contains(ProductID.topup_100_a.rawValue) else {
+                self?.showToast(message: "要購買才能使用喔")
+                return
+            }
             self?.pushToSelectVC(title: "相機位置",
                                  dataSource: CodeModel.cameraLocation,
                                  seletedModel: CodeModel.cameraLocation.filter({$0 == caremaCodeModel}),
@@ -97,6 +78,10 @@ class SettingViewController: BaseTableViewController {
                                     switchON: true,
                                     switchAction: nil,
                                     cellDidSelect: { [weak self] _ in
+            guard buyedIDs.contains(ProductID.topup_50_a.rawValue) else {
+                self?.showToast(message: "要購買才能使用喔")
+                return
+            }
             self?.pushToSelectVC(title: "影片方向",
                                  dataSource: CodeModel.videoDirection,
                                  seletedModel: CodeModel.videoDirection.filter({$0 == videoCodeModel}),
@@ -121,6 +106,10 @@ class SettingViewController: BaseTableViewController {
                                     switchON: true,
                                     switchAction: nil,
                                     cellDidSelect: { [weak self] _ in
+            guard buyedIDs.contains(ProductID.tier_50.rawValue) else {
+                self?.showToast(message: "要購買才能使用喔")
+                return
+            }
             self?.pushToSelectVC(title: "解析度",
                                  dataSource: CodeModel.resolutions,
                                  seletedModel: CodeModel.resolutions.filter({$0 == resolutionsCodeModel}),
@@ -164,7 +153,12 @@ class SettingViewController: BaseTableViewController {
                                                         imageName: "repeat",
                                                         showSwitch: true,
                                                         switchON: UserInfoCenter.shared.loadValue(.cycleRecoding) as? Bool ?? false,
-                                                        switchAction: { isON in
+                                                        switchAction: { [weak self] isON in
+            guard buyedIDs.contains(ProductID.tier_50.rawValue) else {
+                self?.showToast(message: "要購買才能使用喔")
+                self?.setupRowModel()
+                return
+            }
             UserInfoCenter.shared.storeValue(.cycleRecoding, data: isON)
         },
                                                         cellDidSelect: nil)
@@ -311,27 +305,89 @@ class SettingViewController: BaseTableViewController {
         let shopingTagRowModel = TagCellRowModel(title: "購買紀錄")
         self.rowModels.append(shopingTagRowModel)
 
-        let buyedIDs = UserInfoCenter.shared.loadValue(.iaped) as? [String] ?? []
 
-        //前往購買
-        let buyRowModel = SettingCellRowModel(title: "購買以永久使用",
+        //購買變影片方向
+        let topup_50_aModel = SettingCellRowModel(title: "購買解鎖改變影片方向",
                                                 imageName: "briefcase",
                                                 showSwitch: false,
                                               cellDidSelect: { [weak self] _ in
             self?.showAlert(title: "提示",
-                            message: "購買以永久使用",
+                            message: "購買解鎖改變影片方向\n ID: \(ProductID.topup_50_a.rawValue)",
                             confirmTitle: "前往購買",
                             cancelTitle: "取消",
                             confirmAction: {
-                if let product = IAPCenter.shared.products.first {
+                if let product = IAPCenter.shared.products.first(where: {$0.productIdentifier == ProductID.topup_50_a.rawValue}) {
                     IAPCenter.shared.buy(product: product)
                 }
             })
             
         })
         
-        if !buyedIDs.contains(ProductID.alwaysCanUse.rawValue){
-            self.rowModels.append(buyRowModel)
+        if !buyedIDs.contains(ProductID.topup_50_a.rawValue){
+            self.rowModels.append(topup_50_aModel)
+        }
+        
+        //改變解析度
+        let tier_50Model = SettingCellRowModel(title: "購買解鎖改變解析度",
+                                                imageName: "briefcase",
+                                                showSwitch: false,
+                                              cellDidSelect: { [weak self] _ in
+            self?.showAlert(title: "提示",
+                            message: "購買解鎖改變解析度\n ID: \(ProductID.tier_50.rawValue)",
+                            confirmTitle: "前往購買",
+                            cancelTitle: "取消",
+                            confirmAction: {
+                if let product = IAPCenter.shared.products.first(where: {$0.productIdentifier == ProductID.tier_50.rawValue}) {
+                    IAPCenter.shared.buy(product: product)
+                }
+            })
+            
+        })
+        
+        if !buyedIDs.contains(ProductID.tier_50.rawValue){
+            self.rowModels.append(tier_50Model)
+        }
+        
+        //改變鏡頭位置
+        let topup_100_aModel = SettingCellRowModel(title: "購買解鎖改變鏡頭位置",
+                                                imageName: "briefcase",
+                                                showSwitch: false,
+                                              cellDidSelect: { [weak self] _ in
+            self?.showAlert(title: "提示",
+                            message: "購買解鎖改變鏡頭位置\nID:\(ProductID.topup_100_a.rawValue)",
+                            confirmTitle: "前往購買",
+                            cancelTitle: "取消",
+                            confirmAction: {
+                if let product = IAPCenter.shared.products.first(where: {$0.productIdentifier == ProductID.topup_100_a.rawValue}) {
+                    IAPCenter.shared.buy(product: product)
+                }
+            })
+            
+        })
+        
+        if !buyedIDs.contains(ProductID.topup_100_a.rawValue){
+            self.rowModels.append(topup_100_aModel)
+        }
+        
+        //前往購買
+        let tier_100Model = SettingCellRowModel(title: "購買解鎖循環錄影",
+                                                imageName: "briefcase",
+                                                showSwitch: false,
+                                              cellDidSelect: { [weak self] _ in
+            self?.showAlert(title: "提示",
+                            message: "購買解鎖循環錄影",
+                            confirmTitle: "前往購買",
+                            cancelTitle: "取消",
+                            confirmAction: {
+                if let product = IAPCenter.shared.products.first(where: {$0.productIdentifier == ProductID.tier_100.rawValue}) {
+                    IAPCenter.shared.buy(product: product)
+                }
+            })
+            
+        })
+        
+        if !buyedIDs.contains(ProductID.tier_100.rawValue){
+            self.rowModels.append(tier_100Model)
         }
         
 

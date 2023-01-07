@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z42-zs-RPK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z42-zs-RPK">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -44,35 +44,22 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="record.circle"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdP-fr-O63">
-                                <rect key="frame" x="75" y="191" width="240" height="240"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="pdP-fr-O63" secondAttribute="height" multiplier="1:1" id="z7L-TI-cNc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9fe-1q-HGG" secondAttribute="bottom" constant="16" id="Xiz-lP-IU1"/>
-                            <constraint firstItem="pdP-fr-O63" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="dDU-Cp-oiT"/>
-                            <constraint firstItem="pdP-fr-O63" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="75" id="deI-hk-ufD"/>
                             <constraint firstItem="jZD-YV-1Eh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="dtU-LC-cUQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jZD-YV-1Eh" secondAttribute="bottom" constant="20" id="eeN-bq-SVn"/>
                             <constraint firstItem="jZD-YV-1Eh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fyd-A9-XCr"/>
                             <constraint firstItem="9fe-1q-HGG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pU4-vO-cTD"/>
                             <constraint firstItem="jZD-YV-1Eh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="sNG-em-94p"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pdP-fr-O63" secondAttribute="trailing" constant="75" id="tru-tD-Izo"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="camera" catalog="system" id="3ZD-d5-hqM"/>
                     <connections>
                         <outlet property="previewView" destination="jZD-YV-1Eh" id="R3d-EA-8gN"/>
                         <outlet property="recodingButton" destination="9fe-1q-HGG" id="QBN-lk-K3X"/>
-                        <outlet property="timeLabel" destination="pdP-fr-O63" id="anj-sn-JLB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -155,7 +142,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="JZn-gK-Ma8"/>
-                        <segue destination="qY1-yP-2Hj" kind="relationship" relationship="viewControllers" id="T5D-gf-hyN"/>
                         <segue destination="SM2-J1-sAF" kind="relationship" relationship="viewControllers" id="ZkG-qy-EFd"/>
                     </connections>
                 </tabBarController>
