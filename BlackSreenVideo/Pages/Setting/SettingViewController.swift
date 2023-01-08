@@ -378,7 +378,7 @@ class SettingViewController: BaseTableViewController {
                                                 showSwitch: false,
                                               cellDidSelect: { [weak self] _ in
             self?.showAlert(title: "提示",
-                            message: "購買解鎖循環錄影",
+                            message: "購買解鎖循環錄影\nID:\(ProductID.tier_100.rawValue)",
                             confirmTitle: "前往購買",
                             cancelTitle: "取消",
                             confirmAction: {

@@ -97,6 +97,7 @@ class CameraViewController: BaseViewController {
         self.defaultSetupTimeLabel()
         self.defaultSetupFakeView()
         self.setupSettingButton()
+        self.view.backgroundColor = .black
         
     }
     
