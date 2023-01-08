@@ -18,6 +18,7 @@ class CameraViewController: BaseViewController {
     
     @IBOutlet weak var settingButton: UIButton!
     
+    @IBOutlet weak var bookButton: UIButton!
     var windowOrientation: UIInterfaceOrientation {
         return view.window?.windowScene?.interfaceOrientation ?? .unknown
     }
@@ -97,6 +98,7 @@ class CameraViewController: BaseViewController {
         self.defaultSetupTimeLabel()
         self.defaultSetupFakeView()
         self.setupSettingButton()
+        self.setupbookButton()
         self.view.backgroundColor = .black
         
     }
@@ -146,6 +148,15 @@ class CameraViewController: BaseViewController {
             
             videoPreviewLayerConnection.videoOrientation = newVideoOrientation
         }
+    }
+    
+    func setupbookButton() {
+        self.bookButton.addTarget(self, action: #selector(bookButtonButtonAction), for: .touchUpInside)
+    }
+    
+    @objc func bookButtonButtonAction() {
+        let vc = LibraryViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func setupSettingButton() {

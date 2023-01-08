@@ -36,6 +36,15 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="gear.circle" catalog="system"/>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WIB-H1-jjv">
+                                        <rect key="frame" x="8" y="661" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Kws-xD-YfL"/>
+                                            <constraint firstAttribute="width" constant="30" id="nlp-VT-Ftr"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="book" catalog="system"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -43,6 +52,8 @@
                                     <constraint firstAttribute="bottom" secondItem="P2e-Vb-mWV" secondAttribute="bottom" constant="8" id="EOO-Sp-7wA"/>
                                     <constraint firstAttribute="trailing" secondItem="P2e-Vb-mWV" secondAttribute="trailing" constant="8" id="JO9-mB-Vk0"/>
                                     <constraint firstAttribute="trailing" secondItem="84t-ap-3X3" secondAttribute="trailing" id="McR-0U-noM"/>
+                                    <constraint firstItem="WIB-H1-jjv" firstAttribute="leading" secondItem="jZD-YV-1Eh" secondAttribute="leading" constant="8" id="fFC-Yj-1Ux"/>
+                                    <constraint firstAttribute="bottom" secondItem="WIB-H1-jjv" secondAttribute="bottom" constant="8" id="g1b-Ju-1KT"/>
                                     <constraint firstItem="84t-ap-3X3" firstAttribute="leading" secondItem="jZD-YV-1Eh" secondAttribute="leading" id="yhn-Nm-Rls"/>
                                 </constraints>
                             </view>
@@ -70,6 +81,7 @@
                     <tabBarItem key="tabBarItem" title="" image="camera" catalog="system" id="3ZD-d5-hqM"/>
                     <navigationItem key="navigationItem" id="FOe-VT-HPC"/>
                     <connections>
+                        <outlet property="bookButton" destination="WIB-H1-jjv" id="ZY5-2I-4zw"/>
                         <outlet property="previewView" destination="jZD-YV-1Eh" id="R3d-EA-8gN"/>
                         <outlet property="recodingButton" destination="9fe-1q-HGG" id="QBN-lk-K3X"/>
                         <outlet property="settingButton" destination="P2e-Vb-mWV" id="fCm-M7-Mhg"/>

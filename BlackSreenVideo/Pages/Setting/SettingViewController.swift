@@ -264,7 +264,7 @@ class SettingViewController: BaseTableViewController {
             self?.pushToGridView()
         })
         
-        self.rowModels.append(appImageRowModel)
+//        self.rowModels.append(appImageRowModel)
         
         
         //安全設定
