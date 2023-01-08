@@ -16,6 +16,8 @@ class CameraViewController: BaseViewController {
     
     @IBOutlet weak var recodingButton: UIButton!
     
+    @IBOutlet weak var settingButton: UIButton!
+    
     var windowOrientation: UIInterfaceOrientation {
         return view.window?.windowScene?.interfaceOrientation ?? .unknown
     }
@@ -94,7 +96,7 @@ class CameraViewController: BaseViewController {
         self.defaultSetupRecordButton()
         self.defaultSetupTimeLabel()
         self.defaultSetupFakeView()
-
+        self.setupSettingButton()
         
     }
     
@@ -143,6 +145,15 @@ class CameraViewController: BaseViewController {
             
             videoPreviewLayerConnection.videoOrientation = newVideoOrientation
         }
+    }
+    
+    func setupSettingButton() {
+        self.settingButton.addTarget(self, action: #selector(settingButtonAction), for: .touchUpInside)
+    }
+    
+    @objc func settingButtonAction() {
+        let vc = SettingViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func defaultSetupFakeView() {

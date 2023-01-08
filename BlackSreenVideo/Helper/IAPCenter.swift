@@ -29,6 +29,8 @@ class IAPCenter: NSObject {
     
     var requestComplete: (([String])->())?
     
+    var storeComplete: (()->())?
+    
  
     
     //總共有多少購買項目
@@ -144,6 +146,7 @@ extension IAPCenter: SKPaymentTransactionObserver {
             
         }
         UserInfoCenter.shared.storeValue(.iaped, data: iapedIDs)
+        self.storeComplete?()
     }
     
 }

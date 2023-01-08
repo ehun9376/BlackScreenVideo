@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jZD-YV-1Eh" customClass="PreviewView" customModule="BlackSreenVideo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="91" width="390" height="650"/>
+                                <rect key="frame" x="0.0" y="91" width="390" height="699"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="84t-ap-3X3">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="1"/>
@@ -27,16 +27,27 @@
                                             <constraint firstAttribute="height" constant="1" id="GiC-8T-YMC"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2e-Vb-mWV">
+                                        <rect key="frame" x="352" y="661" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="IzF-In-bMQ"/>
+                                            <constraint firstAttribute="height" constant="30" id="aKk-Ns-VGb"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="gear.circle" catalog="system"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="84t-ap-3X3" firstAttribute="top" secondItem="jZD-YV-1Eh" secondAttribute="top" id="1jX-bP-Ejz"/>
+                                    <constraint firstAttribute="bottom" secondItem="P2e-Vb-mWV" secondAttribute="bottom" constant="8" id="EOO-Sp-7wA"/>
+                                    <constraint firstAttribute="trailing" secondItem="P2e-Vb-mWV" secondAttribute="trailing" constant="8" id="JO9-mB-Vk0"/>
                                     <constraint firstAttribute="trailing" secondItem="84t-ap-3X3" secondAttribute="trailing" id="McR-0U-noM"/>
                                     <constraint firstItem="84t-ap-3X3" firstAttribute="leading" secondItem="jZD-YV-1Eh" secondAttribute="leading" id="yhn-Nm-Rls"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fe-1q-HGG">
-                                <rect key="frame" x="120" y="595" width="150" height="150"/>
+                                <rect key="frame" x="120" y="644" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="chs-sH-N9z"/>
                                     <constraint firstAttribute="height" constant="150" id="paQ-g1-lvb"/>
@@ -57,14 +68,16 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="camera" catalog="system" id="3ZD-d5-hqM"/>
+                    <navigationItem key="navigationItem" id="FOe-VT-HPC"/>
                     <connections>
                         <outlet property="previewView" destination="jZD-YV-1Eh" id="R3d-EA-8gN"/>
                         <outlet property="recodingButton" destination="9fe-1q-HGG" id="QBN-lk-K3X"/>
+                        <outlet property="settingButton" destination="P2e-Vb-mWV" id="fCm-M7-Mhg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="707.69230769230762" y="-1258.2938388625591"/>
+            <point key="canvasLocation" x="-65" y="-451"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="SdY-c5-ukD">
@@ -123,37 +136,19 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="lrD-bG-VVf" kind="relationship" relationship="rootViewController" id="a28-aG-dDS"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="aoj-LR-Gbv"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uoR-KA-4OB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-915" y="-307"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="az6-9Q-xe6">
-            <objects>
-                <tabBarController storyboardIdentifier="RootTabbarController" id="lrD-bG-VVf" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="jqa-Gg-ahH"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="E5f-A1-fSb">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="JZn-gK-Ma8"/>
-                        <segue destination="SM2-J1-sAF" kind="relationship" relationship="viewControllers" id="ZkG-qy-EFd"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qch-9z-rgy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-200" y="-307"/>
+            <point key="canvasLocation" x="-920" y="-451"/>
         </scene>
     </scenes>
     <resources>
         <image name="book" catalog="system" width="128" height="99"/>
         <image name="camera" catalog="system" width="128" height="93"/>
         <image name="folder.badge.gearshape" catalog="system" width="128" height="91"/>
+        <image name="gear.circle" catalog="system" width="128" height="123"/>
         <image name="record.circle" width="128" height="128"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

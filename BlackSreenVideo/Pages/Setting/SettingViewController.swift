@@ -29,6 +29,9 @@ class SettingViewController: BaseTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setupRowModel()
+        IAPCenter.shared.storeComplete = { [weak self] in
+            self?.setupRowModel()
+        }
     }
     
     func setupRowModel() {
