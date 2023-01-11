@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         print("在前景收到通知...")
-        completionHandler([.badge, .sound, .alert,.banner,.list])
+        completionHandler([.badge, .sound, .alert])
     }
 
 

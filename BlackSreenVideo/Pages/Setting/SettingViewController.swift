@@ -139,6 +139,10 @@ class SettingViewController: BaseTableViewController {
                                                        showSwitch: true,
                                                        switchON: UserInfoCenter.shared.loadValue(.lockVideoMaxTime) as? Bool ?? false,
                                                        switchAction: { [weak self] isON in
+            guard buyedIDs.contains(ProductID.maxTime.rawValue) else {
+                self?.showToast(message: "要購買才能使用喔")
+                return
+            }
             UserInfoCenter.shared.storeValue(.lockVideoMaxTime, data: isON)
             if isON, UserInfoCenter.shared.loadValue(.videoMaxTime) == nil {
                 self?.showVideoTimeAlert()
@@ -192,6 +196,10 @@ class SettingViewController: BaseTableViewController {
                                                          showSwitch: true,
                                                          switchON: UserInfoCenter.shared.loadValue(.notifiyWhenComplete) as? Bool ?? false,
                                                          switchAction: { isON in
+            guard buyedIDs.contains(ProductID.notice.rawValue) else {
+                self.showToast(message: "要購買才能使用喔")
+                return
+            }
             UserInfoCenter.shared.storeValue(.notifiyWhenComplete, data: isON)
         },
                                                          cellDidSelect: nil)
@@ -231,6 +239,10 @@ class SettingViewController: BaseTableViewController {
                                                    showSwitch: true,
                                                    switchON: (UserInfoCenter.shared.loadValue(.darkMode) as? Bool ?? false),
                                                    switchAction: { isON in
+            guard buyedIDs.contains(ProductID.darkMode.rawValue) else {
+                self.showToast(message: "要購買才能使用喔")
+                return
+            }
             UserInfoCenter.shared.storeValue(.darkMode, data: isON)
             
             let scene = UIApplication.shared.connectedScenes.first
@@ -278,6 +290,10 @@ class SettingViewController: BaseTableViewController {
                                                        showSwitch: true,
                                                        switchON: UserInfoCenter.shared.loadValue(.needPassword) as? Bool ?? false,
                                                        switchAction: { [weak self] isON in
+            guard buyedIDs.contains(ProductID.password.rawValue) else {
+                self?.showToast(message: "要購買才能使用喔")
+                return
+            }
             UserInfoCenter.shared.storeValue(.needPassword, data: isON)
             if UserInfoCenter.shared.loadValue(.password) == nil {
                 self?.showPasswordAlert(isON: isON, fromSwitch: true)
@@ -372,7 +388,7 @@ class SettingViewController: BaseTableViewController {
             self.rowModels.append(topup_100_aModel)
         }
         
-        //前往購買
+        //循環錄影
         let tier_100Model = SettingCellRowModel(title: "購買解鎖循環錄影",
                                                 imageName: "briefcase",
                                                 showSwitch: false,
@@ -391,6 +407,86 @@ class SettingViewController: BaseTableViewController {
         
         if !buyedIDs.contains(ProductID.tier_100.rawValue){
             self.rowModels.append(tier_100Model)
+        }
+        
+        //時間限制
+        let buymaxTimeModel = SettingCellRowModel(title: "購買解鎖時間限制",
+                                                imageName: "briefcase",
+                                                showSwitch: false,
+                                              cellDidSelect: { [weak self] _ in
+            self?.showAlert(title: "提示",
+                            message: "購買解鎖時間限制\nID:\(ProductID.maxTime.rawValue)",
+                            confirmTitle: "前往購買",
+                            cancelTitle: "取消",
+                            confirmAction: {
+                if let product = IAPCenter.shared.products.first(where: {$0.productIdentifier == ProductID.maxTime.rawValue}) {
+                    IAPCenter.shared.buy(product: product)
+                }
+            })
+            
+        })
+        
+        if !buyedIDs.contains(ProductID.maxTime.rawValue){
+            self.rowModels.append(buymaxTimeModel)
+        }
+        
+        //完成時通知
+        let buynoticeModel = SettingCellRowModel(title: "購買解鎖錄影完成時通知",
+                                                imageName: "briefcase",
+                                                showSwitch: false,
+                                              cellDidSelect: { [weak self] _ in
+            self?.showAlert(title: "提示",
+                            message: "購買解鎖錄影完成時通知\nID:\(ProductID.notice.rawValue)",
+                            confirmTitle: "前往購買",
+                            cancelTitle: "取消",
+                            confirmAction: {
+                if let product = IAPCenter.shared.products.first(where: {$0.productIdentifier == ProductID.notice.rawValue}) {
+                    IAPCenter.shared.buy(product: product)
+                }
+            })
+            
+        })
+        
+        if !buyedIDs.contains(ProductID.notice.rawValue){
+            self.rowModels.append(buynoticeModel)
+        }
+        
+        //深色模式
+        let buydarkModel = SettingCellRowModel(title: "購買切換深色模式",
+                                                imageName: "briefcase",
+                                                showSwitch: false,
+                                              cellDidSelect: { [weak self] _ in
+            self?.showAlert(title: "提示",
+                            message: "購買切換深色模式\nID:\(ProductID.darkMode.rawValue)",
+                            confirmTitle: "前往購買",
+                            cancelTitle: "取消",
+                            confirmAction: {
+                if let product = IAPCenter.shared.products.first(where: {$0.productIdentifier == ProductID.darkMode.rawValue}) {
+                    IAPCenter.shared.buy(product: product)
+                }
+            })
+            
+        })
+        
+        //開啟密碼
+        let buypasswordModel = SettingCellRowModel(title: "購買切換開啟密碼",
+                                                imageName: "briefcase",
+                                                showSwitch: false,
+                                              cellDidSelect: { [weak self] _ in
+            self?.showAlert(title: "提示",
+                            message: "購買切換深色模式\nID:\(ProductID.password.rawValue)",
+                            confirmTitle: "前往購買",
+                            cancelTitle: "取消",
+                            confirmAction: {
+                if let product = IAPCenter.shared.products.first(where: {$0.productIdentifier == ProductID.password.rawValue}) {
+                    IAPCenter.shared.buy(product: product)
+                }
+            })
+            
+        })
+        
+        if !buyedIDs.contains(ProductID.notice.rawValue){
+            self.rowModels.append(buypasswordModel)
         }
         
 

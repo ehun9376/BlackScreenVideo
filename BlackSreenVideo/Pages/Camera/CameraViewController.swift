@@ -151,6 +151,7 @@ class CameraViewController: BaseViewController {
     }
     
     func setupbookButton() {
+        self.bookButton.setTitle("", for: .normal)
         self.bookButton.addTarget(self, action: #selector(bookButtonButtonAction), for: .touchUpInside)
     }
     
@@ -160,6 +161,7 @@ class CameraViewController: BaseViewController {
     }
     
     func setupSettingButton() {
+        self.settingButton.setTitle("", for: .normal)
         self.settingButton.addTarget(self, action: #selector(settingButtonAction), for: .touchUpInside)
     }
     
@@ -550,6 +552,7 @@ class CameraViewController: BaseViewController {
         if #available(iOS 15.0, *) {
             self.recodingButton.configuration = nil
         }
+        self.recodingButton.setTitle("", for: .normal)
         self.recodingButton.addTarget(self, action:#selector(recordButtonAction(_:)) , for: .touchUpInside)
         self.checkRecordButton(isRecording: self.isRecoding)
     }

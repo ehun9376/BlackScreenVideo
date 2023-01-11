@@ -10,13 +10,29 @@ import StoreKit
 
 enum ProductID: String {
     
+    ///影片方向
     case topup_50_a = "com.activision.callofduty.shooter.topup_50_a"
     
+    ///解析度
     case tier_50 = "com.activision.callofduty.shooter.tier_50"
     
+    ///相機
     case topup_100_a = "com.activision.callofduty.shooter.topup_100_a"
     
+    ///循環錄影
     case tier_100 = "com.activision.callofduty.shooter.tier_100"
+    
+    ///時間限制
+    case maxTime = "a"
+    
+    ///錄影完成時通知
+    case notice = "b"
+    
+    ///深色模式
+    case darkMode = "c"
+    
+    ///開啟密碼
+    case password = "d"
 }
 
 class IAPCenter: NSObject {
