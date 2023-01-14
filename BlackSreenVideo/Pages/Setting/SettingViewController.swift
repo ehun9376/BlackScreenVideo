@@ -244,9 +244,7 @@ class SettingViewController: BaseTableViewController {
 //                return
 //            }
             UserInfoCenter.shared.storeValue(.darkMode, data: isON)
-            
-            let scene = UIApplication.shared.connectedScenes.first
-            
+                        
 //            if let delegate : SceneDelegate = (scene?.delegate as? SceneDelegate){
 //                delegate.window?.overrideUserInterfaceStyle = isON ? .dark : .light
 //                delegate.window?.makeKeyAndVisible()
@@ -410,84 +408,84 @@ class SettingViewController: BaseTableViewController {
         }
         
 //        //時間限制
-//        let buymaxTimeModel = SettingCellRowModel(title: "購買解鎖時間限制",
-//                                                imageName: "briefcase",
-//                                                showSwitch: false,
-//                                              cellDidSelect: { [weak self] _ in
+        let buymaxTimeModel = SettingCellRowModel(title: "購買解鎖時間限制",
+                                                imageName: "briefcase",
+                                                showSwitch: false,
+                                              cellDidSelect: { [weak self] _ in
 //            self?.showAlert(title: "提示",
 //                            message: "購買解鎖時間限制\nID:\(ProductID.maxTime.rawValue)",
 //                            confirmTitle: "前往購買",
 //                            cancelTitle: "取消",
 //                            confirmAction: {
-//                if let product = IAPCenter.shared.products.first(where: {$0.productIdentifier == ProductID.maxTime.rawValue}) {
-//                    IAPCenter.shared.buy(product: product)
-//                }
+                if let product = IAPCenter.shared.products.first(where: {$0.productIdentifier == ProductID.maxTime.rawValue}) {
+                    IAPCenter.shared.buy(product: product)
+                }
 //            })
-//
-//        })
-//
-//        if !buyedIDs.contains(ProductID.maxTime.rawValue){
-//            self.rowModels.append(buymaxTimeModel)
-//        }
+
+        })
+
+        if !buyedIDs.contains(ProductID.maxTime.rawValue){
+            self.rowModels.append(buymaxTimeModel)
+        }
         
         //完成時通知
-//        let buynoticeModel = SettingCellRowModel(title: "購買解鎖錄影完成時通知",
-//                                                imageName: "briefcase",
-//                                                showSwitch: false,
-//                                              cellDidSelect: { [weak self] _ in
+        let buynoticeModel = SettingCellRowModel(title: "購買解鎖錄影完成時通知",
+                                                imageName: "briefcase",
+                                                showSwitch: false,
+                                              cellDidSelect: { [weak self] _ in
 //            self?.showAlert(title: "提示",
 //                            message: "購買解鎖錄影完成時通知\nID:\(ProductID.notice.rawValue)",
 //                            confirmTitle: "前往購買",
 //                            cancelTitle: "取消",
 //                            confirmAction: {
-//                if let product = IAPCenter.shared.products.first(where: {$0.productIdentifier == ProductID.notice.rawValue}) {
-//                    IAPCenter.shared.buy(product: product)
-//                }
+                if let product = IAPCenter.shared.products.first(where: {$0.productIdentifier == ProductID.notice.rawValue}) {
+                    IAPCenter.shared.buy(product: product)
+                }
 //            })
-//
-//        })
-//
-//        if !buyedIDs.contains(ProductID.notice.rawValue){
-//            self.rowModels.append(buynoticeModel)
-//        }
-//
+
+        })
+
+        if !buyedIDs.contains(ProductID.notice.rawValue){
+            self.rowModels.append(buynoticeModel)
+        }
+
 //        //深色模式
-//        let buydarkModel = SettingCellRowModel(title: "購買切換深色模式",
-//                                                imageName: "briefcase",
-//                                                showSwitch: false,
-//                                              cellDidSelect: { [weak self] _ in
+        let buydarkModel = SettingCellRowModel(title: "購買切換深色模式",
+                                                imageName: "briefcase",
+                                                showSwitch: false,
+                                              cellDidSelect: { [weak self] _ in
 //            self?.showAlert(title: "提示",
 //                            message: "購買切換深色模式\nID:\(ProductID.darkMode.rawValue)",
 //                            confirmTitle: "前往購買",
 //                            cancelTitle: "取消",
 //                            confirmAction: {
-//                if let product = IAPCenter.shared.products.first(where: {$0.productIdentifier == ProductID.darkMode.rawValue}) {
-//                    IAPCenter.shared.buy(product: product)
-//                }
+                if let product = IAPCenter.shared.products.first(where: {$0.productIdentifier == ProductID.darkMode.rawValue}) {
+                    IAPCenter.shared.buy(product: product)
+                }
 //            })
-//
-//        })
+
+        })
 //
 //        //開啟密碼
-//        let buypasswordModel = SettingCellRowModel(title: "購買切換開啟密碼",
-//                                                imageName: "briefcase",
-//                                                showSwitch: false,
-//                                              cellDidSelect: { [weak self] _ in
+        let buypasswordModel = SettingCellRowModel(title: "購買切換開啟密碼",
+                                                imageName: "briefcase",
+                                                showSwitch: false,
+                                              cellDidSelect: { [weak self] _ in
 //            self?.showAlert(title: "提示",
 //                            message: "購買切換深色模式\nID:\(ProductID.password.rawValue)",
 //                            confirmTitle: "前往購買",
 //                            cancelTitle: "取消",
 //                            confirmAction: {
-//                if let product = IAPCenter.shared.products.first(where: {$0.productIdentifier == ProductID.password.rawValue}) {
-//                    IAPCenter.shared.buy(product: product)
-//                }
+                if let product = IAPCenter.shared.products.first(where: {$0.productIdentifier == ProductID.password.rawValue}) {
+                    IAPCenter.shared.buy(product: product)
+                }
 //            })
-//
-//        })
-//
-//        if !buyedIDs.contains(ProductID.notice.rawValue){
-//            self.rowModels.append(buypasswordModel)
-//        }
+
+        })
+
+        if !buyedIDs.contains(ProductID.notice.rawValue){
+            self.rowModels.append(buypasswordModel)
+        }
         
 
         //恢復購買紀錄

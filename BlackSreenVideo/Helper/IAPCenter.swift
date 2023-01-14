@@ -77,12 +77,12 @@ class IAPCenter: NSObject {
             let scenes = UIApplication.shared.connectedScenes
             let windowScene = scenes.first as? UIWindowScene
             let window = windowScene?.windows.first
-            if let controller = window?.rootViewController as? BaseViewController {
-                controller.showSingleAlert(title: "提示",
-                                           message: "你的帳號無法購買",
-                                           confirmTitle: "OK",
-                                           confirmAction: nil)
-            }
+//            if let controller = window?.rootViewController as? BaseViewController {
+//                controller.showSingleAlert(title: "提示",
+//                                           message: "你的帳號無法購買",
+//                                           confirmTitle: "OK",
+//                                           confirmAction: nil)
+//            }
         }
     }
     

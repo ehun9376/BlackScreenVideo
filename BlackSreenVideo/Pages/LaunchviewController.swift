@@ -29,7 +29,7 @@ class LaunchViewController: BaseViewController {
             self.pushToTabbarController()
             return
         }
-        
+
         if let needPassword = UserInfoCenter.shared.loadValue(.needPassword) as? Bool, needPassword {
             self.showInputDialog(title: "提示",
                                  subtitle: "請輸入開啟密碼",
@@ -44,19 +44,19 @@ class LaunchViewController: BaseViewController {
         } else {
             self.pushToTabbarController()
         }
-  
+
     }
     
     func pushToTabbarController() {
         
         IAPCenter.shared.requestComplete = { [weak self] debug in
-            if debug.count != 0{
-                self?.showSingleAlert(title: "取得產品資料錯誤", message: debug.joined(separator: "\n"), confirmTitle: "OK", confirmAction: {
-                    self?.toVC()
-                })
-            } else {
+//            if debug.count != 0{
+//                self?.showSingleAlert(title: "取得產品資料錯誤", message: debug.joined(separator: "\n"), confirmTitle: "OK", confirmAction: {
+//                    self?.toVC()
+//                })
+//            } else {
                 self?.toVC()
-            }
+//            }
 
         }
         

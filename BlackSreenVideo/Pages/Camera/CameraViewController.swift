@@ -161,7 +161,7 @@ class CameraViewController: BaseViewController {
     }
     
     func setupSettingButton() {
-        self.settingButton.setTitle("", for: .normal)
+        self.settingButton.setTitle("設定", for: .normal)
         self.settingButton.addTarget(self, action: #selector(settingButtonAction), for: .touchUpInside)
     }
     
@@ -215,10 +215,11 @@ class CameraViewController: BaseViewController {
                                cancelAction: nil)
                 
             case .configurationFailed:
-                self.showSingleAlert(title: "偵測到錯誤",
-                                     message: "請重新安裝或諮詢客服",
-                                     confirmTitle: "確定",
-                                     confirmAction: nil)
+                break
+//                self.showSingleAlert(title: "偵測到錯誤",
+//                                     message: "請重新安裝或諮詢客服",
+//                                     confirmTitle: "確定",
+//                                     confirmAction: nil)
             }
         }
         
@@ -449,12 +450,13 @@ class CameraViewController: BaseViewController {
     func checkRecordingAlert(turnOn: Bool) {
         guard VersionCheckCenter.shared.isOnline else { return }
         if turnOn && !self.isRepete {
-            self.showSingleAlert(title: "已開啟錄影",
-                                 message: "三隻手指點擊三下可以開關黑幕",
-                                 confirmTitle: "確認",
-                                 confirmAction: { [weak self] in
-                self?.hideSrceen.toggle()
-            })
+//            self.showSingleAlert(title: "已開啟錄影",
+//                                 message: "三隻手指點擊三下可以開關黑幕",
+//                                 confirmTitle: "確認",
+//                                 confirmAction: { [weak self] in
+//                self?.hideSrceen.toggle()
+//            })
+           
         }
     }
     
