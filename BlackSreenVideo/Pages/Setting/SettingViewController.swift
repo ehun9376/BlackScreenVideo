@@ -139,10 +139,10 @@ class SettingViewController: BaseTableViewController {
                                                        showSwitch: true,
                                                        switchON: UserInfoCenter.shared.loadValue(.lockVideoMaxTime) as? Bool ?? false,
                                                        switchAction: { [weak self] isON in
-//            guard buyedIDs.contains(ProductID.maxTime.rawValue) else {
-//                self?.showToast(message: "要購買才能使用喔")
-//                return
-//            }
+            guard buyedIDs.contains(ProductID.maxTime.rawValue) else {
+                self?.showToast(message: "要購買才能使用喔")
+                return
+            }
             UserInfoCenter.shared.storeValue(.lockVideoMaxTime, data: isON)
             if isON, UserInfoCenter.shared.loadValue(.videoMaxTime) == nil {
                 self?.showVideoTimeAlert()
@@ -196,10 +196,10 @@ class SettingViewController: BaseTableViewController {
                                                          showSwitch: true,
                                                          switchON: UserInfoCenter.shared.loadValue(.notifiyWhenComplete) as? Bool ?? false,
                                                          switchAction: { isON in
-//            guard buyedIDs.contains(ProductID.notice.rawValue) else {
-//                self.showToast(message: "要購買才能使用喔")
-//                return
-//            }
+            guard buyedIDs.contains(ProductID.notice.rawValue) else {
+                self.showToast(message: "要購買才能使用喔")
+                return
+            }
             UserInfoCenter.shared.storeValue(.notifiyWhenComplete, data: isON)
         },
                                                          cellDidSelect: nil)
@@ -239,10 +239,10 @@ class SettingViewController: BaseTableViewController {
                                                    showSwitch: true,
                                                    switchON: (UserInfoCenter.shared.loadValue(.darkMode) as? Bool ?? false),
                                                    switchAction: { isON in
-//            guard buyedIDs.contains(ProductID.darkMode.rawValue) else {
-//                self.showToast(message: "要購買才能使用喔")
-//                return
-//            }
+            guard buyedIDs.contains(ProductID.darkMode.rawValue) else {
+                self.showToast(message: "要購買才能使用喔")
+                return
+            }
             UserInfoCenter.shared.storeValue(.darkMode, data: isON)
                         
 //            if let delegate : SceneDelegate = (scene?.delegate as? SceneDelegate){
@@ -465,6 +465,9 @@ class SettingViewController: BaseTableViewController {
 //            })
 
         })
+        if !buyedIDs.contains(ProductID.darkMode.rawValue){
+            self.rowModels.append(buydarkModel)
+        }
 //
 //        //開啟密碼
         let buypasswordModel = SettingCellRowModel(title: "購買切換開啟密碼",
@@ -483,9 +486,9 @@ class SettingViewController: BaseTableViewController {
 
         })
 
-        if !buyedIDs.contains(ProductID.notice.rawValue){
-            self.rowModels.append(buypasswordModel)
-        }
+//        if !buyedIDs.contains(ProductID.notice.rawValue){
+//            self.rowModels.append(buypasswordModel)
+//        }
         
 
         //恢復購買紀錄
