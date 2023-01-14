@@ -19,7 +19,7 @@ class LaunchViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
             DispatchQueue.main.async {
-                self.checkPassword()
+                self.pushToTabbarController()
             }
     }
     
@@ -68,13 +68,18 @@ class LaunchViewController: BaseViewController {
     
     func toVC() {
         DispatchQueue.main.async {
-            let scene = UIApplication.shared.connectedScenes.first
-            
-            if let delegate : SceneDelegate = (scene?.delegate as? SceneDelegate),
-               let initialViewController = self.storyboard?.instantiateViewController(withIdentifier: "NavigationVC"){
-                delegate.window?.rootViewController = initialViewController
-                delegate.window?.makeKeyAndVisible()
+//            let scene = UIApplication.shared.connectedScenes.first
+//
+//            if let delegate : SceneDelegate = (scene?.delegate as? SceneDelegate),
+//               let initialViewController = self.storyboard?.instantiateViewController(withIdentifier: "NavigationVC"){
+//                delegate.window?.rootViewController = initialViewController
+//                delegate.window?.makeKeyAndVisible()
+//            }
+            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "NavigationVC") {
+                UIApplication.shared.windows.first?.rootViewController = vc
+                UIApplication.shared.windows.first?.makeKeyAndVisible()
             }
+
         }
     }
     

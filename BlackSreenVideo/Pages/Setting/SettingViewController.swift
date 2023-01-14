@@ -247,10 +247,10 @@ class SettingViewController: BaseTableViewController {
             
             let scene = UIApplication.shared.connectedScenes.first
             
-            if let delegate : SceneDelegate = (scene?.delegate as? SceneDelegate){
-                delegate.window?.overrideUserInterfaceStyle = isON ? .dark : .light
-                delegate.window?.makeKeyAndVisible()
-            }
+//            if let delegate : SceneDelegate = (scene?.delegate as? SceneDelegate){
+//                delegate.window?.overrideUserInterfaceStyle = isON ? .dark : .light
+//                delegate.window?.makeKeyAndVisible()
+//            }
 
         })
         
@@ -330,15 +330,15 @@ class SettingViewController: BaseTableViewController {
                                                 imageName: "briefcase",
                                                 showSwitch: false,
                                               cellDidSelect: { [weak self] _ in
-            self?.showAlert(title: "提示",
-                            message: "購買解鎖改變影片方向\n ID: \(ProductID.topup_50_a.rawValue)",
-                            confirmTitle: "前往購買",
-                            cancelTitle: "取消",
-                            confirmAction: {
+//            self?.showAlert(title: "提示",
+//                            message: "購買解鎖改變影片方向\n ID: \(ProductID.topup_50_a.rawValue)",
+//                            confirmTitle: "前往購買",
+//                            cancelTitle: "取消",
+//                            confirmAction: {
                 if let product = IAPCenter.shared.products.first(where: {$0.productIdentifier == ProductID.topup_50_a.rawValue}) {
                     IAPCenter.shared.buy(product: product)
                 }
-            })
+//            })
             
         })
         
@@ -351,15 +351,15 @@ class SettingViewController: BaseTableViewController {
                                                 imageName: "briefcase",
                                                 showSwitch: false,
                                               cellDidSelect: { [weak self] _ in
-            self?.showAlert(title: "提示",
-                            message: "購買解鎖改變解析度\n ID: \(ProductID.tier_50.rawValue)",
-                            confirmTitle: "前往購買",
-                            cancelTitle: "取消",
-                            confirmAction: {
+//            self?.showAlert(title: "提示",
+//                            message: "購買解鎖改變解析度\n ID: \(ProductID.tier_50.rawValue)",
+//                            confirmTitle: "前往購買",
+//                            cancelTitle: "取消",
+//                            confirmAction: {
                 if let product = IAPCenter.shared.products.first(where: {$0.productIdentifier == ProductID.tier_50.rawValue}) {
                     IAPCenter.shared.buy(product: product)
                 }
-            })
+//            })
             
         })
         
@@ -372,15 +372,15 @@ class SettingViewController: BaseTableViewController {
                                                 imageName: "briefcase",
                                                 showSwitch: false,
                                               cellDidSelect: { [weak self] _ in
-            self?.showAlert(title: "提示",
-                            message: "購買解鎖改變鏡頭位置\nID:\(ProductID.topup_100_a.rawValue)",
-                            confirmTitle: "前往購買",
-                            cancelTitle: "取消",
-                            confirmAction: {
+//            self?.showAlert(title: "提示",
+//                            message: "購買解鎖改變鏡頭位置\nID:\(ProductID.topup_100_a.rawValue)",
+//                            confirmTitle: "前往購買",
+//                            cancelTitle: "取消",
+//                            confirmAction: {
                 if let product = IAPCenter.shared.products.first(where: {$0.productIdentifier == ProductID.topup_100_a.rawValue}) {
                     IAPCenter.shared.buy(product: product)
                 }
-            })
+//            })
             
         })
         
@@ -393,15 +393,15 @@ class SettingViewController: BaseTableViewController {
                                                 imageName: "briefcase",
                                                 showSwitch: false,
                                               cellDidSelect: { [weak self] _ in
-            self?.showAlert(title: "提示",
-                            message: "購買解鎖循環錄影\nID:\(ProductID.tier_100.rawValue)",
-                            confirmTitle: "前往購買",
-                            cancelTitle: "取消",
-                            confirmAction: {
+//            self?.showAlert(title: "提示",
+//                            message: "購買解鎖循環錄影\nID:\(ProductID.tier_100.rawValue)",
+//                            confirmTitle: "前往購買",
+//                            cancelTitle: "取消",
+//                            confirmAction: {
                 if let product = IAPCenter.shared.products.first(where: {$0.productIdentifier == ProductID.tier_100.rawValue}) {
                     IAPCenter.shared.buy(product: product)
                 }
-            })
+//            })
             
         })
         

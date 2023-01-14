@@ -161,12 +161,12 @@ class UserInfoCenter: NSObject {
         }
         
         self.startCheck()
-
-        let scene = UIApplication.shared.connectedScenes.first
-        
-        if let delegate : SceneDelegate = (scene?.delegate as? SceneDelegate){
-            delegate.window?.overrideUserInterfaceStyle = (UserInfoCenter.shared.loadValue(.darkMode) as? Bool ?? false) ? .dark : .light
-            delegate.window?.makeKeyAndVisible()
-        }
+//
+//        let scene = UIApplication.shared.connectedScenes.first
+//
+//        if let delegate : SceneDelegate = (scene?.delegate as? SceneDelegate){
+//            delegate.window?.overrideUserInterfaceStyle = (UserInfoCenter.shared.loadValue(.darkMode) as? Bool ?? false) ? .dark : .light
+//            delegate.window?.makeKeyAndVisible()
+//        }
     }
 }
