@@ -32,6 +32,9 @@
 		36F61762292F5B1A00CA3C7F /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F61761292F5B1A00CA3C7F /* PreviewView.swift */; };
 		36F6176529304BEA00CA3C7F /* PreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F6176429304BEA00CA3C7F /* PreviewCell.swift */; };
 		36F6176729304CEF00CA3C7F /* PreviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F6176629304CEF00CA3C7F /* PreviewCell.xib */; };
+		9407B31B2A474ACA0030959D /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9407B31A2A474ACA0030959D /* APIService.swift */; };
+		9407B31D2A474AE70030959D /* IAPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9407B31C2A474AE70030959D /* IAPModel.swift */; };
+		9407B3202A474EC60030959D /* RecordingTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9407B31F2A474EC60030959D /* RecordingTime.swift */; };
 		94627F93293A2AF9007DBBBA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94627F92293A2AF9007DBBBA /* StoreKit.framework */; };
 		94627F95293A2D16007DBBBA /* IAPCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94627F94293A2D16007DBBBA /* IAPCenter.swift */; };
 		94801DBA292E645B00B018E6 /* StackBottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94801DB9292E645B00B018E6 /* StackBottomBarView.swift */; };
@@ -99,6 +102,9 @@
 		36F61761292F5B1A00CA3C7F /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		36F6176429304BEA00CA3C7F /* PreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCell.swift; sourceTree = "<group>"; };
 		36F6176629304CEF00CA3C7F /* PreviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreviewCell.xib; sourceTree = "<group>"; };
+		9407B31A2A474ACA0030959D /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIService.swift; path = ../../../AnnaDJ/AnnaDJ/APIService.swift; sourceTree = "<group>"; };
+		9407B31C2A474AE70030959D /* IAPModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IAPModel.swift; path = ../../../AnnaDJ/AnnaDJ/Helper/IAPModel.swift; sourceTree = "<group>"; };
+		9407B31F2A474EC60030959D /* RecordingTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingTime.swift; sourceTree = "<group>"; };
 		94627F92293A2AF9007DBBBA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		94627F94293A2D16007DBBBA /* IAPCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPCenter.swift; sourceTree = "<group>"; };
 		947B64A8293E237E0058813E /* BlackSreenVideoDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BlackSreenVideoDebug.entitlements; sourceTree = "<group>"; };
@@ -244,6 +250,8 @@
 		36F6174C292E24D200CA3C7F /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				9407B31C2A474AE70030959D /* IAPModel.swift */,
+				9407B31A2A474ACA0030959D /* APIService.swift */,
 				94627F94293A2D16007DBBBA /* IAPCenter.swift */,
 				9492AFD4292E46BC00C4AA13 /* UserInfoCenter.swift */,
 				36F61748292E243000CA3C7F /* KeyboardHelper.swift */,
@@ -251,6 +259,7 @@
 				3608EF1F293ECEBF0079C4A3 /* VersionCheckCenter.swift */,
 				365FED382956AEC000A88A0D /* JBJson.swift */,
 				36F61758292EF6E700CA3C7F /* CodeModel */,
+				9407B31F2A474EC60030959D /* RecordingTime.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -507,6 +516,7 @@
 				94C26A142931B3DF001A3C20 /* CellProtocol.swift in Sources */,
 				9492AFDE292E61A500C4AA13 /* SelectViewController.swift in Sources */,
 				36F61762292F5B1A00CA3C7F /* PreviewView.swift in Sources */,
+				9407B31B2A474ACA0030959D /* APIService.swift in Sources */,
 				36F61749292E243000CA3C7F /* KeyboardHelper.swift in Sources */,
 				94801DBA292E645B00B018E6 /* StackBottomBarView.swift in Sources */,
 				36F6176529304BEA00CA3C7F /* PreviewCell.swift in Sources */,
@@ -516,6 +526,7 @@
 				36F61745292E240300CA3C7F /* BaseTableViewController.swift in Sources */,
 				9492AFDC292E506800C4AA13 /* LaunchviewController.swift in Sources */,
 				36120D522927074000B0A5E2 /* CameraViewController.swift in Sources */,
+				9407B3202A474EC60030959D /* RecordingTime.swift in Sources */,
 				9492AFD3292E44DF00C4AA13 /* SettingViewController.swift in Sources */,
 				9492AFD0292E421B00C4AA13 /* Extension.swift in Sources */,
 				36F61752292E259400CA3C7F /* SettingCell.swift in Sources */,
@@ -526,6 +537,7 @@
 				94C26A192931B6E8001A3C20 /* CollectionImageCell.swift in Sources */,
 				36F6174B292E246100CA3C7F /* BaseViewController.swift in Sources */,
 				36F61750292E251F00CA3C7F /* LibraryViewController.swift in Sources */,
+				9407B31D2A474AE70030959D /* IAPModel.swift in Sources */,
 				36F6175E292F564200CA3C7F /* VideoView.swift in Sources */,
 				94801DBC292E649000B018E6 /* SwiftButton.swift in Sources */,
 				3608EF20293ECEBF0079C4A3 /* VersionCheckCenter.swift in Sources */,
@@ -714,7 +726,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = 89P6MA394F;
+				DEVELOPMENT_TEAM = NZT54R9366;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BlackSreenVideo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "安娜錄影";
@@ -733,7 +745,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.3;
-				PRODUCT_BUNDLE_IDENTIFIER = tw.com.anna.recording;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.com.anna.recording1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -754,7 +766,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = 89P6MA394F;
+				DEVELOPMENT_TEAM = NZT54R9366;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BlackSreenVideo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "安娜錄影";
@@ -773,7 +785,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.3;
-				PRODUCT_BUNDLE_IDENTIFIER = tw.com.anna.recording;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.com.anna.recording1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

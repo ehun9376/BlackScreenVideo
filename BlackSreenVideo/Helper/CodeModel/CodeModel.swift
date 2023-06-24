@@ -7,7 +7,13 @@
 
 import Foundation
 
-class CodeModel: Equatable {
+class CodeModel: Equatable, JsonModel {
+    required init(json: JBJson) {
+        self.text = json["title"].stringValue
+        self.id = json["id"].stringValue
+        self.number = json["number"].intValue
+    }
+    
     public static func == (lhs: CodeModel, rhs: CodeModel) -> Bool {
         return lhs.text == rhs.text
         && lhs.text == rhs.text
@@ -15,11 +21,14 @@ class CodeModel: Equatable {
     
     var text: String?
     
-    var number: Int?
+    var number: Int = 0
     
-    init(text: String? = nil, number: Int? = nil) {
+    var id: String = ""
+    
+    init(text: String? = nil, number: Int = 0, id: String = "") {
         self.text = text
         self.number = number
+        self.id = id
     }
     
     //鏡頭位置

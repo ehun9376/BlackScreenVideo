@@ -61,6 +61,8 @@ class UserInfoCenter: NSObject {
         ///DarkMode
         case darkMode = "darkMode"
         
+        //錄影次數
+        case recordTimes = "recordTimes"
         
     }
     

@@ -6,6 +6,9 @@
 //
 
 import Foundation
+public protocol JsonModel {
+    init(json: JBJson)
+}
 
 public enum JBJsonError {
     case invalidJSON

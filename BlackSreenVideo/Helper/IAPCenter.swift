@@ -8,32 +8,7 @@
 import Foundation
 import StoreKit
 
-enum ProductID: String {
-    
-    ///影片方向
-    case topup_50_a = "11111"
-    
-    ///解析度
-    case tier_50 = "22222"
-    
-    ///相機
-    case topup_100_a = "33333"
-    
-    ///循環錄影
-    case tier_100 = "44444"
-    
-    ///時間限制
-    case maxTime = "10482"
-    
-    ///錄影完成時通知
-    case notice = "10483"
-    
-    ///深色模式
-    case darkMode = "60027"
-    
-    ///開啟密碼
-    case password = "d"
-}
+
 
 class IAPCenter: NSObject {
     
@@ -47,46 +22,29 @@ class IAPCenter: NSObject {
     
     var storeComplete: (()->())?
     
- 
-    
-    //總共有多少購買項目
-    func getProductIDs() -> [String] {
-        
-        return [
-            ProductID.topup_50_a.rawValue,
-            ProductID.tier_50.rawValue,
-            ProductID.topup_100_a.rawValue,
-            ProductID.tier_100.rawValue,
-            ProductID.maxTime.rawValue,
-            ProductID.notice.rawValue,
-            ProductID.darkMode.rawValue
-        ]
-    }
+    var buyTypes: [CodeModel] = []
     
     func getProducts() {
-        SKPaymentQueue.default().restoreCompletedTransactions()
-        let productIds = getProductIDs()
-        let productIdsSet = Set(productIds)
-        productRequest = SKProductsRequest(productIdentifiers: productIdsSet)
-        productRequest?.delegate = self
-        productRequest?.start()
+        //TODO: 透過後台把type變成活動的
+        APIService.shared.requestWithParam(urlText: .TinaDJTypeURL,
+                                           param: [:],
+                                           modelType: IAPModel.self) { jsonModel, error in
+
+           
+            self.buyTypes = jsonModel?.canBuyType ?? []
+             
+            let productIds = self.buyTypes.map { $0.id }
+            
+            let productIdsSet = Set(productIds)
+            self.productRequest = SKProductsRequest(productIdentifiers: productIdsSet)
+            self.productRequest?.delegate = self
+            self.productRequest?.start()
+        }
     }
     
     func buy(product: SKProduct) {
-        if SKPaymentQueue.canMakePayments() {
-            let payment = SKPayment(product: product)
-            SKPaymentQueue.default().add(payment)
-        } else {
-            let scenes = UIApplication.shared.connectedScenes
-            let windowScene = scenes.first as? UIWindowScene
-            let window = windowScene?.windows.first
-//            if let controller = window?.rootViewController as? BaseViewController {
-//                controller.showSingleAlert(title: "提示",
-//                                           message: "你的帳號無法購買",
-//                                           confirmTitle: "OK",
-//                                           confirmAction: nil)
-//            }
-        }
+        let payment = SKPayment(product: product)
+        SKPaymentQueue.default().add(payment)
     }
     
     
@@ -133,39 +91,28 @@ extension IAPCenter: SKPaymentTransactionObserver {
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         
-        var iapedIDs = UserInfoCenter.shared.loadValue(.iaped) as? [String] ?? []
-
-        transactions.forEach {
-
-            print($0.payment.productIdentifier, $0.transactionState.rawValue)
-            switch $0.transactionState {
+        for transaction in transactions {
+            print(transaction.payment.productIdentifier, transaction.transactionState.rawValue)
+            switch transaction.transactionState {
             case .purchased:
-              SKPaymentQueue.default().finishTransaction($0)
-            case .failed:
-                print($0.error ?? "")
-                if ($0.error as? SKError)?.code != .paymentCancelled {
-                    // show error
+              SKPaymentQueue.default().finishTransaction(transaction)
+                
+                if let first = self.buyTypes.first(where:{transaction.payment.productIdentifier == $0.id}) {
+                    RecordingTimeCenter.shard.appenTime(first.number)
                 }
-              SKPaymentQueue.default().finishTransaction($0)
+                
+            case .failed:
+                print(transaction.error ?? "")
+              SKPaymentQueue.default().finishTransaction(transaction)
             case .restored:
-              SKPaymentQueue.default().finishTransaction($0)
+              SKPaymentQueue.default().finishTransaction(transaction)
             case .purchasing, .deferred:
                 break
             @unknown default:
                 break
             }
-            
-            if $0.transactionState == .purchased ||  $0.transactionState == .restored {
-                
-                if !iapedIDs.contains($0.payment.productIdentifier) {
-                    iapedIDs.append($0.payment.productIdentifier)
-                }
-                
-            }
-            
         }
-        UserInfoCenter.shared.storeValue(.iaped, data: iapedIDs)
-        self.storeComplete?()
+
     }
     
 }

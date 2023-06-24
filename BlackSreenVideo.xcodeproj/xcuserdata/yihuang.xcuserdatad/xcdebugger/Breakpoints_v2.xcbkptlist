@@ -20,5 +20,101 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A4026140-E91B-4E72-AF6C-39F4A0131647"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BlackSreenVideo/Helper/IAPCenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "getProducts()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A4026140-E91B-4E72-AF6C-39F4A0131647 - d53a9b02a37e6368"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead&gt; of closure #1 (Swift.Optional&lt;BlackSreenVideo.IAPModel&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BlackSreenVideo.IAPCenter.getProducts() -&gt; ()"
+                  moduleName = "BlackSreenVideo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yihuang/Desktop/BlackScreenVideo/BlackSreenVideo/Helper/IAPCenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "A4026140-E91B-4E72-AF6C-39F4A0131647 - d53a9b02a37e6368"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead&gt; of closure #1 (Swift.Optional&lt;BlackSreenVideo.IAPModel&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BlackSreenVideo.IAPCenter.getProducts() -&gt; ()"
+                  moduleName = "BlackSreenVideo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yihuang/Desktop/BlackScreenVideo/BlackSreenVideo/Helper/IAPCenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5B5D00F7-D6B9-4921-9514-9E028B509AD2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../AnnaDJ/AnnaDJ/Helper/IAPModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "init(json:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5B5D00F7-D6B9-4921-9514-9E028B509AD2 - 3e84e980fd8e4656"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BlackSreenVideo.IAPModel.init(json: BlackSreenVideo.JBJson) -&gt; BlackSreenVideo.IAPModel"
+                  moduleName = "BlackSreenVideo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yihuang/Desktop/AnnaDJ/AnnaDJ/Helper/IAPModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "5B5D00F7-D6B9-4921-9514-9E028B509AD2 - 3e84e980fd8e4656"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BlackSreenVideo.IAPModel.init(json: BlackSreenVideo.JBJson) -&gt; BlackSreenVideo.IAPModel"
+                  moduleName = "BlackSreenVideo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yihuang/Desktop/AnnaDJ/AnnaDJ/Helper/IAPModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "604">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

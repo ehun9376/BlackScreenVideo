@@ -9,8 +9,13 @@ import UIKit
 import AVFoundation
 import Photos
 
-class CameraViewController: BaseViewController {
+class CameraViewController: BaseViewController, RecordingTimeDelegate {
     
+    func timeDidChange(time: Int) {
+        timeLabel.text = "剩餘\(time)次"
+    }
+    
+    @IBOutlet weak var timeLabel: UILabel!
     
     @IBOutlet weak var previewView: PreviewView!
     
@@ -100,6 +105,10 @@ class CameraViewController: BaseViewController {
         self.setupSettingButton()
         self.setupbookButton()
         self.view.backgroundColor = .black
+        let times = RecordingTimeCenter.shard.getTime()
+        timeLabel.font = .systemFont(ofSize: 28)
+        timeLabel.text = "剩餘\(times)次"
+        RecordingTimeCenter.shard.delegate = self
         
     }
     
@@ -583,6 +592,10 @@ class CameraViewController: BaseViewController {
     }
     
     @objc func recordButtonAction(_ sender: UIButton) {
+        guard RecordingTimeCenter.shard.getTime() > 0 else {
+            self.showToast(message: "用完使用次數囉，請設定頁購買")
+            return
+        }
         recordAction()
     }
     
@@ -591,6 +604,10 @@ class CameraViewController: BaseViewController {
         
         
         self.isRecoding.toggle()
+        
+        if self.isRecoding {
+            
+        }
         
     }
     
