@@ -9,11 +9,8 @@ import UIKit
 import AVFoundation
 import Photos
 
-class CameraViewController: BaseViewController, RecordingTimeDelegate {
-    
-    func timeDidChange(time: Int) {
-        timeLabel.text = "剩餘\(time)次"
-    }
+class CameraViewController: BaseViewController {
+
     
     @IBOutlet weak var timeLabel: UILabel!
     
@@ -105,10 +102,7 @@ class CameraViewController: BaseViewController, RecordingTimeDelegate {
         self.setupSettingButton()
         self.setupbookButton()
         self.view.backgroundColor = .black
-        let times = RecordingTimeCenter.shard.getTime()
         timeLabel.font = .systemFont(ofSize: 28)
-        timeLabel.text = "剩餘\(times)次"
-        RecordingTimeCenter.shard.delegate = self
         
     }
     
@@ -120,7 +114,8 @@ class CameraViewController: BaseViewController, RecordingTimeDelegate {
         self.prepareOutput()
         self.showAuthorizationAlert()
         self.defaultSetupTimeLabel()
-        
+        let times = RecordingTimeCenter.shard.getTime()
+        timeLabel.text = "剩餘\(times)次"
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -592,21 +587,21 @@ class CameraViewController: BaseViewController, RecordingTimeDelegate {
     }
     
     @objc func recordButtonAction(_ sender: UIButton) {
-        guard RecordingTimeCenter.shard.getTime() > 0 else {
-            self.showToast(message: "用完使用次數囉，請設定頁購買")
-            return
-        }
+
         recordAction()
     }
     
     func recordAction() {
         self.isRepete = false
         
-        
-        self.isRecoding.toggle()
-        
-        if self.isRecoding {
+        if !self.isRecoding {
+            RecordingTimeCenter.shard.useOneTime()
+            let times = RecordingTimeCenter.shard.getTime()
+            timeLabel.text = "剩餘\(times)次"
+            self.isRecoding = true
             
+        } else {
+            self.isRecoding = false
         }
         
     }
