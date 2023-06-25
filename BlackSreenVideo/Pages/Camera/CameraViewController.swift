@@ -595,6 +595,11 @@ class CameraViewController: BaseViewController {
         self.isRepete = false
         
         if !self.isRecoding {
+            guard RecordingTimeCenter.shard.getTime() > 0 else {
+                self.showToast(message: "沒有額度囉，請至設定頁購買")
+                return
+            }
+            
             RecordingTimeCenter.shard.useOneTime()
             let times = RecordingTimeCenter.shard.getTime()
             timeLabel.text = "剩餘\(times)次"
