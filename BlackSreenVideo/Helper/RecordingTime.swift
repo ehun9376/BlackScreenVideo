@@ -21,6 +21,12 @@ class RecordingTimeCenter: NSObject {
         return time
     }
     
+    func first() {
+        if  UserInfoCenter.shared.loadValue(.recordTimes) == nil {
+            UserInfoCenter.shared.storeValue(.recordTimes, data: 3)
+        }
+    }
+    
     func appenTime(_ newTime: Int) {
         if var time = UserInfoCenter.shared.loadValue(.recordTimes) as? Int {
             time += newTime

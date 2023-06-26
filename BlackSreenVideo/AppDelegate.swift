@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         self.window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
         window?.makeKeyAndVisible()
-
+        RecordingTimeCenter.shard.first()
         return true
     }
 
