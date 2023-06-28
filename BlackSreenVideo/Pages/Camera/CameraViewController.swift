@@ -165,7 +165,7 @@ class CameraViewController: BaseViewController {
     }
     
     func setupSettingButton() {
-        self.settingButton.setTitle("設定", for: .normal)
+//        self.settingButton.setTitle("設定", for: .normal)
         self.settingButton.addTarget(self, action: #selector(settingButtonAction), for: .touchUpInside)
     }
     
